@@ -1,6 +1,5 @@
 <script setup>
     import Layout from "../Pages/Shared/Layout.vue";
-    import DarkModeToggle from "@/Components/DarkModeToggle.vue";
 
     defineOptions({
         layout: Layout
@@ -8,9 +7,7 @@
 </script>
 
 <template>
-
- <DarkModeToggle />
-
+    <p>Pagina Me-learning</p>
 </template>
 
 <style scoped>
