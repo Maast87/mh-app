@@ -1,0 +1,1 @@
+import t from"./Layout-B6217ubW.js";import{c as e,a as s,u as r,b as o,F as m,o as n,Z as c}from"./app-B-77ZMTg.js";import"./Nav-CT0USX7J.js";const d=Object.assign({layout:t},{__name:"Lidmaatschap",setup(p){return(i,a)=>(n(),e(m,null,[s(r(c),{tag:"Lidmaatschap"}),a[0]||(a[0]=o("p",null,"Lidmaatschap",-1))],64))}});export{d as default};

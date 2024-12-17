@@ -1,53 +1,382 @@
 <script setup>
     import { ref, defineProps, defineEmits } from "vue";
     import { Link } from "@inertiajs/vue3";
+    import { useMenuStore } from '../../stores/menuItems.js';
+    import {useTheme} from "../../../composables/useTheme";
 
     defineProps({
         isOpen: { type: Boolean, required: true },
     });
 
-    const isProfileMenuOpen = ref(false);
-    const isSupportMenuOpen = ref(false);
+    const {dark} = useTheme();
 
-    const toggleProfileMenu = () => {
-        isProfileMenuOpen.value = !isProfileMenuOpen.value;
+    const menuStore = useMenuStore();
+    const profielMenuItems = menuStore.profielMenuItems;
+    const ondersteuningMenuItems = menuStore.ondersteuningMenuItems;
+    const resultatenMenuItems = menuStore.resultatenMenuItems;
+
+    const isProfielMenuOpen = ref(false);
+    const isOndersteuningMenuOpen = ref(false);
+    const isResultatenMenuOpen = ref(false);
+
+    const toggleProfielMenu = () => {
+        isProfielMenuOpen.value = !isProfielMenuOpen.value;
     };
-
-    const toggleSupportMenu = () => {
-        isSupportMenuOpen.value = !isSupportMenuOpen.value;
+    const toggleOndersteuningMenu = () => {
+        isOndersteuningMenuOpen.value = !isOndersteuningMenuOpen.value;
+    };
+    const toggleResultatenMenu = () => {
+        isResultatenMenuOpen.value = !isResultatenMenuOpen.value;
     };
 </script>
 
 <template>
-    <div class="flex items-center justify-between p-4">
-        <p class="text-white">Hello</p>
-        <button
-            @click="$emit('close')"
-            class="text-white"
-        >
-            Close menu
-        </button>
-    </div>
-    <div id="mobile-menu-items">
-        <!-- Profile Section -->
-        <div>
-            <button @click="toggleProfileMenu" class="text-white">Ondersteuning</button>
-            <div v-if="isProfileMenuOpen" class="pl-4">
-                <a href="" class="text-white block">Settings</a>
-                <a href="" class="text-white block">Messages</a>
+    <div class="flex flex-col p-4">
+        <div class="flex items-center justify-between mb-5 pb-5 border-0 border-b border-blue-700">
+            <Link
+                href="/home"
+                class="-m-1.5 p-1.5"
+                @click="$emit('close')"
+            >
+                <span class="sr-only">Mental Hygiene logo</span>
+                <img
+                    v-if="!dark"
+                    id="logo-light-mode"
+                    src="../../../images/mental-hygiene-beta-logo-light.svg"
+                    alt="Mental Hygiene Logo Light Mode"
+                    class="w-[calc(15%+8rem)]"
+                />
+                <img
+                    v-if="dark"
+                    id="logo-dark-mode"
+                    src="../../../images/mental-hygiene-beta-logo-dark.svg"
+                    alt="Mental Hygiene Logo Dark Mode"
+                    class="w-[calc(15%+8rem)]"
+                />
+            </Link>
+            <button
+                @click="$emit('close')"
+            >
+                <div
+                    class="flex h-10 w-10 shrink-0 items-center justify-center bg-gray-300 sm:h-12 sm:w-12 rounded-md"
+                >
+                    <div>
+                        <svg
+                            width="28"
+                            height="28"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                d="M6 18 18 6M6 6l12 12"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke="#0E122C"
+                                stroke-width="1.5"
+                            />
+                        </svg>
+                    </div>
+                </div>
+            </button>
+        </div>
+        <div id="mobile-menu-items" class="flex flex-col gap-y-5">
+            <!-- Profiel -->
+            <div>
+                <button
+                    @click="toggleProfielMenu"
+                    class="button-secondary bg-gray-300 font-bold"
+                >
+                    <div class="flex items-center justify-between gap-x-1">
+                        <p>
+                            Profiel
+                        </p>
+                        <div>
+                            <svg
+                                v-if="!isProfielMenuOpen"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke="#0E122C"
+                                    stroke-width="2"
+                                />
+                            </svg>
+                            <svg
+                                v-if="isProfielMenuOpen"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="m4.5 15.75 7.5-7.5 7.5 7.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke="#0E122C"
+                                    stroke-width="2"
+                                />
+                            </svg>
+                        </div>
+                    </div>
+                </button>
+                <div v-if="isProfielMenuOpen" class="flex flex-col gap-y-5 pl-4 pt-5">
+                    <Link
+                        v-for="item in profielMenuItems"
+                        :key="item.name"
+                        :href="item.href"
+                        :method="item.method"
+                        class="group button-dropdown"
+                        :class="{'button-dropdown-current' : $page.url === item.href}"
+                        @click="$emit('close')"
+                    >
+                        <div
+                            class="flex h-10 w-10 shrink-0 items-center justify-center bg-gray-300 sm:h-12 sm:w-12 rounded-md"
+                        >
+                            <div v-html="item.icon"></div>
+                        </div>
+                        <div class="ml-4">
+                            <div class="flex flex-row items-center gap-x-1.5">
+                                <p
+                                    class="text-base font-semibold"
+                                    :class="{
+                                        'gradient-text': $page.url === item.href,
+                                        'text-blue-700': $page.url !== item.href
+                                    }"
+                                >
+                                    {{ item.name }}
+                                </p>
+                                <div class="text-blue-700">
+                                    &rarr;
+                                </div>
+                            </div>
+                            <p
+                                class="text-base text-blue-700"
+                                :class="{
+                                    'text-gray-100': $page.url === item.href,
+                                    'text-blue-700': $page.url !== item.href
+                                }"
+                            >
+                                {{ item.description }}
+                            </p>
+                        </div>
+                    </Link>
+                </div>
+            </div>
+
+            <!-- Me-learning en ik loop vast -->
+            <div class="flex flex-col gap-y-5">
+                <Link
+                    href="/me-learning"
+                    @click="$emit('close')"
+                >
+                    <button class="button-secondary bg-gray-300 font-bold text-blue-800">
+                        Me-learning
+                    </button>
+                </Link>
+                <Link
+                    href="/ik-loop-vast"
+                    @click="$emit('close')"
+                >
+                    <button class="button-secondary bg-gray-300 font-bold text-blue-800">
+                        Ik loop vast
+                    </button>
+                </Link>
+            </div>
+
+            <!-- Ondersteuning -->
+            <div>
+                <button
+                    @click="toggleOndersteuningMenu"
+                    class="button-secondary bg-gray-300 font-bold"
+                >
+                    <div class="flex items-center justify-between gap-x-1">
+                        <p>
+                            Ondersteuning
+                        </p>
+                        <div>
+                            <svg
+                                v-if="!isOndersteuningMenuOpen"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke="#0E122C"
+                                    stroke-width="2"
+                                />
+                            </svg>
+                            <svg
+                                v-if="isOndersteuningMenuOpen"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="m4.5 15.75 7.5-7.5 7.5 7.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke="#0E122C"
+                                    stroke-width="2"
+                                />
+                            </svg>
+                        </div>
+                    </div>
+                </button>
+                <div v-if="isOndersteuningMenuOpen" class="flex flex-col gap-y-5 pl-4 pt-5">
+                    <Link
+                        v-for="item in ondersteuningMenuItems"
+                        :key="item.name"
+                        :href="item.href"
+                        :method="item.method"
+                        class="group button-dropdown"
+                        :class="{'button-dropdown-current' : $page.url === item.href}"
+                        @click="$emit('close')"
+                    >
+                        <div
+                            class="flex h-10 w-10 shrink-0 items-center justify-center bg-gray-300 sm:h-12 sm:w-12 rounded-md"
+                        >
+                            <div v-html="item.icon"></div>
+                        </div>
+                        <div class="ml-4">
+                            <div class="flex flex-row items-center gap-x-1.5">
+                                <p
+                                    class="text-base font-semibold"
+                                    :class="{
+                                        'gradient-text': $page.url === item.href,
+                                        'text-blue-700': $page.url !== item.href
+                                    }"
+                                >
+                                    {{ item.name }}
+                                </p>
+                                <div class="text-blue-700">
+                                    &rarr;
+                                </div>
+                            </div>
+                            <p
+                                class="text-base text-blue-700"
+                                :class="{
+                                    'text-gray-100': $page.url === item.href,
+                                    'text-blue-700': $page.url !== item.href
+                                }"
+                            >
+                                {{ item.description }}
+                            </p>
+                        </div>
+                    </Link>
+                </div>
+            </div>
+
+            <!-- Resultaten -->
+            <div>
+                <button
+                    @click="toggleResultatenMenu"
+                    class="button-secondary bg-gray-300 font-bold"
+                >
+                    <div class="flex items-center justify-between gap-x-1">
+                        <p>
+                            Resultaten
+                        </p>
+                        <div>
+                            <svg
+                                v-if="!isResultatenMenuOpen"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke="#0E122C"
+                                    stroke-width="2"
+                                />
+                            </svg>
+                            <svg
+                                v-if="isResultatenMenuOpen"
+                                width="16"
+                                height="16"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="m4.5 15.75 7.5-7.5 7.5 7.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke="#0E122C"
+                                    stroke-width="2"
+                                />
+                            </svg>
+                        </div>
+                    </div>
+                </button>
+                <div v-if="isResultatenMenuOpen" class="flex flex-col gap-y-5 pl-4 pt-5">
+                    <Link
+                        v-for="item in resultatenMenuItems"
+                        :key="item.name"
+                        :href="item.href"
+                        :method="item.method"
+                        class="group button-dropdown"
+                        :class="{'button-dropdown-current' : $page.url === item.href}"
+                        @click="$emit('close')"
+                    >
+                        <div
+                            class="flex h-10 w-10 shrink-0 items-center justify-center bg-gray-300 sm:h-12 sm:w-12 rounded-md"
+                        >
+                            <div v-html="item.icon"></div>
+                        </div>
+                        <div class="ml-4">
+                            <div class="flex flex-row items-center gap-x-1.5">
+                                <p
+                                    class="text-base font-semibold"
+                                    :class="{
+                                        'gradient-text': $page.url === item.href,
+                                        'text-blue-700': $page.url !== item.href
+                                    }"
+                                >
+                                    {{ item.name }}
+                                </p>
+                                <div class="text-blue-700">
+                                    &rarr;
+                                </div>
+                            </div>
+                            <p
+                                class="text-base text-blue-700"
+                                :class="{
+                                    'text-gray-100': $page.url === item.href,
+                                    'text-blue-700': $page.url !== item.href
+                                }"
+                            >
+                                {{ item.description }}
+                            </p>
+                        </div>
+                    </Link>
+                </div>
             </div>
         </div>
-
-        <!-- Support Section -->
-        <div>
-            <button @click="toggleSupportMenu" class="text-white">Resultaten</button>
-            <div v-if="isSupportMenuOpen" class="pl-4">
-                <a href="" class="text-white block">Create ticket</a>
-                <a href="" class="text-white block">Send email</a>
-            </div>
-        </div>
-
-        <!-- Shop Section -->
-        <a href="" class="text-white block">Shop</a>
     </div>
 </template>

@@ -8,16 +8,17 @@
         sectionDescription: String,
         menuItems: Array,
     });
+
 </script>
 
 <template>
     <div class="max-w-sm">
         <Popover class="relative">
+            <!-- Popover Button -->
             <PopoverButton
                 class="group inline-flex items-center rounded-lg transition ease-in-out duration-300 bg-none px-[25px] py-[10px] text-blue-700 text-button_text_s hover:bg-gray-300 hover:translate-y-[-2px] hover:shadow-mh_box_shadow hover:text-blue-800"
             >
                 <span>{{ title }}</span>
-
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -34,6 +35,7 @@
                 </svg>
             </PopoverButton>
 
+            <!-- Transition Animation -->
             <transition
                 enter-active-class="transition duration-200 ease-out"
                 enter-from-class="translate-y-1 opacity-0"
@@ -42,8 +44,10 @@
                 leave-from-class="translate-y-0 opacity-100"
                 leave-to-class="translate-y-1 opacity-0"
             >
+                <!-- Popover Panel -->
                 <PopoverPanel
                     class="absolute left-1/2 z-10 mt-3 w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0"
+                    v-slot="{ close }"
                 >
                     <div class="overflow-hidden rounded-lg shadow-lg">
                         <div class="bg-gray-300 p-4">
@@ -57,6 +61,7 @@
                             </div>
                         </div>
                         <div class="relative grid gap-8 bg-gray-100 p-7">
+                            <!-- Links -->
                             <Link
                                 v-for="item in menuItems"
                                 :key="item.name"
@@ -64,6 +69,7 @@
                                 :method="item.method"
                                 class="group button-dropdown hover:button-dropdown-hover active:button-dropdown-active"
                                 :class="{'button-dropdown-current' : $page.url === item.href}"
+                                @click="close"
                             >
                                 <div
                                     class="flex h-10 w-10 shrink-0 items-center justify-center bg-gray-300 sm:h-12 sm:w-12 rounded-md"

@@ -1,0 +1,1 @@
+import a from"./Layout-B6217ubW.js";import{c as n,a as r,u as t,b as o,F as s,o as l,Z as i}from"./app-B-77ZMTg.js";import"./Nav-CT0USX7J.js";const g=Object.assign({layout:a},{__name:"MeLearning",setup(m){return(c,e)=>(l(),n(s,null,[r(t(i),{tag:"Me-learning"}),e[0]||(e[0]=o("p",null,"Pagina Me-learning",-1))],64))}});export{g as default};

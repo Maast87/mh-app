@@ -1,0 +1,1 @@
+import e from"./Layout-B6217ubW.js";import{c as o,a as t,u as n,b as r,F as s,o as c,Z as i}from"./app-B-77ZMTg.js";import"./Nav-CT0USX7J.js";const g=Object.assign({layout:e},{__name:"Coaching",setup(m){return(l,a)=>(c(),o(s,null,[t(n(i),{tag:"Coaching"}),a[0]||(a[0]=r("p",null,"Pagina Coaching",-1))],64))}});export{g as default};

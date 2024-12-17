@@ -1,6 +1,6 @@
 <script setup>
-    import { useMenuStore } from '../../stores/menuItems.js';
     import PopoverMenu from './PopoverMenu.vue';
+    import { useMenuStore } from '../../stores/menuItems.js';
 
     const menuStore = useMenuStore();
 </script>

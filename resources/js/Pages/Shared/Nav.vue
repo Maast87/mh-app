@@ -64,8 +64,8 @@
                     </button>
                 </Link>
                 <Link href="/ik-loop-vast">
-                    <button class="button-secondary hover:button-secondary-hover active:button-secondary-active">Ik loop
-                        vast
+                    <button class="button-secondary hover:button-secondary-hover active:button-secondary-active">
+                        Ik loop vast
                     </button>
                 </Link>
                 <PopoverOndersteuning/>
@@ -75,7 +75,7 @@
             <!-- Desktop Profile Menu -->
             <div id="nav-desktop-profile-menu" class="hidden lg:flex lg:justify-end gap-x-1">
                 <template v-if="$page.props.auth.user">
-                    <PopoverProfiel/>
+                    <PopoverProfiel />
                 </template>
 
                 <template v-else>
@@ -95,7 +95,7 @@
             <!-- Mobile Menu -->
             <div id="nav-mobile-menu"
                  v-if="isMobileMenuOpen"
-                 class="lg:hidden fixed inset-y-0 right-0 z-100 w-full h-screen overflow-y-auto bg-green-300"
+                 class="lg:hidden fixed inset-y-0 right-0 z-100 w-full h-screen overflow-y-auto bg-gray-100"
             >
                 <PopoverMobileMenu
                     :isOpen="isMobileMenuOpen"

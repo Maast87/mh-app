@@ -1,0 +1,1 @@
+import e from"./Layout-B6217ubW.js";import{c as a,a as n,u as s,b as r,F as i,o,Z as m}from"./app-B-77ZMTg.js";import"./Nav-CT0USX7J.js";const f=Object.assign({layout:e},{__name:"MijnStatistieken",setup(c){return(l,t)=>(o(),a(i,null,[n(s(m),{tag:"Statistieken"}),t[0]||(t[0]=r("p",null,"Pagina Mijn Statistieken",-1))],64))}});export{f as default};

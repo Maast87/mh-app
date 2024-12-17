@@ -3,6 +3,7 @@
     import PopoverMenu from './PopoverMenu.vue';
 
     const menuStore = useMenuStore();
+
 </script>
 
 <template>

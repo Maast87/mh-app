@@ -1,0 +1,1 @@
+import o from"./Layout-B6217ubW.js";import{c as t,a as e,u as s,b as r,F as n,o as p,Z as l}from"./app-B-77ZMTg.js";import"./Nav-CT0USX7J.js";const f=Object.assign({layout:o},{__name:"IkLoopVast",setup(m){return(c,a)=>(p(),t(n,null,[e(s(l),{tag:"Ik loop vast"}),a[0]||(a[0]=r("p",null,"Pagina Ik loop vast",-1))],64))}});export{f as default};

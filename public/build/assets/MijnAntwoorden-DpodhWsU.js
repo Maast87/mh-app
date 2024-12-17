@@ -1,0 +1,1 @@
+import n from"./Layout-B6217ubW.js";import{c as a,a as o,u as t,b as r,F as s,o as m,Z as c}from"./app-B-77ZMTg.js";import"./Nav-CT0USX7J.js";const d=Object.assign({layout:n},{__name:"MijnAntwoorden",setup(i){return(l,e)=>(m(),a(s,null,[o(t(c),{tag:"Antwoorden"}),e[0]||(e[0]=r("p",null,"Pagina Mijn Antwoorden",-1))],64))}});export{d as default};

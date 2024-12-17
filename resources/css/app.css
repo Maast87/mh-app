@@ -130,4 +130,26 @@
             cursor-not-allowed
     }
 
+    .link-underline-green {
+        color: var(--mh-blue-700);
+        text-decoration: none;
+        background-image: linear-gradient(90deg, var(--mh-green-100), var(--mh-green-100));
+        background-size: 0% 2px;
+        background-repeat: no-repeat;
+        background-position: left 1.5em;
+        padding-block: 0.25em;
+        transition:
+            color 0.3s,
+            background-size 0.3s;
+    }
+    .link-underline-green:hover, .link-underline-green:active {
+        color: var(--mh-green-100);
+        background-size: 100% 2px;
+    }
+
+    .mh-transition {
+        @apply
+        transition ease-in-out duration-300;
+    }
+
 }
