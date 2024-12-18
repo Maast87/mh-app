@@ -1,17 +1,24 @@
 <script setup>
     import Layout from "../Pages/Shared/Layout.vue";
-    import {Head, Link} from "@inertiajs/vue3";
+    import { Head } from "@inertiajs/vue3";
+    import {provide} from "vue";
+    import CheckInterface from "@/Components/CheckInterface.vue";
 
-    defineOptions({
-        layout: Layout
-    });
+    const breadcrumbs = [
+        { label: "home", href: "/" },
+        { label: "dashboard", href: "/dashboard" },
+        { label: "homepage" }
+    ];
+    provide('breadcrumbs', breadcrumbs);
+
+
 </script>
 
 <template>
-    <Head tag="Me-learning" />
-    <p>Pagina Me-learning</p>
+    <Layout>
+        <Head tag="Me-learning"/>
+
+        <CheckInterface store="dummyCheckQuestions" />
+
+    </Layout>
 </template>
-
-<style scoped>
-
-</style>
