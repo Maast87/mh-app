@@ -18,7 +18,28 @@
     <Layout>
         <Head tag="Me-learning"/>
 
-        <CheckInterface store="dummyCheckQuestions" />
+        <CheckInterface
+            store="dummyCheckQuestions"
+            :lowThreshold="{ max: 60 }"
+            :midThreshold="{ min: 61, max: 129 }"
+            :highThreshold="{ min: 130 }"
+        >
+            <template v-slot:message-low-threshold>
+                <p>
+                    Low threshold
+                </p>
+            </template>
+            <template v-slot:message-mid-threshold>
+                <p>
+                    Mid threshold
+                </p>
+            </template>
+            <template v-slot:message-high-threshold>
+                <p>
+                    High threshold
+                </p>
+            </template>
+        </CheckInterface>
 
     </Layout>
 </template>

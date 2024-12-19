@@ -46,7 +46,7 @@ export const useCheckQuestionsStore = defineStore('checkQuestions', {
                 question: "What is the recipe?",
                 choices: [
                     { text: "Trifle", value: 5, next: "end" },
-                    { text: "Beans", value: 20, next: "end" },
+                    { text: "Beans", value: 55, next: "end" },
                     { text: "Hotdog", value: 50, next: "end" }
                 ],
             }
