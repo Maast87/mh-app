@@ -3,6 +3,7 @@
     import { Head } from "@inertiajs/vue3";
     import {provide} from "vue";
     import CheckInterface from "@/Components/CheckInterface.vue";
+    import DarkModeToggle from "@/Components/DarkModeToggle.vue";
 
     const breadcrumbs = [
         { label: "home", href: "/" },
@@ -40,6 +41,8 @@
                 </p>
             </template>
         </CheckInterface>
+
+        <DarkModeToggle />
 
     </Layout>
 </template>

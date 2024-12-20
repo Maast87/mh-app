@@ -84,7 +84,7 @@
 
             active:translate-y-[0px]
             active:shadow-mh_box_shadow_off;
-    }
+    } /* donkerblauw */
     .button-secondary {
         @apply
             bg-none
@@ -102,7 +102,19 @@
 
             active:translate-y-[0px]
             active:shadow-mh_box_shadow_off;
-    }
+    } /* transparant > grijs */
+    .button-secondary-current {
+        @apply
+            rounded-lg
+            px-[25px]
+            py-[10px]
+            text-button_text_s
+            text-blue-700
+            bg-gray-300
+            cursor-default
+            pointer-events-none
+            cursor-not-allowed
+    } /* transparant > grijs */
     .button-tertiary {
         @apply
             bg-gray-100
@@ -119,7 +131,25 @@
             hover:translate-y-[-2px]
 
             active:translate-y-[0px];
-    }
+    } /* wit > grijs */
+    .button-quaternary {
+        @apply
+        bg-gray-300
+        rounded-lg
+        px-[25px]
+        py-[10px]
+        text-button_text_s
+        text-blue-700
+        transition ease-in-out duration-300
+
+        hover:bg-gray-400
+        hover:text-blue-800
+        hover:translate-y-[-2px]
+        hover:shadow-mh_box_shadow
+
+        active:translate-y-[0px]
+        active:shadow-mh_box_shadow_off;
+    } /* grijs > donkergrijs */
     .button-dropdown {
         @apply
             text-blue-700
@@ -140,6 +170,7 @@
     .button-dropdown-current {
         @apply
             bg-blue-700
+            cursor-default
             pointer-events-none
             cursor-not-allowed
     }

@@ -1,8 +1,8 @@
 <script setup>
     import Layout from "../Pages/Shared/Layout.vue";
     import { Head, Link } from "@inertiajs/vue3";
-    import {provide} from "vue";
     import GradientHero from "@/Components/GradientHero.vue";
+    import {provide} from "vue";
 
     const breadcrumbs = [
         { label: "home", href: "/" },
@@ -29,7 +29,8 @@
 
             <div class="flex flex-col bg-blue-700 pt-16 pb-2 px-8 gap-y-16 rounded-bl-xl rounded-br-xl">
                 <p class="text-header_l text-gray-100 font-bold text-center">
-                    Hi <span class="gradient-text">{{ $page.props.auth.user.name }},</span><br>wat wil je doen?
+<!--                    Hi <span class="gradient-text">{{ $page.props.auth.user.name }},</span><br>wat wil je doen?-->
+                    Hi <span class="gradient-text">username,</span><br>wat wil je doen?
                 </p>
                 <div class="grid lg:grid-cols-2 grid-cols-1 lg:grid-rows-2 grid-rows-4 grid-flow-col gap-x-8 gap-y-8">
                     <div id="card">

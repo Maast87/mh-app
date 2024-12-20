@@ -15,7 +15,7 @@
         <button
             id="previous"
             @click="goBack"
-            class="flex flex-row gap-x-3 button-secondary bg-gray-300 hover:button-secondary-hover active:button-secondary-active"
+            class="flex flex-row gap-x-3 button-quaternary"
         >
             <div>
                 <svg

@@ -71,16 +71,20 @@ Route::get('/ik-loop-vast', function () {
     return Inertia::render('IkLoopVast');
 });
 
-Route::get('/mijn-profiel', function () {
-    return Inertia::render('MijnProfiel');
+Route::get('/profiel', function () {
+    return Inertia::render('Profiel');
 });
 
-Route::get('/instellingen', function () {
-    return Inertia::render('Instellingen');
+Route::get('/profiel/resultaten', function () {
+    return Inertia::render('ProfielResultaten');
 });
 
-Route::get('/lidmaatschap', function () {
-    return Inertia::render('Lidmaatschap');
+Route::get('/profiel/instellingen', function () {
+    return Inertia::render('ProfielInstellingen');
+});
+
+Route::get('/profiel/lidmaatschap', function () {
+    return Inertia::render('ProfielLidmaatschap');
 });
 
 

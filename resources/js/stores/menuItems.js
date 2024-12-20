@@ -6,7 +6,7 @@ export const useMenuStore = defineStore('menu', {
             {
                 name: 'Mijn profiel',
                 description: 'Alles over @username',
-                href: '/mijn-profiel',
+                href: '/profiel',
                 icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
@@ -31,7 +31,7 @@ export const useMenuStore = defineStore('menu', {
             {
                 name: 'Al mijn resultaten',
                 description: 'Bekijk al jouw resultaten in één keer',
-                href: 'al-mijn-resultaten',
+                href: '/profiel/resultaten',
                 icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
@@ -63,7 +63,7 @@ export const useMenuStore = defineStore('menu', {
             {
                 name: 'Instellingen',
                 description: 'Stel alles in zoals jij dat wil',
-                href: '/instellingen',
+                href: '/profiel/instellingen',
                 icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
@@ -95,7 +95,7 @@ export const useMenuStore = defineStore('menu', {
             {
                 name: 'Lidmaatschap',
                 description: 'Informatie over jouw lidmaatschap',
-                href: '/lidmaatschap',
+                href: '/profiel/lidmaatschap',
                 icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
@@ -148,7 +148,7 @@ export const useMenuStore = defineStore('menu', {
             {
                 name: 'Mijn doelen',
                 description: 'De doelen die je hebt gesteld',
-                href: '/mijn-doelen',
+                href: '/profiel/resultaten/doelen',
                 icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
@@ -173,7 +173,7 @@ export const useMenuStore = defineStore('menu', {
             {
                 name: 'Mijn antwoorden',
                 description: 'Beschrijving komt hier',
-                href: '/mijn-antwoorden',
+                href: '/profiel/resultaten/antwoorden',
                 icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
@@ -198,7 +198,7 @@ export const useMenuStore = defineStore('menu', {
             {
                 name: 'Mijn statistieken',
                 description: 'Beschrijving komt hier',
-                href: '/mijn-statistieken',
+                href: '/profiel/resultaten/statistieken',
                 icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
@@ -223,7 +223,7 @@ export const useMenuStore = defineStore('menu', {
             {
                 name: 'Mijn achievements',
                 description: 'Beschrijving komt hier',
-                href: 'mijn-achievements',
+                href: '/profiel/resultaten/achievements',
                 icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
@@ -248,7 +248,7 @@ export const useMenuStore = defineStore('menu', {
             {
                 name: 'Al mijn resultaten',
                 description: 'Bekijk al jouw resultaten in één keer',
-                href: 'al-mijn-resultaten',
+                href: '/profiel/resultaten',
                 icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
