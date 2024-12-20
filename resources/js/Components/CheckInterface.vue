@@ -155,81 +155,95 @@
 
 
 <template>
-    <div class="flex flex-col" v-if="!quizFinished && currentQuestion">
-        <div class="mb-6">
-            {{ currentQuestion.question }}
+    <div
+        v-if="!quizFinished && currentQuestion"
+        class="flex flex-col border border-gray-300 rounded-xl w-full"
+    >
+        <div class="flex flex-col text-base bg-gray-300 rounded-xl p-2 text-center">
+            <p class="font-semibold">
+                {{ currentQuestion.question }}
+            </p>
+            <p>
+                {{ currentQuestion.description }}
+            </p>
         </div>
 
-        <div v-for="(choice, index) in currentQuestion.choices" :key="index" class="flex mb-3">
-            <div
-                class="flex cursor-pointer"
-                :class="{'bg-blue-300': selectedAnswer && selectedAnswer.text === choice.text}"
-                @click="onOptionClicked(choice)"
-            >
-                <div>
-                    {{ choice.text }}
+        <div class="flex flex-col p-4 w-full bg-gray-100 rounded-xl">
+            <div class="text-center">
+                Vraag {{ currentQuestionId }} van {{ questions.length }}
+            </div>
+
+            <div id="progress-bar" class="bg-gray-300 rounded-xl w-full h-6 mt-3">
+                <div
+                    class="bg-blue-700 rounded-full h-full"
+                    :style="`width: ${progress}%`"
+                />
+            </div>
+
+            <div class="flex flex-col gap-y-6 p-2 mt-4">
+                <div
+                    v-for="(choice, index) in currentQuestion.choices"
+                    :key="index"
+                    class="flex"
+                >
+                    <div
+                        class="group flex button-quinary cursor-pointer w-full"
+                        :class="{'button-quinary-current': selectedAnswer && selectedAnswer.text === choice.text}"
+                        @click="onOptionClicked(choice)"
+                    >
+                        <div
+                            class="font-semibold group-hover:gradient-text"
+                            :class="{'gradient-text': selectedAnswer && selectedAnswer.text === choice.text}"
+                        >
+                            {{ choice.text }}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div>
-            Score: {{ score }}
-        </div>
-
-        <div>
-            {{ currentQuestionId }} / {{ questions.length }}
-        </div>
-
-        <div id="progress-bar" class="bg-blue-200 p-1 rounded-full w-full h-5 mt-4">
-            <div
-                class="bg-blue-700 rounded-full h-full"
-                :style="`width: ${progress}%`"
-            />
-        </div>
-
-        <!-- Save and Proceed button -->
-        <div class="mt-4">
-            <button
-                :disabled="!selectedAnswer"
-                @click="onSaveAndProceed"
-                class="bg-blue-500 text-white py-2 px-4 rounded disabled:opacity-50"
-            >
-                Save and Proceed
-            </button>
+                <div class="mt-4">
+                    <button
+                        :disabled="!selectedAnswer"
+                        @click="onSaveAndProceed"
+                        class="button-primary disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed"
+                    >
+                        Opslaan en doorgaan
+                    </button>
+                </div>
+                <div>
+                    Score: {{ score }} (nog op hide zetten)
+                </div>
         </div>
     </div>
 
-    <!-- Quiz completion and results, visible when quiz is finished -->
-    <div v-if="quizFinished" class="text-center">
-        <div id="result-bar" class="bg-blue-200 p-1 rounded-full w-full h-5 mt-4">
-            <div
-                class="bg-blue-700 rounded-full h-full progress"
-                :style="{ width: animatedWidth }"
-            />
+    <div
+        v-if="quizFinished"
+        class="flex flex-col border border-gray-300 rounded-xl w-full"
+    >
+        <div class="flex flex-col text-base bg-gray-300 rounded-xl p-2 text-center">
+            <p class="text-xl font-bold">Uitslag van de check</p>
         </div>
 
-        <p class="text-xl font-bold">Quiz Finished!</p>
-        <p class="mt-4">Your final score is: {{ score }}</p>
+        <div class="flex flex-col p-4 w-full bg-gray-100 rounded-xl">
+            <p class="text-center">Jouw puntentotaal is:<br><span class="text-header_xl text-green-100">{{ score }}</span></p>
 
-        <!-- Result message blocks -->
-        <div v-if="result === 'low'" class="result-message">
-            <p class="text-lg font-semibold text-green-600">Jouw resultaat</p>
-            <div class="mt-2">
-                <slot name="message-low-threshold"></slot>
+            <p class="text-header_s">Toelichting</p>
+            <!-- Result message blocks -->
+            <div v-if="result === 'low'" class="result-message">
+                <div>
+                    <slot name="message-low-threshold"></slot>
+                </div>
             </div>
-        </div>
 
-        <div v-else-if="result === 'mid'" class="result-message">
-            <p class="text-lg font-semibold text-blue-600">Jouw resultaat</p>
-            <div class="mt-2">
-                <slot name="message-mid-threshold" />
+            <div v-else-if="result === 'mid'" class="result-message">
+                <div>
+                    <slot name="message-mid-threshold" />
+                </div>
             </div>
-        </div>
 
-        <div v-else-if="result === 'high'" class="result-message">
-            <p class="text-lg font-semibold text-purple-600">Jouw resultaat</p>
-            <div class="mt-2">
-                <slot name="message-high-threshold" />
+            <div v-else-if="result === 'high'" class="result-message">
+                <div>
+                    <slot name="message-high-threshold" />
+                </div>
             </div>
         </div>
     </div>

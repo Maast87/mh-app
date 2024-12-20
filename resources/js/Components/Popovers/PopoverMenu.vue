@@ -67,7 +67,7 @@
                                 :key="item.name"
                                 :href="item.href"
                                 :method="item.method"
-                                class="group button-dropdown hover:button-dropdown-hover active:button-dropdown-active"
+                                class="group button-quinary"
                                 :class="{'button-dropdown-current' : $page.url === item.href}"
                                 @click="close"
                             >

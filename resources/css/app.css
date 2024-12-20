@@ -150,7 +150,7 @@
         active:translate-y-[0px]
         active:shadow-mh_box_shadow_off;
     } /* grijs > donkergrijs */
-    .button-dropdown {
+    .button-quinary {
         @apply
             text-blue-700
             -m-3
@@ -167,7 +167,7 @@
             active:translate-y-[0px]
             active:shadow-mh_box_shadow_off;
     }
-    .button-dropdown-current {
+    .button-quinary-current {
         @apply
             bg-blue-700
             cursor-default

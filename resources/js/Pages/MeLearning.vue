@@ -27,22 +27,22 @@
         >
             <template v-slot:message-low-threshold>
                 <p>
-                    Low threshold
+                    Hier komt de toelichting voor wanneer iemand een score heeft behaald in de onderste van de drie categoriën
                 </p>
             </template>
             <template v-slot:message-mid-threshold>
                 <p>
-                    Mid threshold
+                    Hier komt de toelichting voor wanneer iemand een score heeft behaald in de tweede van de drie categoriën
                 </p>
             </template>
             <template v-slot:message-high-threshold>
                 <p>
-                    High threshold
+                    Hier komt de toelichting voor wanneer iemand een score heeft behaald in de derde van de drie categoriën
                 </p>
             </template>
         </CheckInterface>
 
-        <DarkModeToggle />
+<!--        <DarkModeToggle />-->
 
     </Layout>
 </template>

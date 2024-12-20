@@ -5,6 +5,7 @@ export const useCheckQuestionsStore = defineStore('checkQuestions', {
             {
                 id: 1,
                 question: "Which language?",
+                description: "Pick a language",
                 choices: [
                     { text: "Java", value: 5, next: 3 },
                     { text: "Python", value: 5, next: 3 },
@@ -16,6 +17,7 @@ export const useCheckQuestionsStore = defineStore('checkQuestions', {
             {
                 id: 2,
                 question: "What is the limit?",
+                description: "Pick a limit",
                 choices: [
                     { text: "100", value: 10, next: 3 },
                     { text: "200", value: 5, next: 3 },
@@ -26,6 +28,7 @@ export const useCheckQuestionsStore = defineStore('checkQuestions', {
             {
                 id: 3,
                 question: "What does it stand for?",
+                description: "Pick a stand",
                 choices: [
                     { text: "Music Player", value: 20, next: 4 },
                     { text: "Multi Pass", value: 30, next: 4 },
@@ -35,6 +38,7 @@ export const useCheckQuestionsStore = defineStore('checkQuestions', {
             {
                 id: 4,
                 question: "What is the age?",
+                description: "Pick an age",
                 choices: [
                     { text: "20", value: 10, next: 5 },
                     { text: "900", value: 15, next: "end" },
@@ -44,6 +48,7 @@ export const useCheckQuestionsStore = defineStore('checkQuestions', {
             {
                 id: 5,
                 question: "What is the recipe?",
+                description: "Pick a recipe",
                 choices: [
                     { text: "Trifle", value: 5, next: "end" },
                     { text: "Beans", value: 55, next: "end" },
@@ -55,6 +60,7 @@ export const useCheckQuestionsStore = defineStore('checkQuestions', {
             {
                 id: 1,
                 question: "How much",
+                description: "Pick a value",
                 choices: [
                     { text: "A little", value: 5, next: 2 },
                     { text: "A lot", value: 5, next: 2 },
@@ -64,6 +70,7 @@ export const useCheckQuestionsStore = defineStore('checkQuestions', {
             {
                 id: 2,
                 question: "Is there a limit?",
+                description: "Pick a limit",
                 choices: [
                     { text: "Yes", value: 10, next: "end" },
                     { text: "No", value: 10, next: "end" }
