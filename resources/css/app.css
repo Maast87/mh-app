@@ -68,8 +68,28 @@
         transition ease-in-out duration-300;
     }
 
+    @keyframes spinner {
+         to {transform: rotate(360deg);}
+     }
+    .spinner:before {
+        content: '';
+        box-sizing: border-box;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 20px;
+        height: 20px;
+        margin-top: -10px;
+        margin-left: -10px;
+        border-radius: 50%;
+        border: 2px solid #ccc;
+        border-top-color: #000;
+        animation: spinner .6s linear infinite;
+    }
+
     .button-primary {
         @apply
+            relative
             bg-blue-700
             rounded-lg
             px-[25px]
@@ -85,6 +105,30 @@
             active:translate-y-[0px]
             active:shadow-mh_box_shadow_off;
     } /* donkerblauw */
+    .button-primary-loading {
+        @apply
+            bg-blue-700
+            rounded-lg
+            px-[25px]
+            py-[10px]
+            text-button_text_s
+            text-transparent
+            relative
+            opacity-80
+            pointer-events-none
+            cursor-not-allowed
+    }
+    .button-primary-disabled {
+        @apply
+            bg-blue-700
+            rounded-lg
+            px-[25px]
+            py-[10px]
+            text-button_text_s
+            text-gray-100
+            relative
+            opacity-80
+    }
     .button-secondary {
         @apply
             bg-none
