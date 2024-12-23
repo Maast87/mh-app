@@ -117,7 +117,7 @@
             opacity-80
             pointer-events-none
             cursor-not-allowed
-    }
+    } /* donkerblauw muted */
     .button-primary-disabled {
         @apply
             bg-blue-700
@@ -128,7 +128,7 @@
             text-gray-100
             relative
             opacity-80
-    }
+    } /* donkerblauw muted */
     .button-secondary {
         @apply
             bg-none

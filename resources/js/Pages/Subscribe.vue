@@ -2,11 +2,7 @@
     import Layout from "@/Pages/Shared/Layout.vue";
     import { Head, Link } from "@inertiajs/vue3";
     import GradientHero from "@/Components/GradientHero.vue";
-<<<<<<< Updated upstream
-    import {provide} from "vue";
-=======
     import {provide, ref} from "vue";
->>>>>>> Stashed changes
 
     const breadcrumbs = [
         { label: "home", href: "/" },
@@ -14,8 +10,6 @@
     ];
     provide('breadcrumbs', breadcrumbs);
 
-<<<<<<< Updated upstream
-=======
     const ButtonOneClicked = ref(false);
     const ButtonTwoClicked = ref(false);
     const DisableButtonOne = ref(false);
@@ -33,7 +27,6 @@
         DisableButtonTwo.value = false;
     };
 
->>>>>>> Stashed changes
 </script>
 
 <template>
@@ -124,10 +117,6 @@
                             </svg>
                             <p class="text-base">1-op-1 coaching voor als je vastloopt (€74,99 per 60 minuten)</p>
                         </div>
-<<<<<<< Updated upstream
-                        <a class="mt-4" :href="'/checkout/price_1QZ3biDgwQ2kaUkEaEyAxWbH'">
-                            <button class="button-primary w-full">Naar afrekenen</button>
-=======
                         <a
                             :href="'/checkout/price_1QZ3biDgwQ2kaUkEaEyAxWbH'"
                             class="mt-4"
@@ -139,7 +128,6 @@
                                 @click="handleClickButtonOne">
                                 Naar afrekenen
                             </button>
->>>>>>> Stashed changes
                         </a >
                         <p class="text-base italic text-center">* lidmaatschap is opzegbaar wanneer jij wil</p>
                     </div>
@@ -211,10 +199,6 @@
                             </svg>
                             <p class="text-base">1-op-1 coaching voor als je vastloopt (€74,99 per 60 minuten)</p>
                         </div>
-<<<<<<< Updated upstream
-                        <a class="mt-4" :href="'/checkout/price_1QZ3bEDgwQ2kaUkE5yC5gqO0'">
-                            <button class="button-primary w-full">Naar afrekenen</button>
-=======
                         <a
                             :href="'/checkout/price_1QZ3bEDgwQ2kaUkE5yC5gqO0'"
                             class="mt-4"
@@ -226,7 +210,6 @@
                                 @click="handleClickButtonTwo">
                                 Naar afrekenen
                             </button>
->>>>>>> Stashed changes
                         </a >
                         <p class="text-base italic text-center">* lidmaatschap is opzegbaar wanneer jij wil</p>
                     </div>
