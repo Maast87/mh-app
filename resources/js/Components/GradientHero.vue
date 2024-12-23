@@ -11,7 +11,7 @@
             <slot name="subtitle"></slot>
         </p>
         <h1
-            class="text-gray-100 font-bold text-header_xl drop-shadow-[0_3px_2px_rgba(0,0,0,0.4)] text-center"
+            class="text-gray-100 font-bold text-header_xl drop-shadow-[0_3px_2px_rgba(0,0,0,0.45)] text-center"
             v-if="$slots.title"
         >
             <slot name="title"></slot>

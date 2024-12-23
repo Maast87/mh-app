@@ -75,6 +75,11 @@
             <!-- Desktop Profile Menu -->
             <div id="nav-desktop-profile-menu" class="hidden lg:flex lg:justify-end gap-x-1">
                 <template v-if="$page.props.auth.user">
+                    <Link href="/word-lid">
+                        <button class="button-secondary hover:button-secondary-hover active:button-secondary-active">
+                            Word lid
+                        </button>
+                    </Link>
                     <PopoverProfiel />
                 </template>
 

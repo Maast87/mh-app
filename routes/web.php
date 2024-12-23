@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\EnsureUserIsSubscribed;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -63,10 +65,6 @@ Route::get('/veelgestelde-vragen', function () {
     return Inertia::render('VeelgesteldeVragen');
 });
 
-Route::get('/me-learning', function () {
-    return Inertia::render('MeLearning');
-});
-
 Route::get('/ik-loop-vast', function () {
     return Inertia::render('IkLoopVast');
 });
@@ -86,6 +84,28 @@ Route::get('/profiel/instellingen', function () {
 Route::get('/profiel/lidmaatschap', function () {
     return Inertia::render('ProfielLidmaatschap');
 });
+
+Route::get('/word-lid', function () {
+    return Inertia::render('Subscribe');
+})
+    ->middleware(['auth', 'verified'])
+    ->name('subscribe');
+
+
+Route::get('/checkout/{plan?}', CheckoutController::class)
+    ->middleware(['auth', 'verified'])
+    ->name('checkout');
+
+Route::get('/dankjewel', function () {
+    return Inertia::render('Dankjewel');
+})
+    ->middleware(['auth', 'verified'])
+    ->name('success');
+
+Route::get('/me-learning', function () {
+    return Inertia::render('MeLearning');
+})
+    ->middleware(['auth', 'verified', EnsureUserIsSubscribed::class]);
 
 
 require __DIR__.'/auth.php';
