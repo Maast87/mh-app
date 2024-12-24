@@ -3,109 +3,54 @@
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\EnsureUserIsSubscribed;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
-
-Route::get('/home', function () {
-    return Inertia::render('Home', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-    ]);
-});
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
-
-Route::get('/mijn-doelen', function () {
-    return Inertia::render('MijnDoelen');
-});
-
-Route::get('/mijn-antwoorden', function () {
-    return Inertia::render('MijnAntwoorden');
-});
-
-Route::get('/mijn-statistieken', function () {
-    return Inertia::render('MijnStatistieken');
-});
-
-Route::get('/mijn-achievements', function () {
-    return Inertia::render('MijnAchievements');
-});
-
-Route::get('/al-mijn-resultaten', function () {
-    return Inertia::render('AlMijnResultaten');
-});
-
-Route::get('/mijn-supportgroepen', function () {
-    return Inertia::render('MijnSupportgroepen');
-});
-
-Route::get('/coaching', function () {
-    return Inertia::render('Coaching');
-});
-
-Route::get('/veelgestelde-vragen', function () {
-    return Inertia::render('VeelgesteldeVragen');
-});
-
-Route::get('/ik-loop-vast', function () {
-    return Inertia::render('IkLoopVast');
-});
-
-Route::get('/profiel', function () {
-    return Inertia::render('Profiel');
-});
-
-Route::get('/profiel/resultaten', function () {
-    return Inertia::render('ProfielResultaten');
-});
-
-Route::get('/profiel/instellingen', function () {
-    return Inertia::render('ProfielInstellingen');
-});
-
-Route::get('/profiel/lidmaatschap', function () {
-    return Inertia::render('ProfielLidmaatschap');
-});
-
-Route::get('/word-lid', function () {
-    return Inertia::render('Subscribe');
-})
-    ->middleware(['auth', 'verified'])
-    ->name('subscribe');
-
-
-Route::get('/checkout/{plan?}', CheckoutController::class)
-    ->middleware(['auth', 'verified'])
-    ->name('checkout');
-
-Route::get('/dankjewel', function () {
-    return Inertia::render('Dankjewel');
-})
-    ->middleware(['auth', 'verified'])
-    ->name('success');
-
-Route::get('/me-learning', function () {
-    return Inertia::render('MeLearning');
-})
-    ->middleware(['auth', 'verified', EnsureUserIsSubscribed::class]);
-
-
 require __DIR__.'/auth.php';
+
+// Guest only routes
+Route::middleware(['guest'])->group(function () {
+    Route::get('/tot-snel', function () { return Inertia::render('Guest/TotSnel'); });
+});
+
+// Public routes (split view)
+Route::get('/', function () { return Inertia::render('Public/Home'); })->name('home');
+Route::get('/ondersteuning', function () { return Inertia::render('Public/Ondersteuning'); });
+Route::get('/ondersteuning/supportgroepen', function () { return Inertia::render('Public/Supportgroepen'); });
+Route::get('/ondersteuning/coaching', function () { return Inertia::render('Public/Coaching'); });
+Route::get('/ik-loop-vast', function () { return Inertia::render('Public/IkLoopVast'); });
+
+// Public routes (static)
+Route::get('/visie', function () { return Inertia::render('Public/Visie'); });
+Route::get('/contact', function () { return Inertia::render('Public/Contact'); });
+Route::get('/de-oprichters', function () { return Inertia::render('Public/DeOprichters'); });
+Route::get('/hier-werken-we-aan', function () { return Inertia::render('Public/Roadmap'); });
+Route::get('/ondersteuning/veelgestelde-vragen', function () { return Inertia::render('Public/VeelgesteldeVragen'); });
+Route::get('/privacybeleid', function () { return Inertia::render('Public/Privacybeleid'); });
+Route::get('/voorwaarden', function () { return Inertia::render('Public/Voorwaarden'); });
+
+// Profiel routes
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/profiel', function () { return Inertia::render('Profiel/Profiel'); });
+    Route::get('/profiel/instellingen', function () { return Inertia::render('Profiel/ProfielInstellingen'); });
+    Route::patch('/profiel/instellingen', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profiel/lidmaatschap', function () { return Inertia::render('Profiel/ProfielLidmaatschap'); });
+    Route::get('/profiel/resultaten', function () { return Inertia::render('Profiel/ProfielResultaten'); });
+    Route::get('/profiel/resultaten/doelen', function () { return Inertia::render('Profiel/ProfielResultatenDoelen'); });
+    Route::get('/profiel/resultaten/antwoorden', function () { return Inertia::render('Profiel/ProfielResultatenAntwoorden'); });
+    Route::get('/profiel/resultaten/statistieken', function () { return Inertia::render('Profiel/ProfielResultatenStatistieken'); });
+    Route::get('/profiel/resultaten/achievements', function () { return Inertia::render('Profiel/ProfielResultatenAchievements'); });
+});
+
+// Checkout routes
+Route::get('/word-lid', function () { return Inertia::render('Checkout/Subscribe'); })->middleware(['auth', 'verified'])->name('subscribe');
+Route::get('/checkout/{plan?}', CheckoutController::class)->middleware(['auth', 'verified'])->name('checkout');
+Route::get('/dankjewel', function () { return Inertia::render('Checkout/Dankjewel'); })->middleware(['auth', 'verified'])->name('success');
+
+// Me-learning routes
+Route::get('/me-learning', function () { return Inertia::render('Me-learning/MeLearning'); });
+Route::middleware(['auth', 'verified', EnsureUserIsSubscribed::class])->group(function () {
+    Route::get('/me-learning/les', function () { return Inertia::render('Me-learning/Les'); });
+    Route::get('/me-learning/les1', function () { return Inertia::render('Me-learning/Les'); });
+    Route::get('/me-learning/les2', function () { return Inertia::render('Me-learning/Les'); });
+});

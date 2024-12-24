@@ -1,8 +1,8 @@
 <script setup>
-    import Layout from "../Pages/Shared/Layout.vue";
+    import Layout from "../Shared/Layout.vue";
     import {Head, Link} from "@inertiajs/vue3";
-    import {provide} from "vue";
     import ProfileLayout from "@/Pages/Shared/ProfileLayout.vue";
+    import {provide} from "vue";
 
     const breadcrumbs = [
         { label: "home", href: "/" },
@@ -21,7 +21,7 @@
                 <div class="w-full">
                     <div>
                         <img
-                            src="../../images/mental-hygiene-vormgeving-profiel-tab-resultaten.png"
+                            src="../../../images/mental-hygiene-vormgeving-profiel-tab-resultaten.png"
                             alt="Mental Hygiene afbeelding resultaten"
                             class="rounded-tl-lg rounded-tr-lg"
                         >
@@ -37,7 +37,7 @@
                 <div class="w-full">
                     <div>
                         <img
-                            src="../../images/mental-hygiene-vormgeving-profiel-tab-instellingen.png"
+                            src="../../../images/mental-hygiene-vormgeving-profiel-tab-instellingen.png"
                             alt="Mental Hygiene afbeelding instellingen"
                             class="rounded-tl-lg rounded-tr-lg"
                         >
@@ -53,7 +53,7 @@
                 <div class="w-full">
                     <div>
                         <img
-                            src="../../images/mental-hygiene-vormgeving-profiel-tab-lidmaatschap.png"
+                            src="../../../images/mental-hygiene-vormgeving-profiel-tab-lidmaatschap.png"
                             alt="Mental Hygiene afbeelding lidmaatschap"
                             class="rounded-tl-lg rounded-tr-lg"
                         >

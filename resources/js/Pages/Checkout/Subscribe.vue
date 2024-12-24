@@ -221,7 +221,7 @@
                             <Link
                                 href="/voorwaarden"
                                 target="_blank"
-                                class="text-white link-underline-green"
+                                class="text-white font-medium link-underline-green"
                             >
                                 voorwaarden
                             </Link>
@@ -252,7 +252,7 @@
                             <Link
                                 href="/privacybeleid"
                                 target="_blank"
-                                class="text-white link-underline-green"
+                                class="text-white font-medium link-underline-green"
                             >
                                 privacybeleid
                             </Link>

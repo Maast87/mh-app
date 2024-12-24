@@ -1,5 +1,5 @@
 <script setup>
-    import {ref, computed, onMounted, watch} from "vue";
+    import { ref, computed, onMounted, watch } from "vue";
     import { useCheckQuestionsStore } from "@/stores/checkQuestions.js";
 
     const props = defineProps({
@@ -32,6 +32,7 @@
     const questions = currentQuestionStore[props.store];
 
     const score = ref(0);
+    const animatedScore = ref(0); // For the animated score count-up
     const currentQuestionId = ref(1);
     const selectedAnswer = ref(null);
     const quizFinished = ref(false);
@@ -136,14 +137,24 @@
         }
     });
 
-    const animatedWidth = ref("0%");
-
     watch(quizFinished, (isFinished) => {
         if (isFinished) {
-            // Trigger animation once quizFinished becomes true
-            setTimeout(() => {
-                animatedWidth.value = `${percentageScore.value}%`;
-            }, 100);
+            const duration = 1500;
+            const startTime = performance.now();
+
+            const animate = (currentTime) => {
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(elapsed / duration, 1); // Normalized progress (0 to 1)
+                const easing = progress * (2 - progress); // Ease-out effect
+
+                animatedScore.value = Math.floor(score.value * easing);
+
+                if (progress < 1) {
+                    requestAnimationFrame(animate);
+                }
+            };
+
+            requestAnimationFrame(animate);
         }
     });
 
@@ -224,7 +235,7 @@
         </div>
 
         <div class="flex flex-col p-4 w-full bg-gray-100 rounded-xl">
-            <p class="text-center">Jouw puntentotaal is:<br><span class="text-header_xl text-green-100">{{ score }}</span></p>
+            <p class="text-center">Jouw puntentotaal is:<br><span class="text-header_xl text-green-100">{{ animatedScore }}</span></p>
 
             <p class="text-header_s">Toelichting</p>
             <!-- Result message blocks -->

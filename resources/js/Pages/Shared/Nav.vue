@@ -25,10 +25,10 @@
     <Head title="Home"/>
 
     <header class="flex items-center">
-        <nav class="mx-auto flex max-w-7xl w-[1280px] items-center justify-between gap-x-1" aria-label="Global">
+        <nav class="flex content-container items-center justify-between gap-x-1" aria-label="Global">
             <!-- Logo -->
             <div id="nav-logo" class="flex max-w-48">
-                <Link href="/home" class="-m-1.5 p-1.5">
+                <Link href="/" class="-m-1.5 p-1.5">
                     <span class="sr-only">Mental Hygiene logo</span>
                     <img
                         v-if="!dark"
@@ -38,7 +38,7 @@
                         class="w-[calc(25%+8rem)]"
                     />
                     <img
-                        v-else
+                        v-if="dark"
                         id="logo-dark-mode"
                         src="../../../images/mental-hygiene-beta-logo-dark.svg"
                         alt="Mental Hygiene Logo Dark Mode"
@@ -75,12 +75,12 @@
             <!-- Desktop Profile Menu -->
             <div id="nav-desktop-profile-menu" class="hidden lg:flex lg:justify-end gap-x-1">
                 <template v-if="$page.props.auth.user">
-                    <Link href="/word-lid">
-                        <button class="button-secondary hover:button-secondary-hover active:button-secondary-active">
-                            Word lid
+                    <PopoverProfiel />
+                    <Link href="/word-lid" v-if="! $page.props.auth.user.subscribed">
+                        <button class="button-senary hover:button-senary-hover">
+                            <p class="drop-shadow-[0_2px_1px_rgba(0,0,0,0.4)]">Word lid</p>
                         </button>
                     </Link>
-                    <PopoverProfiel />
                 </template>
 
                 <template v-else>
@@ -89,9 +89,9 @@
                             Log in
                         </button>
                     </Link>
-                    <Link v-if="canRegister" href="/register">
-                        <button class="button-secondary hover:button-secondary-hover active:button-secondary-active">
-                            Registreer
+                    <Link href="/registreren">
+                        <button class="button-senary hover:button-senary-hover">
+                            <p class="drop-shadow-[0_2px_1px_rgba(0,0,0,0.4)]">Start gratis</p>
                         </button>
                     </Link>
                 </template>

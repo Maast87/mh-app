@@ -10,7 +10,7 @@
     <div id="footer" class="flex flex-col mx-auto max-w-7xl p-3 bg-gray-100 border border-gray-400 rounded-xl gap-y-3 mt-10">
         <div class="flex flex-row gap-x-1">
             <div>
-                <Link href="/home" class="flex outline outline-red-500 p-1">
+                <Link href="/home" class="outline outline-red-500 inline-block">
                     <span class="sr-only">Mental Hygiene logo</span>
                     <img
                         v-if="!dark"
@@ -36,7 +36,7 @@
                     <ul>
                         <li>
                             <div class="flex flex-row items-center gap-x-1.5 group">
-                                <Link href="/veelgestelde-vragen" class="link-underline-green">Veelgestelde vragen</Link>
+                                <Link href="/ondersteuning/veelgestelde-vragen" class="link-underline-green">Veelgestelde vragen</Link>
                                 <div>
                                     <svg
                                         class="group-hover:translate-x-[3px] mh-transition"
@@ -163,7 +163,7 @@
                         </li>
                         <li>
                             <div class="flex flex-row items-center gap-x-1.5 group">
-                                <Link href="/roadmap" class="link-underline-green">Hier werken we aan</Link>
+                                <Link href="/hier-werken-we-aan" class="link-underline-green">Hier werken we aan</Link>
                                 <div>
                                     <svg
                                         class="group-hover:translate-x-[3px] mh-transition"

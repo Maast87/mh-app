@@ -1,113 +1,208 @@
 <script setup>
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+    import Layout from "@/Pages/Shared/Layout.vue";
+    import InputError from '@/Components/InputError.vue';
+    import InputLabel from '@/Components/InputLabel.vue';
+    import TextInput from '@/Components/TextInput.vue';
+    import { Head, Link, useForm } from '@inertiajs/vue3';
+    import {provide} from "vue";
+    import GradientElement from "@/Components/GradientElement.vue";
+    import GradientWhiteElement from "@/Components/GradientWhiteElement.vue";
 
-const form = useForm({
-    name: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
-});
+    const breadcrumbs = [
+        { label: "home", href: "/" },
+        { label: "registreren" }
+    ];
+    provide('breadcrumbs', breadcrumbs);
 
-const submit = () => {
-    form.post(route('register'), {
-        onFinish: () => form.reset('password', 'password_confirmation'),
+    const form = useForm({
+        name: '',
+        email: '',
+        password: '',
+        password_confirmation: '',
     });
-};
+
+    const submit = () => {
+        form.post(route('registreren'), {
+            onFinish: () => form.reset('password', 'password_confirmation'),
+        });
+    };
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Register" />
+    <Layout>
+        <Head title="Registreren" />
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="name" value="Name" />
-
-                <TextInput
-                    id="name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.name"
-                    required
-                    autofocus
-                    autocomplete="name"
-                />
-
-                <InputError class="mt-2" :message="form.errors.name" />
+        <div class="flex flex-col w-full items-center pb-10">
+            <div class="flex flex-col justify-center items-center w-full px-10 pt-20 pb-10 gap-y-2">
+                <h1 class="text-header_xl text-blue-700 text-center"><span class="gradient-text">Registreren</span> bij<br>Mental Hygiene</h1>
+                <p class="text-base text-blue-700 text-center">Maak gratis een account aan.</p>
             </div>
 
-            <div class="mt-4">
-                <InputLabel for="email" value="Email" />
+            <GradientElement class="flex flex-col gap-y-3">
+                <GradientWhiteElement>
+                    <div
+                        v-if="status"
+                        class="mb-4 text-sm font-medium text-green-600"
+                    >
+                        {{ status }}
+                    </div>
 
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autocomplete="username"
-                />
+                    <form @submit.prevent="submit">
+                        <div>
+                            <InputLabel for="name" value="Gebruikersnaam" />
 
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
+                            <TextInput
+                                id="name"
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="form.name"
+                                required
+                                autofocus
+                                autocomplete="name"
+                                placeholder="Brian1991"
+                            />
+                            <InputError class="mt-1" :message="form.errors.name" />
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                            <p class="text-sm mt-1">De gebruikersnaam die je kiest is zichbaar voor andere leden</p>
+                        </div>
 
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="new-password"
-                />
+                        <div class="mt-4">
+                            <InputLabel for="email" value="E-mailadres" />
 
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
+                            <TextInput
+                                id="email"
+                                type="email"
+                                class="mt-1 block w-full"
+                                v-model="form.email"
+                                required
+                                autocomplete="username"
+                                placeholder="brian@voorbeeld.nl"
+                            />
+                            <InputError class="mt-1" :message="form.errors.email" />
 
-            <div class="mt-4">
-                <InputLabel
-                    for="password_confirmation"
-                    value="Confirm Password"
-                />
+                            <p class="text-sm mt-1">Je e-mailadres is niet zichbaar voor andere leden</p>
 
-                <TextInput
-                    id="password_confirmation"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password_confirmation"
-                    required
-                    autocomplete="new-password"
-                />
+                        </div>
 
-                <InputError
-                    class="mt-2"
-                    :message="form.errors.password_confirmation"
-                />
-            </div>
+                        <div class="mt-4">
+                            <InputLabel for="password" value="Wachtwoord" />
 
-            <div class="mt-4 flex items-center justify-end">
-                <Link
-                    :href="route('login')"
-                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-                >
-                    Already registered?
-                </Link>
+                            <TextInput
+                                id="password"
+                                type="password"
+                                class="mt-1 block w-full"
+                                v-model="form.password"
+                                required
+                                autocomplete="new-password"
+                            />
 
-                <PrimaryButton
-                    class="ms-4"
-                    :class="{ 'opacity-25': form.processing }"
-                    :disabled="form.processing"
-                >
-                    Register
-                </PrimaryButton>
-            </div>
-        </form>
-    </GuestLayout>
+                            <InputError class="mt-1" :message="form.errors.password" />
+                        </div>
+
+                        <div class="mt-4">
+                            <InputLabel for="password_confirmation" value="Bevestig wachtwoord"
+                            />
+
+                            <TextInput
+                                id="password_confirmation"
+                                type="password"
+                                class="mt-1 block w-full"
+                                v-model="form.password_confirmation"
+                                required
+                                autocomplete="new-password"
+                            />
+
+                            <InputError
+                                class="mt-1" :message="form.errors.password_confirmation"
+                            />
+                        </div>
+
+                        <div class="mt-6 flex flex-col items-center justify-center gap-y-2">
+                            <button
+                                class="button-primary w-full"
+                                :class="{ 'opacity-25': form.processing }"
+                                :disabled="form.processing"
+                            >
+                                Registreren
+                            </button>
+                            <Link
+                                :href="route('login')"
+                                class="rounded-md text-base font-medium link-underline-green focus:ring-2 focus:ring-blue-700 focus:ring-offset-2"
+                            >
+                                Ik heb al een account en wil inloggen
+                            </Link>
+                        </div>
+                    </form>
+                </GradientWhiteElement>
+
+                <GradientWhiteElement>
+                    <div class="flex text-base text-blue-700 items-center justify-center">
+                        Wanneer je je registreert, ga je akkoord met onze&nbsp
+                        <div class="flex group items-center">
+                            <div>
+                                <Link
+                                    href="/voorwaarden"
+                                    target="_blank"
+                                    class="text-blue-700 font-medium link-underline-green"
+                                >
+                                    voorwaarden
+                                </Link>
+                            </div>
+                            <div>
+                                <svg
+                                    class="group-hover:translate-x-[2px] mh-transition ml-1"
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke="var(--mh-blue-700)"
+                                        stroke-width="1.5"
+                                    />
+                                </svg>
+                            </div>
+                        </div>
+                        , en ons&nbsp
+                        <div class="flex group items-center">
+                            <div>
+                                <Link
+                                    href="/privacybeleid"
+                                    target="_blank"
+                                    class="text-blue-700 font-medium link-underline-green"
+                                >
+                                    privacybeleid
+                                </Link>
+                            </div>
+                            <div>
+                                <svg
+                                    class="group-hover:translate-x-[2px] mh-transition ml-1"
+                                    width="16"
+                                    height="16"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    aria-hidden="true"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke="var(--mh-blue-700)"
+                                        stroke-width="1.5"
+                                    />
+                                </svg>
+                            </div>
+                        </div>
+                        .
+                    </div>
+                </GradientWhiteElement>
+            </GradientElement>
+        </div>
+    </Layout>
 </template>

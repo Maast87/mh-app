@@ -1,5 +1,5 @@
 <script setup>
-    import Layout from "../Pages/Shared/Layout.vue";
+    import Layout from "../Shared/Layout.vue";
     import {Head, Link} from "@inertiajs/vue3";
     import {provide} from "vue";
     import ProfileLayout from "@/Pages/Shared/ProfileLayout.vue";

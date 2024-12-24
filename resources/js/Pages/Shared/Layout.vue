@@ -10,12 +10,12 @@
         <Nav />
     </section>
     <section id="main" class="bg-gray-200 h-full pt-10">
-        <div>
-            <div id="breadcrumb" class="flex mx-auto max-w-7xl p-2 bg-gray-100 border border-gray-400 rounded-xl gap-x-4 mb-10">
+        <div class="flex flex-col content-container">
+            <div id="breadcrumb" class="flex p-2 bg-gray-100 border border-gray-400 rounded-xl gap-x-4 mb-10">
                 <Breadcrumb />
             </div>
 
-            <div id="content" class="flex mx-auto max-w-7xl bg-gray-100 rounded-xl">
+            <div id="content" class="flex bg-gray-100 rounded-xl">
                 <slot />
             </div>
 

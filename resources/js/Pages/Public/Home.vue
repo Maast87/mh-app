@@ -1,13 +1,11 @@
 <script setup>
-    import Layout from "../Pages/Shared/Layout.vue";
+    import Layout from "../Shared/Layout.vue";
     import { Head, Link } from "@inertiajs/vue3";
     import GradientHero from "@/Components/GradientHero.vue";
     import {provide} from "vue";
 
     const breadcrumbs = [
-        { label: "home", href: "/" },
-        { label: "dashboard", href: "/dashboard" },
-        { label: "homepage" }
+        { label: "  home" }
     ];
     provide('breadcrumbs', breadcrumbs);
 
@@ -36,7 +34,7 @@
                     <div id="card">
                         <div class="mb-[-10px] z-0">
                             <img
-                                src="../../images/mental-hygiene-vormgeving-brian-me-learning.png"
+                                src="../../../images/mental-hygiene-vormgeving-brian-me-learning.png"
                                 alt="Mental Hygiene afbeelding me-learning"
                                 class="rounded-tl-xl rounded-tr-xl"
                             >
@@ -75,7 +73,7 @@
                     <div id="card">
                         <div class="mb-[-10px] z-0">
                             <img
-                                src="../../images/mental-hygiene-vormgeving-brian-1-op-1-coaching.png"
+                                src="../../../images/mental-hygiene-vormgeving-brian-1-op-1-coaching.png"
                                 alt="Mental Hygiene afbeelding me-learning"
                                 class="rounded-tl-xl rounded-tr-xl"
                             >
@@ -114,7 +112,7 @@
                     <div id="card">
                         <div class="mb-[-10px] z-0">
                             <img
-                                src="../../images/mental-hygiene-vormgeving-brian-progressie.png"
+                                src="../../../images/mental-hygiene-vormgeving-brian-progressie.png"
                                 alt="Mental Hygiene afbeelding me-learning"
                                 class="rounded-tl-xl rounded-tr-xl"
                             >
@@ -153,7 +151,7 @@
                     <div id="card">
                         <div class="mb-[-10px] z-0">
                             <img
-                                src="../../images/mental-hygiene-vormgeving-brian-visie.png"
+                                src="../../../images/mental-hygiene-vormgeving-brian-visie.png"
                                 alt="Mental Hygiene afbeelding me-learning"
                                 class="rounded-tl-xl rounded-tr-xl"
                             >
@@ -163,7 +161,7 @@
                             <p class="text-gray-100 mb-4">
                                 Bekijk hoe een wereld met Mental Hygiene eruit ziet, en hoe je met ons bijdraagt aan die visie.
                             </p>
-                            <Link href="/visie">
+                            <Link href="/Users/home/Herd/mh-app/resources/js/Pages/Public/Visie">
                                 <button class="button-tertiary flex gap-x-1 justify-center group">
                                     <p class="text-button_text_s">Naar de visie</p>
                                     <div>

@@ -68,7 +68,7 @@
                                 :href="item.href"
                                 :method="item.method"
                                 class="group button-quinary"
-                                :class="{'button-dropdown-current' : $page.url === item.href}"
+                                :class="{'button-quinary-current' : $page.url === item.href}"
                                 @click="close"
                             >
                                 <div
