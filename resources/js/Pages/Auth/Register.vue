@@ -5,8 +5,8 @@
     import TextInput from '@/Components/TextInput.vue';
     import { Head, Link, useForm } from '@inertiajs/vue3';
     import {provide} from "vue";
-    import GradientElement from "@/Components/GradientElement.vue";
-    import GradientWhiteElement from "@/Components/GradientWhiteElement.vue";
+    import GradientElement from "@/Components/PageLayoutElements/GradientElement.vue";
+    import GradientWhiteElement from "@/Components/PageLayoutElements/GradientWhiteElement.vue";
 
     const breadcrumbs = [
         { label: "home", href: "/" },
@@ -34,8 +34,8 @@
 
         <div class="flex flex-col w-full items-center pb-10">
             <div class="flex flex-col justify-center items-center w-full px-10 pt-20 pb-10 gap-y-2">
-                <h1 class="text-header_xl text-blue-700 text-center"><span class="gradient-text">Registreren</span> bij<br>Mental Hygiene</h1>
-                <p class="text-base text-blue-700 text-center">Maak gratis een account aan.</p>
+                <h1 class="text-header_xl text-blue_700_gray_100 text-center"><span class="gradient-text">Registreren</span> bij<br>Mental Hygiene</h1>
+                <p class="text-base text-blue_700_gray_100 text-center">Maak gratis een account aan.</p>
             </div>
 
             <GradientElement class="flex flex-col gap-y-3">
@@ -63,7 +63,7 @@
                             />
                             <InputError class="mt-1" :message="form.errors.name" />
 
-                            <p class="text-sm mt-1">De gebruikersnaam die je kiest is zichbaar voor andere leden</p>
+                            <p class="text-sm mt-1.5 text-blue_700_gray_100">De gebruikersnaam die je kiest is zichbaar voor andere leden</p>
                         </div>
 
                         <div class="mt-4">
@@ -80,7 +80,7 @@
                             />
                             <InputError class="mt-1" :message="form.errors.email" />
 
-                            <p class="text-sm mt-1">Je e-mailadres is niet zichbaar voor andere leden</p>
+                            <p class="text-sm mt-1.5 text-blue_700_gray_100">Je e-mailadres is niet zichbaar voor andere leden</p>
 
                         </div>
 
@@ -136,14 +136,14 @@
                 </GradientWhiteElement>
 
                 <GradientWhiteElement>
-                    <div class="flex text-base text-blue-700 items-center justify-center">
+                    <div class="flex text-base text-blue_700_gray_100 items-center justify-center">
                         Wanneer je je registreert, ga je akkoord met onze&nbsp
                         <div class="flex group items-center">
                             <div>
                                 <Link
                                     href="/voorwaarden"
                                     target="_blank"
-                                    class="text-blue-700 font-medium link-underline-green"
+                                    class="text-blue_700_gray_100 font-medium link-underline-green"
                                 >
                                     voorwaarden
                                 </Link>
@@ -162,7 +162,7 @@
                                         d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
-                                        stroke="var(--mh-blue-700)"
+                                        stroke="var(--mh-blue-700-gray-100)"
                                         stroke-width="1.5"
                                     />
                                 </svg>
@@ -174,7 +174,7 @@
                                 <Link
                                     href="/privacybeleid"
                                     target="_blank"
-                                    class="text-blue-700 font-medium link-underline-green"
+                                    class="text-blue_700_gray_100 font-medium link-underline-green"
                                 >
                                     privacybeleid
                                 </Link>
@@ -193,7 +193,7 @@
                                         d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
-                                        stroke="var(--mh-blue-700)"
+                                        stroke="var(--mh-blue-700-gray-100)"
                                         stroke-width="1.5"
                                     />
                                 </svg>

@@ -29,6 +29,6 @@
         type="checkbox"
         :value="value"
         v-model="proxyChecked"
-        class="rounded border-blue-700 text-blue-700 focus:ring-blue-700"
+        class="rounded bg-gray_100_blue_900 border-blue_700_gray_100 text-blue-700 focus:ring-blue-700"
     />
 </template>

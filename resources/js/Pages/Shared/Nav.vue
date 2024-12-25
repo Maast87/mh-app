@@ -6,6 +6,7 @@
     import PopoverOndersteuning from "../../Components/Popovers/PopoverOndersteuning.vue";
     import PopoverProfiel from "../../Components/Popovers/PopoverProfiel.vue";
     import {useTheme} from "../../../composables/useTheme";
+    import DarkModeToggle from "@/Components/DarkModeToggle.vue";
 
     const {dark} = useTheme();
 
@@ -81,17 +82,19 @@
                             <p class="drop-shadow-[0_2px_1px_rgba(0,0,0,0.4)]">Word lid</p>
                         </button>
                     </Link>
+                    <DarkModeToggle />
                 </template>
 
                 <template v-else>
+                    <DarkModeToggle />
                     <Link href="/login">
                         <button class="button-secondary hover:button-secondary-hover active:button-secondary-active">
                             Log in
                         </button>
                     </Link>
                     <Link href="/registreren">
-                        <button class="button-senary hover:button-senary-hover">
-                            <p class="drop-shadow-[0_2px_1px_rgba(0,0,0,0.4)]">Start gratis</p>
+                        <button class="button-senary hover:button-senary-hover group">
+                            <p class="text-gray_100_blue_800 group-hover:button-senary-text group-hover:text-gray-100">Start gratis</p>
                         </button>
                     </Link>
                 </template>

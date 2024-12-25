@@ -1,7 +1,6 @@
 <script setup>
     import Layout from "../Shared/Layout.vue";
     import {Head, Link} from "@inertiajs/vue3";
-    import DarkModeToggle from "@/Components/DarkModeToggle.vue";
     import {provide} from "vue";
 
     const breadcrumbs = [
@@ -16,8 +15,6 @@
     <Layout>
         <Head tag="Ik loop vast" />
         <p>Pagina Ik loop vast</p>
-
-        <DarkModeToggle />
     </Layout>
 </template>
 

@@ -1,7 +1,7 @@
 <script setup>
     import Layout from "@/Pages/Shared/Layout.vue";
     import { Head, Link } from "@inertiajs/vue3";
-    import GradientHero from "@/Components/GradientHero.vue";
+    import GradientHero from "@/Components/PageLayoutElements/GradientHero.vue";
     import {provide, ref} from "vue";
 
     const breadcrumbs = [

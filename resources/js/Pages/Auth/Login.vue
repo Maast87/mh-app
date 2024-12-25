@@ -6,6 +6,8 @@
     import TextInput from '@/Components/TextInput.vue';
     import { Head, Link, useForm } from '@inertiajs/vue3';
     import {provide} from "vue";
+    import GradientElement from "@/Components/PageLayoutElements/GradientElement.vue";
+    import GradientWhiteElement from "@/Components/PageLayoutElements/GradientWhiteElement.vue";
 
     const breadcrumbs = [
         { label: "home", href: "/" },
@@ -41,79 +43,78 @@
 
         <div class="flex flex-col w-full items-center pb-10">
             <div class="flex flex-col justify-center items-center w-full px-10 pt-20 pb-10 gap-y-2">
-                <h1 class="text-header_xl text-blue-700 text-center"><span class="gradient-text">Log in</span> bij Mental Hygiene</h1>
-                <p class="text-base text-blue-700">Alles over mentale ontwikkeling op één plek</p>
-                <p class="text-base text-blue-700">Nog geen account? Registreer je <Link href="/registreren" class="link-underline-green font-semibold">hier</Link>.</p>
+                <h1 class="text-header_xl text-blue_700_gray_100 text-center"><span class="gradient-text">Log in</span> bij Mental Hygiene</h1>
+                <p class="text-base text-blue_700_gray_100">Alles over mentale ontwikkeling op één plek</p>
+                <p class="text-base text-blue_700_gray_100">Nog geen account? Registreer je <Link href="/registreren" class="link-underline-green font-semibold">hier</Link>.</p>
             </div>
 
-            <div class="gradient-background rounded-2xl p-3 lg:w-1/2">
-                <div class="flex flex-col bg-gray-100 rounded-xl w-full gap-y-3 p-3 shadow-mh_box_shadow">
-
-                    <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
-                        {{ status }}
-                    </div>
-
-                    <form @submit.prevent="submit">
-                        <div>
-                            <InputLabel for="email" value="E-mailadres" />
-
-                            <TextInput
-                                id="email"
-                                type="email"
-                                class="mt-1 block w-full"
-                                v-model="form.email"
-                                required
-                                autofocus
-                                autocomplete="username"
-                            />
-
-                            <InputError class="mt-2" :message="form.errors.email" />
+            <GradientElement class="flex flex-col gap-y-3 lg:w-1/2">
+                <GradientWhiteElement class="flex flex-col gap-y-3">
+                        <div v-if="status" class="mb-4 text-sm font-medium text-green-600">
+                            {{ status }}
                         </div>
 
-                        <div class="mt-4">
-                            <InputLabel for="password" value="Wachtwoord" />
+                        <form @submit.prevent="submit">
+                            <div>
+                                <InputLabel for="email" value="E-mailadres" />
 
-                            <TextInput
-                                id="password"
-                                type="password"
-                                class="mt-1 block w-full"
-                                v-model="form.password"
-                                required
-                                autocomplete="current-password"
-                            />
+                                <TextInput
+                                    id="email"
+                                    type="email"
+                                    class="mt-1 block w-full"
+                                    v-model="form.email"
+                                    required
+                                    autofocus
+                                    autocomplete="username"
+                                />
 
-                            <InputError class="mt-2" :message="form.errors.password" />
-                        </div>
+                                <InputError class="mt-2" :message="form.errors.email" />
+                            </div>
 
-                        <div class="mt-4">
-                            <label class="flex items-center">
-                                <Checkbox name="remember" v-model:checked="form.remember" />
-                                <span class="ms-2 text-base text-blue-700"
-                                    >Onthoud mij</span>
-                            </label>
-                        </div>
+                            <div class="mt-4">
+                                <InputLabel for="password" value="Wachtwoord" />
 
-                        <div class="mt-6 flex flex-col items-center justify-center gap-y-2">
-                            <button
-                                class="button-primary w-full"
-                                :class="{ 'opacity-25': form.processing }"
-                                :disabled="form.processing"
-                            >
-                                Log in
-                            </button>
-                            <Link
-                                v-if="canResetPassword"
-                                :href="route('password.request')"
-                                class="rounded-md text-base font-medium link-underline-green focus:ring-2 focus:ring-blue-700 focus:ring-offset-2"
-                            >
-                                Wachtwoord vergeten?
-                            </Link>
+                                <TextInput
+                                    id="password"
+                                    type="password"
+                                    class="mt-1 block w-full"
+                                    v-model="form.password"
+                                    required
+                                    autocomplete="current-password"
+                                />
+
+                                <InputError class="mt-2" :message="form.errors.password" />
+                            </div>
+
+                            <div class="mt-4">
+                                <label class="flex items-center">
+                                    <Checkbox name="remember" v-model:checked="form.remember" />
+                                    <span class="ms-2 text-base text-blue_700_gray_100"
+                                        >Onthoud mij</span>
+                                </label>
+                            </div>
+
+                            <div class="mt-6 flex flex-col items-center justify-center gap-y-2">
+                                <button
+                                    class="button-primary w-full"
+                                    :class="{ 'opacity-25': form.processing }"
+                                    :disabled="form.processing"
+                                >
+                                    Log in
+                                </button>
+                                <Link
+                                    v-if="canResetPassword"
+                                    :href="route('password.request')"
+                                    class="rounded-md text-base font-medium link-underline-green focus:ring-2 focus:ring-blue-700 focus:ring-offset-2"
+                                >
+                                    Wachtwoord vergeten?
+                                </Link>
 
 
-                        </div>
-                    </form>
-                </div>
-            </div>
+                            </div>
+                        </form>
+                </GradientWhiteElement>
+            </GradientElement>
         </div>
     </Layout>
 </template>

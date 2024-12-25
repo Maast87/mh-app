@@ -7,7 +7,7 @@
 </script>
 
 <template>
-    <div id="footer" class="flex flex-col mx-auto max-w-7xl p-3 bg-gray-100 border border-gray-400 rounded-xl gap-y-3 mt-10">
+    <div id="footer" class="flex flex-col mx-auto max-w-7xl p-3 bg-gray_100_blue_900 border border-gray-400 rounded-xl gap-y-3 mt-10">
         <div class="flex flex-row gap-x-1">
             <div>
                 <Link href="/home" class="outline outline-red-500 inline-block">
@@ -30,7 +30,7 @@
             </div>
             <div class="flex flex-row items-start gap-x-20">
                 <div>
-                    <p class="font-semibold text-blue-700">
+                    <p class="font-semibold text-blue_700_gray_100">
                         Handige info
                     </p>
                     <ul>
@@ -51,7 +51,7 @@
                                             d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
                                             stroke-linecap="round"
                                             stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700)"
+                                            stroke="var(--mh-blue-700-gray-100)"
                                             stroke-width="1.5"
                                         />
                                     </svg>
@@ -75,7 +75,7 @@
                                             d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
                                             stroke-linecap="round"
                                             stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700)"
+                                            stroke="var(--mh-blue-700-gray-100)"
                                             stroke-width="1.5"
                                         />
                                     </svg>
@@ -99,7 +99,7 @@
                                             d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
                                             stroke-linecap="round"
                                             stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700)"
+                                            stroke="var(--mh-blue-700-gray-100)"
                                             stroke-width="1.5"
                                         />
                                     </svg>
@@ -123,7 +123,7 @@
                                             d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
                                             stroke-linecap="round"
                                             stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700)"
+                                            stroke="var(--mh-blue-700-gray-100)"
                                             stroke-width="1.5"
                                         />
                                     </svg>
@@ -133,7 +133,7 @@
                     </ul>
                 </div>
                 <div>
-                    <p class="font-semibold text-blue-700">
+                    <p class="font-semibold text-blue_700_gray_100">
                         Meer over ons
                     </p>
                     <ul>
@@ -154,7 +154,7 @@
                                             d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
                                             stroke-linecap="round"
                                             stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700)"
+                                            stroke="var(--mh-blue-700-gray-100)"
                                             stroke-width="1.5"
                                         />
                                     </svg>
@@ -178,7 +178,7 @@
                                             d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
                                             stroke-linecap="round"
                                             stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700)"
+                                            stroke="var(--mh-blue-700-gray-100)"
                                             stroke-width="1.5"
                                         />
                                     </svg>
@@ -202,7 +202,7 @@
                                             d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
                                             stroke-linecap="round"
                                             stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700)"
+                                            stroke="var(--mh-blue-700-gray-100)"
                                             stroke-width="1.5"
                                         />
                                     </svg>
@@ -212,7 +212,7 @@
                     </ul>
                 </div>
                 <div>
-                    <p class="font-semibold text-blue-700">
+                    <p class="font-semibold text-blue_700_gray_100">
                         Voor de echte fans
                     </p>
                     <ul>
@@ -233,7 +233,7 @@
                                             d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
                                             stroke-linecap="round"
                                             stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700)"
+                                            stroke="var(--mh-blue-700-gray-100)"
                                             stroke-width="1.5"
                                         />
                                     </svg>
@@ -257,7 +257,7 @@
                                             d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
                                             stroke-linecap="round"
                                             stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700)"
+                                            stroke="var(--mh-blue-700-gray-100)"
                                             stroke-width="1.5"
                                         />
                                     </svg>
@@ -281,7 +281,7 @@
                                             d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
                                             stroke-linecap="round"
                                             stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700)"
+                                            stroke="var(--mh-blue-700-gray-100)"
                                             stroke-width="1.5"
                                         />
                                     </svg>
@@ -294,7 +294,7 @@
         </div>
         <div class="border-t border-blue-700 pt-3 w-full">
             <div class="group inline-flex flex flex-row items-center gap-x-1">
-                <p class="text-blue-700">
+                <p class="text-blue_700_gray_100">
                     &copy; 2024 - Mental Hygiene. Alle content op deze website is onder licentie van <a target="_blank" href="https://crealize.nl" class="link-underline-green">Crealize Coaching</a>
                 </p>
                 <div>
@@ -311,7 +311,7 @@
                             d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
                             stroke-linecap="round"
                             stroke-linejoin="round"
-                            stroke="var(--mh-blue-700)"
+                            stroke="var(--mh-blue-700-gray-100)"
                             stroke-width="1.5"
                         />
                     </svg>

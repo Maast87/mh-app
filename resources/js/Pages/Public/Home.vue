@@ -1,7 +1,8 @@
 <script setup>
     import Layout from "../Shared/Layout.vue";
     import { Head, Link } from "@inertiajs/vue3";
-    import GradientHero from "@/Components/GradientHero.vue";
+    import GradientHero from "../../Components/PageLayoutElements/GradientHero.vue";
+    import DarkblueElement from "../../Components/PageLayoutElements/DarkblueElement.vue";
     import {provide} from "vue";
 
     const breadcrumbs = [
@@ -25,7 +26,7 @@
                 </template>
             </GradientHero>
 
-            <div class="flex flex-col bg-blue-700 pt-16 pb-2 px-8 gap-y-16 rounded-bl-xl rounded-br-xl">
+            <DarkblueElement>
                 <p class="text-header_l text-gray-100 font-bold text-center">
 <!--                    Hi <span class="gradient-text">{{ $page.props.auth.user.name }},</span><br>wat wil je doen?-->
                     Hi <span class="gradient-text">username,</span><br>wat wil je doen?
@@ -39,7 +40,7 @@
                                 class="rounded-tl-xl rounded-tr-xl"
                             >
                         </div>
-                        <div class="border border-gray-100 bg-blue-700 p-3 rounded-xl z-1 relative">
+                        <div class="border border-gray-100 bg-blue_700_blue_900 p-3 rounded-xl z-1 relative">
                             <h2 class="text-gray-100 font-bold text-header_s">Me-learning</h2>
                             <p class="text-gray-100 mb-4">
                                 De laagdrempelige en praktische training over mentale uitdagingen. Te volgen op je eigen tempo, en altijd relevant voor jouw persoonlijk situatie.
@@ -78,7 +79,7 @@
                                 class="rounded-tl-xl rounded-tr-xl"
                             >
                         </div>
-                        <div class="border border-gray-100 bg-blue-700 p-3 rounded-xl z-1 relative">
+                        <div class="border border-gray-100 bg-blue_700_blue_900 p-3 rounded-xl z-1 relative">
                             <h2 class="text-gray-100 font-bold text-header_s">Ondersteuning</h2>
                             <p class="text-gray-100 mb-4">
                                 Van 1-op-1 coaching tot supportgroepen en meer; onze vormen van ondersteuning vind je hier.
@@ -117,7 +118,7 @@
                                 class="rounded-tl-xl rounded-tr-xl"
                             >
                         </div>
-                        <div class="border border-gray-100 bg-blue-700 p-3 rounded-xl z-1 relative">
+                        <div class="border border-gray-100 bg-blue_700_blue_900 p-3 rounded-xl z-1 relative">
                             <h2 class="text-gray-100 font-bold text-header_s">Resultaten</h2>
                             <p class="text-gray-100 mb-4">
                                 Al jouw doelen, sterke kanten en uitdagingen en ingevulde oefeningen vind je hier.
@@ -156,12 +157,12 @@
                                 class="rounded-tl-xl rounded-tr-xl"
                             >
                         </div>
-                        <div class="border border-gray-100 bg-blue-700 p-3 rounded-xl z-1 relative">
+                        <div class="border border-gray-100 bg-blue_700_blue_900 p-3 rounded-xl z-1 relative">
                             <h2 class="text-gray-100 font-bold text-header_s">Visie van Mental Hygiene</h2>
                             <p class="text-gray-100 mb-4">
                                 Bekijk hoe een wereld met Mental Hygiene eruit ziet, en hoe je met ons bijdraagt aan die visie.
                             </p>
-                            <Link href="/Users/home/Herd/mh-app/resources/js/Pages/Public/Visie">
+                            <Link href="/visie">
                                 <button class="button-tertiary flex gap-x-1 justify-center group">
                                     <p class="text-button_text_s">Naar de visie</p>
                                     <div>
@@ -188,7 +189,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </DarkblueElement>
         </div>
 
     </Layout>

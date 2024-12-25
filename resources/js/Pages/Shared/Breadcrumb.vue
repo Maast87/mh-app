@@ -35,10 +35,10 @@
                     />
                 </svg>
             </div>
-            <p class="text-blue-800">Vorige pagina</p>
+            <p class="text-blue-700">Vorige pagina</p>
         </button>
     </div>
-    <div class="flex items-center pl-3 border-0 border-l border-blue-700">
+    <div class="flex items-center pl-3 border-0 border-l border-blue_700_gray_100">
         <p>
             <template v-for="(item, index) in breadcrumbs" :key="index">
                 <Link
@@ -48,12 +48,12 @@
                 >
                     {{ item.label }}
                 </Link>
-                <span v-else class="font-semibold text-blue-700">
+                <span v-else class="font-semibold text-blue_700_gray_100">
                     {{ item.label }}
                 </span>
                 <span
                     v-if="index < breadcrumbs.length - 1"
-                    class="text-blue-700 mx-1"
+                    class="text-blue_700_gray_100 mx-1"
                 >
                     -
                 </span>

@@ -19,7 +19,7 @@
 
 <template>
     <input
-        class="rounded-lg border-blue-700 focus:ring-blue-700 input-placeholder"
+        class="rounded-lg bg-gray_100_blue_900 border-blue_700_gray_100 focus:ring-blue_700_gray_100 text-blue_700_gray_100 input-placeholder"
         v-model="model"
         ref="input"
     />

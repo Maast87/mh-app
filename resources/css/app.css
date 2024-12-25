@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-:root[data-theme="light"] {
+:root {
     --mh-gray-100: #FFFFFF; /* white */
     --mh-gray-200: #FAFBFD; /* general backdrop */
     --mh-gray-300: #ECEDF2; /* secondary button */
@@ -24,84 +24,29 @@
     --mh-red-200: #D3455B;
 }
 
-:root[data-theme="dark"] {
-    --mh-gray-100: #030814; /* white */
-    --mh-gray-200: #0B1021; /* general backdrop */
-    --mh-gray-300: #ECEDF2; /* secondary button */
-    --mh-gray-400: #D8DADD; /* secondary button hover */
-    --mh-gray-800: #363636; /* primary button hover */
-
-    --mh-green-100: #2EA186;
-
-    --mh-aqua-100: #00A3A4;
-    --mh-aqua-200: #0099C6;
-
-    --mh-blue-100: #0F92DB;
-    --mh-blue-600: #2C3A66;
-    --mh-blue-700: #FFFFFF;
-    --mh-blue-800: #0B1021;
-    --mh-blue-900: #030814;
-
-    --mh-red-100: #EE6076;
-    --mh-red-200: #D3455B;
+:root[data-theme="light"] {
+    --mh-gray-100-blue-900: var(--mh-gray-100);
+    --mh-gray-100-blue-800: var(--mh-gray-100);
+    --mh-gray-200-blue-800: var(--mh-gray-200);
+    --mh-gray-300-blue-900: var(--mh-gray-300);
+    --mh-gray-800-gray-300: var(--mh-gray-800);
+    --mh-blue-700-gray-100: var(--mh-blue-700);
+    --mh-blue-700-gray-300: var(--mh-blue-700);
+    --mh-blue-700-blue-800: var(--mh-blue-700);
+    --mh-blue-700-blue-900: var(--mh-blue-700);
 }
 
-/*:root[data-theme="light"] {*/
-
-/*    --mh-wit-wit: #FFF;*/
-/*    --mh-offwhite: #F5F5F7;*/
-/*    --mh-wit-donkerblauw: #FFF;*/
-/*    --mh-donkerblauw-extra-donkerblauw: #0E122C;*/
-/*    --mh-groen: #2EA186;*/
-/*    --mh-lichtblauw: #0F92DB;*/
-/*    --mh-rood: #D3455B;*/
-/*    --mh-donkerblauw-wit: #0E122C;*/
-/*    --mh-donkerblauw-donkerblauw: #0E122C;*/
-/*    --mh-gradient-midcolor-1: #00A3A4;*/
-/*    --mh-gradient-midcolor-2: #0099C6;*/
-
-/*    --mh-me-learning-background: var(--mh-wit-wit);*/
-/*    --mh-breadcrumb-color: #ECEDF2;*/
-
-/*    --mh-button-form-submit: var(--mh-donkerblauw-wit);*/
-/*    --mh-button-form-submit-hover: #363636;*/
-/*    --mh-button-navigatie: #E7E9EB;*/
-/*    --mh-button-navigatie-hover: #D8DADD;*/
-/*    --mh-button-ik-loop-vast: var(--mh-rood);*/
-/*    --mh-button-ik-loop-vast-hover: #EE6076;*/
-
-/*    --switch-bg: var(--mh-donkerblauw-wit);*/
-/*    --switch-bg-hover: var(--mh-donkerblauw-wit);*/
-/*    --switch-icon-sun: transparent;*/
-/*    --switch-icon-moon: var(--mh-donkerblauw-wit);*/
-/*}*/
-
-/*:root[data-theme="dark"] {*/
-
-/*    --mh-body-achtergrond-donker: #0B1021;*/
-/*    --mh-header-achtergrond-donker: #030814;*/
-/*    --mh-me-learning-background: var(--mh-header-achtergrond-donker);*/
-/*    --mh-breadcrumb-color: var(--mh-header-achtergrond-donker);*/
-
-/*    --mh-wit-wit: #FFF;*/
-/*    --mh-offwhite: #F5F5F7;*/
-/*    --mh-donkerblauw-origineel: #0E122C;*/
-/*    --mh-wit-donkerblauw: var(--mh-header-achtergrond-donker);*/
-/*    --mh-donkerblauw-extra-donkerblauw: var(--mh-header-achtergrond-donker) ;*/
-/*    --mh-groen: #2EA186;*/
-/*    --mh-lichtblauw: #0F92DB;*/
-/*    --mh-rood: #D3455B;*/
-/*    --mh-donkerblauw-wit: var(--mh-wit-wit);*/
-/*    --mh-donkerblauw-donkerblauw: var(--mh-wit-donkerblauw);*/
-/*    --mh-gradient-midcolor-1: #00A3A4;*/
-/*    --mh-gradient-midcolor-2: #0099C6;*/
-
-/*    --mh-button-form-submit: var(--mh-donkerblauw-wit);*/
-/*    --mh-button-form-submit-hover: #D3D3D3;*/
-/*    --mh-button-navigatie: var(--mh-donkerblauw-wit);*/
-/*    --mh-button-navigatie-hover: #D3D3D3;*/
-/*    --mh-button-ik-loop-vast: var(--mh-rood);*/
-/*    --mh-button-ik-loop-vast-hover: #EE6076;*/
+:root[data-theme="dark"] {
+    --mh-gray-100-blue-900: var(--mh-blue-900);
+    --mh-gray-100-blue-800: var(--mh-blue-800);
+    --mh-gray-200-blue-800: var(--mh-blue-800);
+    --mh-gray-300-blue-900: var(--mh-blue-900);
+    --mh-gray-800-gray-300: var(--mh-gray-300);
+    --mh-blue-700-gray-100: var(--mh-gray-100);
+    --mh-blue-700-gray-300: var(--mh-gray-300);
+    --mh-blue-700-blue-800: var(--mh-blue-800);
+    --mh-blue-700-blue-900: var(--mh-blue-900);
+}
 
 @layer components {
 
@@ -155,15 +100,15 @@
     .button-primary {
         @apply
             relative
-            bg-blue-700
+            bg-blue_700_gray_100
             rounded-lg
             px-[25px]
             py-[10px]
             text-button_text_s
-            text-gray-100
+            text-gray_100_blue_800
             transition ease-in-out duration-300
 
-            hover:bg-gray-800
+            hover:bg-gray_800_gray_300
             hover:translate-y-[-2px]
             hover:shadow-mh_box_shadow
 
@@ -194,6 +139,7 @@
             relative
             opacity-80
     } /* donkerblauw muted */
+
     .button-secondary {
         @apply
             bg-none
@@ -201,7 +147,7 @@
             px-[25px]
             py-[10px]
             text-button_text_s
-            text-blue-700
+            text-blue_700_gray_100
             transition ease-in-out duration-300
 
             hover:bg-gray-300
@@ -224,6 +170,7 @@
             pointer-events-none
             cursor-not-allowed
     } /* transparant > grijs */
+
     .button-tertiary {
         @apply
             bg-gray-100
@@ -241,6 +188,7 @@
 
             active:translate-y-[0px];
     } /* wit > grijs */
+
     .button-quaternary {
         @apply
         bg-gray-300
@@ -259,9 +207,10 @@
         active:translate-y-[0px]
         active:shadow-mh_box_shadow_off;
     } /* grijs > donkergrijs */
+
     .button-quinary {
         @apply
-            text-blue-700
+            text-blue_700_gray_100
             -m-3
             flex
             items-center
@@ -269,7 +218,7 @@
             p-2
             transition ease-in-out duration-300
 
-            hover:bg-blue-700
+            hover:bg-blue_700_gray_100
             hover:translate-y-[-2px]
             hover:shadow-mh_box_shadow
 
@@ -278,22 +227,24 @@
     }
     .button-quinary-current {
         @apply
-            bg-blue-700
+            bg-blue_700_gray_100
+            text-gray_100_blue_800
             cursor-default
             pointer-events-none
             cursor-not-allowed
     }
+
     .button-senary {
         @apply
             relative
             bg-gradient-to-r
-            from-blue-700
-            to-blue-700
+            from-blue_700_gray_300
+            to-blue_700_gray_300
             rounded-lg
             px-[25px]
             py-[10px]
             text-button_text_s
-            text-gray-100
+            text-gray_100_blue_800
             transition ease-in-out duration-300;
     }
     .button-senary:hover {
@@ -309,9 +260,13 @@
             translate-y-[0px]
             shadow-mh_box_shadow_off;
     }
+    .button-senary-text {
+        @apply
+            drop-shadow-[0_2px_1px_rgba(0,0,0,0.4)]
+    }
 
     .link-underline-green {
-        color: var(--mh-blue-700);
+        color: var(--mh-blue-700-gray-100);
         text-decoration: none;
         background-image: linear-gradient(90deg, var(--mh-green-100), var(--mh-green-100));
         background-size: 0% 2px;
@@ -335,7 +290,7 @@
     }
 
     .input-placeholder::placeholder {
-        color: var(--mh-blue-700);
+        color: var(--mh-blue-700-gray-100);
         opacity: .5;
     }
 

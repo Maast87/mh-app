@@ -179,14 +179,14 @@
             </p>
         </div>
 
-        <div class="flex flex-col p-4 w-full bg-gray-100 rounded-xl">
+        <div class="flex flex-col p-4 w-full bg-gray_100_blue_900 rounded-xl">
             <div class="text-center">
                 Vraag {{ currentQuestionId }} van {{ questions.length }}
             </div>
 
-            <div id="progress-bar" class="bg-gray-300 rounded-xl w-full h-6 mt-3">
+            <div id="progress-bar" class="bg-gray-300 rounded-xl w-full h-6 mt-3 p-0.5">
                 <div
-                    class="bg-blue-700 rounded-full h-full"
+                    class="bg-blue_700_blue_900 rounded-full h-full"
                     :style="`width: ${progress}%`"
                 />
             </div>
@@ -234,24 +234,24 @@
             <p class="text-xl font-bold">Uitslag van de check</p>
         </div>
 
-        <div class="flex flex-col p-4 w-full bg-gray-100 rounded-xl">
-            <p class="text-center">Jouw puntentotaal is:<br><span class="text-header_xl text-green-100">{{ animatedScore }}</span></p>
+        <div class="flex flex-col p-4 w-full bg-gray_100_blue_900 rounded-xl">
+            <p class="text-center text-blue_700_gray_100">Jouw puntentotaal is:<br><span class="text-header_xl text-green-100">{{ animatedScore }}</span></p>
 
-            <p class="text-header_s">Toelichting</p>
+            <p class="text-header_s text-blue_700_gray_100">Toelichting</p>
             <!-- Result message blocks -->
-            <div v-if="result === 'low'" class="result-message">
+            <div v-if="result === 'low'" class="result-message text-blue_700_gray_100">
                 <div>
                     <slot name="message-low-threshold"></slot>
                 </div>
             </div>
 
-            <div v-else-if="result === 'mid'" class="result-message">
+            <div v-else-if="result === 'mid'" class="result-message text-blue_700_gray_100">
                 <div>
                     <slot name="message-mid-threshold" />
                 </div>
             </div>
 
-            <div v-else-if="result === 'high'" class="result-message">
+            <div v-else-if="result === 'high'" class="result-message text-blue_700_gray_100">
                 <div>
                     <slot name="message-high-threshold" />
                 </div>

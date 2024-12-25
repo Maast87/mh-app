@@ -19,6 +19,7 @@ export default {
             },
 
             colors: {
+                // static colors
                 gray: {
                     100: "var(--mh-gray-100)",
                     200: "var(--mh-gray-200)",
@@ -44,7 +45,17 @@ export default {
                 red: {
                     100: "var(--mh-red-100)",
                     200: "var(--mh-red-200)"
-                }
+                },
+                // dynamic colors based on theme
+                gray_100_blue_800: "var(--mh-gray-100-blue-800)",
+                gray_100_blue_900: "var(--mh-gray-100-blue-900)",
+                gray_200_blue_800: "var(--mh-gray-200-blue-800)",
+                gray_300_blue_900: "var(--mh-gray-300-blue-900)",
+                gray_800_gray_300: "var(--mh-gray-800-gray-300)",
+                blue_700_gray_100: "var(--mh-blue-700-gray-100)",
+                blue_700_gray_300: "var(--mh-blue-700-gray-300)",
+                blue_700_blue_800: "var(--mh-blue-700-blue-800)",
+                blue_700_blue_900: "var(--mh-blue-700-blue-900)",
             },
 
             boxShadow: {
