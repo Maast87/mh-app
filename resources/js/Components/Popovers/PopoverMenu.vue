@@ -20,18 +20,16 @@
             >
                 <span>{{ title }}</span>
                 <svg
+                    class="ml-2"
+                    width="20"
+                    height="20"
+                    fill="var(--mh-blue-700-gray-100)"
+                    data-name="Content"
                     xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="2"
-                    stroke="var(--mh-blue-700-gray-100)"
-                    class="size-4 ml-2"
+                    viewBox="0 0 128 128"
                 >
-                    <path
-                        d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                    />
+                    <line x1="29.82" y1="46.91" x2="64" y2="81.09" style="fill: var(--mh-blue-700-gray-100); stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
+                    <line x1="98.18" y1="46.91" x2="64" y2="81.09" style="fill: var(--mh-blue-700-gray-100); stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
                 </svg>
             </PopoverButton>
 

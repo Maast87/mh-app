@@ -35,7 +35,7 @@
         <div class="flex flex-col w-full items-center pb-10">
             <div class="flex flex-col justify-center items-center w-full px-10 pt-20 pb-10 gap-y-2">
                 <h1 class="text-header_xl text-blue_700_gray_100 text-center"><span class="gradient-text">Registreren</span> bij<br>Mental Hygiene</h1>
-                <p class="text-base text-blue_700_gray_100 text-center">Maak gratis een account aan.</p>
+                <p class="text-base text-blue_700_gray_100 text-center">Maak gratis een account aan. Wanneer je dat hebt, <br>kun je ervoor kiezen om een betaald lidmaatschap af te sluiten.</p>
             </div>
 
             <GradientElement class="flex flex-col gap-y-3">
@@ -123,7 +123,7 @@
                                 :class="{ 'opacity-25': form.processing }"
                                 :disabled="form.processing"
                             >
-                                Registreren
+                                Maak mijn gratis account aan
                             </button>
                             <Link
                                 :href="route('login')"

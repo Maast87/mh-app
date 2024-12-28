@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-3c1ef86f-9881-4145-a378-40bf54ad9831" data-name="Content" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <path d="M63.68,42.98c-8.61,0-15.64,7.02-15.64,15.64s7.02,15.64,15.64,15.64,15.64-7.02,15.64-15.64-7.02-15.64-15.64-15.64ZM63.68,74.25c-14.35,0-26.06,11.71-26.06,26.06h5.21c0-11.54,9.3-20.85,20.85-20.85s20.85,9.3,20.85,20.85h5.21c0-14.35-11.71-26.06-26.06-26.06ZM63.68,48.19c5.78,0,10.42,4.64,10.42,10.42s-4.64,10.42-10.42,10.42-10.42-4.64-10.42-10.42,4.64-10.42,10.42-10.42Z" style="stroke: #fff; stroke-miterlimit: 10; stroke-width: 1.25px;"/>
+  <circle cx="64" cy="64" r="43" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 4px;"/>
+  <line x1="64" y1="74.3" x2="69.82" y2="75" style="fill: none; stroke: #fff; stroke-miterlimit: 10; stroke-width: .75px;"/>
+</svg>

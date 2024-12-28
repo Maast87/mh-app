@@ -57,8 +57,12 @@
                 </button>
             </div>
 
-            <!-- Desktop Menu -->
-            <div id="nav-desktop-menu" class="hidden lg:flex flex-row gap-x-1">
+            <!-- Authenticated desktop Menu -->
+            <div
+                v-if="$page.props.auth.user"
+                id="nav-desktop-menu"
+                class="hidden lg:flex flex-row gap-x-1"
+            >
                 <Link href="/me-learning">
                     <button class="button-secondary hover:button-secondary-hover active:button-secondary-active">
                         Me-learning
@@ -71,6 +75,29 @@
                 </Link>
                 <PopoverOndersteuning/>
                 <PopoverResultaten/>
+            </div>
+
+            <!-- Guest desktop Menu -->
+            <div
+                v-if="!$page.props.auth.user"
+                id="guest-nav-desktop-menu"
+                class="hidden lg:flex flex-row gap-x-1"
+            >
+                <Link href="">
+                    <button class="button-secondary hover:button-secondary-hover active:button-secondary-active">
+                        Zo werkt het
+                    </button>
+                </Link>
+                <Link href="">
+                    <button class="button-secondary hover:button-secondary-hover active:button-secondary-active">
+                        Onze visie
+                    </button>
+                </Link>
+                <Link href="">
+                    <button class="button-secondary hover:button-secondary-hover active:button-secondary-active">
+                        Prijzen
+                    </button>
+                </Link>
             </div>
 
             <!-- Desktop Profile Menu -->

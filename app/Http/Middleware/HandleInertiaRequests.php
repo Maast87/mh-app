@@ -35,6 +35,7 @@ class HandleInertiaRequests extends Middleware
                 'user' => $request->user() ? [
                     'id' => $request->user()->id,
                     'name' => $request->user()->name,
+                    'email' => $request->user()->email,
                     'subscribed' => $request->user()->subscribed('prod_RRxWAeh2UK6qtl'),
                     'subscribed_to_monthly' => $request->user()->subscribedToPrice('price_1QZ3biDgwQ2kaUkEaEyAxWbH', 'prod_RRxWAeh2UK6qtl'),
                     'subscribed_to_yearly' => $request->user()->subscribedToPrice('price_1QZ3bEDgwQ2kaUkE5yC5gqO0', 'prod_RRxWAeh2UK6qtl'),

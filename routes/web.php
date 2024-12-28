@@ -15,21 +15,13 @@ Route::middleware(['guest'])->group(function () {
 
 // Public routes (split view)
 Route::get('/', function () { return Inertia::render('Public/Home'); })->name('home');
-Route::get('/ondersteuning', function () { return Inertia::render('Public/Ondersteuning'); });
-Route::get('/ondersteuning/supportgroepen', function () { return Inertia::render('Public/Supportgroepen'); });
-Route::get('/ondersteuning/coaching', function () { return Inertia::render('Public/Coaching'); });
-Route::get('/ik-loop-vast', function () { return Inertia::render('Public/IkLoopVast'); });
 
 // Public routes (static)
-Route::get('/visie', function () { return Inertia::render('Public/Visie'); });
 Route::get('/contact', function () { return Inertia::render('Public/Contact'); });
-Route::get('/de-oprichters', function () { return Inertia::render('Public/DeOprichters'); });
-Route::get('/hier-werken-we-aan', function () { return Inertia::render('Public/Roadmap'); });
-Route::get('/ondersteuning/veelgestelde-vragen', function () { return Inertia::render('Public/VeelgesteldeVragen'); });
 Route::get('/privacybeleid', function () { return Inertia::render('Public/Privacybeleid'); });
 Route::get('/voorwaarden', function () { return Inertia::render('Public/Voorwaarden'); });
 
-// Profiel routes
+// Logged in routes
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profiel', function () { return Inertia::render('Profiel/Profiel'); });
     Route::get('/profiel/instellingen', function () { return Inertia::render('Profiel/ProfielInstellingen'); });
@@ -40,6 +32,11 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profiel/resultaten/antwoorden', function () { return Inertia::render('Profiel/ProfielResultatenAntwoorden'); });
     Route::get('/profiel/resultaten/statistieken', function () { return Inertia::render('Profiel/ProfielResultatenStatistieken'); });
     Route::get('/profiel/resultaten/achievements', function () { return Inertia::render('Profiel/ProfielResultatenAchievements'); });
+    Route::get('/ondersteuning', function () { return Inertia::render('Public/Ondersteuning'); });
+    Route::get('/ondersteuning/supportgroepen', function () { return Inertia::render('Public/Supportgroepen'); });
+    Route::get('/ondersteuning/coaching', function () { return Inertia::render('Public/Coaching'); });
+    Route::get('/ik-loop-vast', function () { return Inertia::render('Public/IkLoopVast'); });
+    Route::get('/zelfcheck-ik-loop-vast', function () { return Inertia::render('Public/ZelfcheckIkLoopVast'); });
 });
 
 // Checkout routes

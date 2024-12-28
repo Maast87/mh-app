@@ -36,47 +36,26 @@
                     <ul>
                         <li>
                             <div class="flex flex-row items-center gap-x-1.5 group">
-                                <Link href="/ondersteuning/veelgestelde-vragen" class="link-underline-green">Veelgestelde vragen</Link>
+                                <a href="https://mentalhygiene.me/veelgestelde-vragen/" target="_blank" class="link-underline-green">Veelgestelde vragen</a>
                                 <div>
                                     <svg
                                         class="group-hover:translate-x-[3px] mh-transition"
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        aria-hidden="true"
+                                        width="20"
+                                        height="20"
+                                        fill="var(--mh-blue-700-gray-100)"
+                                        data-name="Content"
                                         xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 128 128"
                                     >
                                         <path
-                                            d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700-gray-100)"
-                                            stroke-width="1.5"
+                                            d="M96.38,65.9c2.1,0,3.81,1.71,3.81,3.81v22.86c0,6.3-5.13,11.43-11.43,11.43h-53.33c-6.3,0-11.43-5.13-11.43-11.43v-53.33c0-6.3,5.13-11.43,11.43-11.43h22.86c2.1,0,3.81,1.71,3.81,3.81s-1.71,3.81-3.81,3.81h-22.86c-2.1,0-3.81,1.71-3.81,3.81v53.33c0,2.1,1.71,3.81,3.81,3.81h53.33c2.1,0,3.81-1.71,3.81-3.81v-22.86c0-2.1,1.71-3.81,3.81-3.81Z"
+                                            stroke="var(--mh-gray-100-blue-900)"
+                                            stroke-width="1px"
                                         />
-                                    </svg>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="flex flex-row items-center gap-x-1.5 group">
-                                <Link href="/life-events" class="link-underline-green">Life-events</Link>
-                                <div>
-                                    <svg
-                                        class="group-hover:translate-x-[3px] mh-transition"
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                    >
                                         <path
-                                            d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700-gray-100)"
-                                            stroke-width="1.5"
+                                            d="M100.19,24c2.1,0,3.81,1.71,3.81,3.81v22.86c0,2.1-1.71,3.81-3.81,3.81s-3.81-1.71-3.81-3.81v-13.66l-31.59,31.59c-.74.74-1.72,1.12-2.69,1.12s-1.95-.37-2.69-1.12c-1.49-1.49-1.49-3.9,0-5.39l31.59-31.59h-13.66c-2.1,0-3.81-1.71-3.81-3.81s1.71-3.81,3.81-3.81h22.86Z"
+                                            stroke="var(--mh-gray-100-blue-900)"
+                                            stroke-width="1px"
                                         />
                                     </svg>
                                 </div>
@@ -88,20 +67,16 @@
                                 <div>
                                     <svg
                                         class="group-hover:translate-x-[3px] mh-transition"
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        aria-hidden="true"
+                                        width="20"
+                                        height="20"
+                                        id="uuid-45433d1f-8e1a-42d5-9292-58b473add589"
+                                        data-name="Content"
                                         xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 128 128"
                                     >
-                                        <path
-                                            d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700-gray-100)"
-                                            stroke-width="1.5"
-                                        />
+                                        <line x1="18" y1="64" x2="110" y2="64" style="fill: none; stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
+                                        <line x1="75.82" y1="98.18" x2="110" y2="64" style="fill: none; stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
+                                        <line x1="75.82" y1="29.82" x2="110" y2="64" style="fill: none; stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
                                     </svg>
                                 </div>
                             </div>
@@ -112,20 +87,16 @@
                                 <div>
                                     <svg
                                         class="group-hover:translate-x-[3px] mh-transition"
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        aria-hidden="true"
+                                        width="20"
+                                        height="20"
+                                        id="uuid-45433d1f-8e1a-42d5-9292-58b473add589"
+                                        data-name="Content"
                                         xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 128 128"
                                     >
-                                        <path
-                                            d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700-gray-100)"
-                                            stroke-width="1.5"
-                                        />
+                                        <line x1="18" y1="64" x2="110" y2="64" style="fill: none; stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
+                                        <line x1="75.82" y1="98.18" x2="110" y2="64" style="fill: none; stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
+                                        <line x1="75.82" y1="29.82" x2="110" y2="64" style="fill: none; stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
                                     </svg>
                                 </div>
                             </div>
@@ -139,23 +110,26 @@
                     <ul>
                         <li>
                             <div class="flex flex-row items-center gap-x-1.5 group">
-                                <Link href="/visie" class="link-underline-green">Onze visie</Link>
+                                <a href="https://mentalhygiene.me/over-mental-hygiene-onze-visie/" target="_blank" class="link-underline-green">Onze visie</a>
                                 <div>
                                     <svg
                                         class="group-hover:translate-x-[3px] mh-transition"
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        aria-hidden="true"
+                                        width="20"
+                                        height="20"
+                                        fill="var(--mh-blue-700-gray-100)"
+                                        data-name="Content"
                                         xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 128 128"
                                     >
                                         <path
-                                            d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700-gray-100)"
-                                            stroke-width="1.5"
+                                            d="M96.38,65.9c2.1,0,3.81,1.71,3.81,3.81v22.86c0,6.3-5.13,11.43-11.43,11.43h-53.33c-6.3,0-11.43-5.13-11.43-11.43v-53.33c0-6.3,5.13-11.43,11.43-11.43h22.86c2.1,0,3.81,1.71,3.81,3.81s-1.71,3.81-3.81,3.81h-22.86c-2.1,0-3.81,1.71-3.81,3.81v53.33c0,2.1,1.71,3.81,3.81,3.81h53.33c2.1,0,3.81-1.71,3.81-3.81v-22.86c0-2.1,1.71-3.81,3.81-3.81Z"
+                                            stroke="var(--mh-gray-100-blue-900)"
+                                            stroke-width="1px"
+                                        />
+                                        <path
+                                            d="M100.19,24c2.1,0,3.81,1.71,3.81,3.81v22.86c0,2.1-1.71,3.81-3.81,3.81s-3.81-1.71-3.81-3.81v-13.66l-31.59,31.59c-.74.74-1.72,1.12-2.69,1.12s-1.95-.37-2.69-1.12c-1.49-1.49-1.49-3.9,0-5.39l31.59-31.59h-13.66c-2.1,0-3.81-1.71-3.81-3.81s1.71-3.81,3.81-3.81h22.86Z"
+                                            stroke="var(--mh-gray-100-blue-900)"
+                                            stroke-width="1px"
                                         />
                                     </svg>
                                 </div>
@@ -163,23 +137,26 @@
                         </li>
                         <li>
                             <div class="flex flex-row items-center gap-x-1.5 group">
-                                <Link href="/hier-werken-we-aan" class="link-underline-green">Hier werken we aan</Link>
+                                <a href="https://mentalhygiene.me/over-mental-hygiene-onze-visie/#roadmap" target="_blank" class="link-underline-green">Hier werken we aan</a>
                                 <div>
                                     <svg
                                         class="group-hover:translate-x-[3px] mh-transition"
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        aria-hidden="true"
+                                        width="20"
+                                        height="20"
+                                        fill="var(--mh-blue-700-gray-100)"
+                                        data-name="Content"
                                         xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 128 128"
                                     >
                                         <path
-                                            d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700-gray-100)"
-                                            stroke-width="1.5"
+                                            d="M96.38,65.9c2.1,0,3.81,1.71,3.81,3.81v22.86c0,6.3-5.13,11.43-11.43,11.43h-53.33c-6.3,0-11.43-5.13-11.43-11.43v-53.33c0-6.3,5.13-11.43,11.43-11.43h22.86c2.1,0,3.81,1.71,3.81,3.81s-1.71,3.81-3.81,3.81h-22.86c-2.1,0-3.81,1.71-3.81,3.81v53.33c0,2.1,1.71,3.81,3.81,3.81h53.33c2.1,0,3.81-1.71,3.81-3.81v-22.86c0-2.1,1.71-3.81,3.81-3.81Z"
+                                            stroke="var(--mh-gray-100-blue-900)"
+                                            stroke-width="1px"
+                                        />
+                                        <path
+                                            d="M100.19,24c2.1,0,3.81,1.71,3.81,3.81v22.86c0,2.1-1.71,3.81-3.81,3.81s-3.81-1.71-3.81-3.81v-13.66l-31.59,31.59c-.74.74-1.72,1.12-2.69,1.12s-1.95-.37-2.69-1.12c-1.49-1.49-1.49-3.9,0-5.39l31.59-31.59h-13.66c-2.1,0-3.81-1.71-3.81-3.81s1.71-3.81,3.81-3.81h22.86Z"
+                                            stroke="var(--mh-gray-100-blue-900)"
+                                            stroke-width="1px"
                                         />
                                     </svg>
                                 </div>
@@ -187,23 +164,26 @@
                         </li>
                         <li>
                             <div class="flex flex-row items-center gap-x-1.5 group">
-                                <Link href="/de-oprichters" class="link-underline-green">De oprichters</Link>
+                                <a href="https://mentalhygiene.me/over-mental-hygiene-de-oprichters/" target="_blank" class="link-underline-green">De oprichters</a>
                                 <div>
                                     <svg
                                         class="group-hover:translate-x-[3px] mh-transition"
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        aria-hidden="true"
+                                        width="20"
+                                        height="20"
+                                        fill="var(--mh-blue-700-gray-100)"
+                                        data-name="Content"
                                         xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 128 128"
                                     >
                                         <path
-                                            d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700-gray-100)"
-                                            stroke-width="1.5"
+                                            d="M96.38,65.9c2.1,0,3.81,1.71,3.81,3.81v22.86c0,6.3-5.13,11.43-11.43,11.43h-53.33c-6.3,0-11.43-5.13-11.43-11.43v-53.33c0-6.3,5.13-11.43,11.43-11.43h22.86c2.1,0,3.81,1.71,3.81,3.81s-1.71,3.81-3.81,3.81h-22.86c-2.1,0-3.81,1.71-3.81,3.81v53.33c0,2.1,1.71,3.81,3.81,3.81h53.33c2.1,0,3.81-1.71,3.81-3.81v-22.86c0-2.1,1.71-3.81,3.81-3.81Z"
+                                            stroke="var(--mh-gray-100-blue-900)"
+                                            stroke-width="1px"
+                                        />
+                                        <path
+                                            d="M100.19,24c2.1,0,3.81,1.71,3.81,3.81v22.86c0,2.1-1.71,3.81-3.81,3.81s-3.81-1.71-3.81-3.81v-13.66l-31.59,31.59c-.74.74-1.72,1.12-2.69,1.12s-1.95-.37-2.69-1.12c-1.49-1.49-1.49-3.9,0-5.39l31.59-31.59h-13.66c-2.1,0-3.81-1.71-3.81-3.81s1.71-3.81,3.81-3.81h22.86Z"
+                                            stroke="var(--mh-gray-100-blue-900)"
+                                            stroke-width="1px"
                                         />
                                     </svg>
                                 </div>
@@ -222,19 +202,22 @@
                                 <div>
                                     <svg
                                         class="group-hover:translate-x-[3px] mh-transition"
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        aria-hidden="true"
+                                        width="20"
+                                        height="20"
+                                        fill="var(--mh-blue-700-gray-100)"
+                                        data-name="Content"
                                         xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 128 128"
                                     >
                                         <path
-                                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700-gray-100)"
-                                            stroke-width="1.5"
+                                            d="M96.38,65.9c2.1,0,3.81,1.71,3.81,3.81v22.86c0,6.3-5.13,11.43-11.43,11.43h-53.33c-6.3,0-11.43-5.13-11.43-11.43v-53.33c0-6.3,5.13-11.43,11.43-11.43h22.86c2.1,0,3.81,1.71,3.81,3.81s-1.71,3.81-3.81,3.81h-22.86c-2.1,0-3.81,1.71-3.81,3.81v53.33c0,2.1,1.71,3.81,3.81,3.81h53.33c2.1,0,3.81-1.71,3.81-3.81v-22.86c0-2.1,1.71-3.81,3.81-3.81Z"
+                                            stroke="var(--mh-gray-100-blue-900)"
+                                            stroke-width="1px"
+                                        />
+                                        <path
+                                            d="M100.19,24c2.1,0,3.81,1.71,3.81,3.81v22.86c0,2.1-1.71,3.81-3.81,3.81s-3.81-1.71-3.81-3.81v-13.66l-31.59,31.59c-.74.74-1.72,1.12-2.69,1.12s-1.95-.37-2.69-1.12c-1.49-1.49-1.49-3.9,0-5.39l31.59-31.59h-13.66c-2.1,0-3.81-1.71-3.81-3.81s1.71-3.81,3.81-3.81h22.86Z"
+                                            stroke="var(--mh-gray-100-blue-900)"
+                                            stroke-width="1px"
                                         />
                                     </svg>
                                 </div>
@@ -246,19 +229,22 @@
                                 <div>
                                     <svg
                                         class="group-hover:translate-x-[3px] mh-transition"
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        aria-hidden="true"
+                                        width="20"
+                                        height="20"
+                                        fill="var(--mh-blue-700-gray-100)"
+                                        data-name="Content"
                                         xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 128 128"
                                     >
                                         <path
-                                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700-gray-100)"
-                                            stroke-width="1.5"
+                                            d="M96.38,65.9c2.1,0,3.81,1.71,3.81,3.81v22.86c0,6.3-5.13,11.43-11.43,11.43h-53.33c-6.3,0-11.43-5.13-11.43-11.43v-53.33c0-6.3,5.13-11.43,11.43-11.43h22.86c2.1,0,3.81,1.71,3.81,3.81s-1.71,3.81-3.81,3.81h-22.86c-2.1,0-3.81,1.71-3.81,3.81v53.33c0,2.1,1.71,3.81,3.81,3.81h53.33c2.1,0,3.81-1.71,3.81-3.81v-22.86c0-2.1,1.71-3.81,3.81-3.81Z"
+                                            stroke="var(--mh-gray-100-blue-900)"
+                                            stroke-width="1px"
+                                        />
+                                        <path
+                                            d="M100.19,24c2.1,0,3.81,1.71,3.81,3.81v22.86c0,2.1-1.71,3.81-3.81,3.81s-3.81-1.71-3.81-3.81v-13.66l-31.59,31.59c-.74.74-1.72,1.12-2.69,1.12s-1.95-.37-2.69-1.12c-1.49-1.49-1.49-3.9,0-5.39l31.59-31.59h-13.66c-2.1,0-3.81-1.71-3.81-3.81s1.71-3.81,3.81-3.81h22.86Z"
+                                            stroke="var(--mh-gray-100-blue-900)"
+                                            stroke-width="1px"
                                         />
                                     </svg>
                                 </div>
@@ -270,19 +256,22 @@
                                 <div>
                                     <svg
                                         class="group-hover:translate-x-[3px] mh-transition"
-                                        width="16"
-                                        height="16"
-                                        viewBox="0 0 24 24"
-                                        fill="none"
-                                        aria-hidden="true"
+                                        width="20"
+                                        height="20"
+                                        fill="var(--mh-blue-700-gray-100)"
+                                        data-name="Content"
                                         xmlns="http://www.w3.org/2000/svg"
+                                        viewBox="0 0 128 128"
                                     >
                                         <path
-                                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke="var(--mh-blue-700-gray-100)"
-                                            stroke-width="1.5"
+                                            d="M96.38,65.9c2.1,0,3.81,1.71,3.81,3.81v22.86c0,6.3-5.13,11.43-11.43,11.43h-53.33c-6.3,0-11.43-5.13-11.43-11.43v-53.33c0-6.3,5.13-11.43,11.43-11.43h22.86c2.1,0,3.81,1.71,3.81,3.81s-1.71,3.81-3.81,3.81h-22.86c-2.1,0-3.81,1.71-3.81,3.81v53.33c0,2.1,1.71,3.81,3.81,3.81h53.33c2.1,0,3.81-1.71,3.81-3.81v-22.86c0-2.1,1.71-3.81,3.81-3.81Z"
+                                            stroke="var(--mh-gray-100-blue-900)"
+                                            stroke-width="1px"
+                                        />
+                                        <path
+                                            d="M100.19,24c2.1,0,3.81,1.71,3.81,3.81v22.86c0,2.1-1.71,3.81-3.81,3.81s-3.81-1.71-3.81-3.81v-13.66l-31.59,31.59c-.74.74-1.72,1.12-2.69,1.12s-1.95-.37-2.69-1.12c-1.49-1.49-1.49-3.9,0-5.39l31.59-31.59h-13.66c-2.1,0-3.81-1.71-3.81-3.81s1.71-3.81,3.81-3.81h22.86Z"
+                                            stroke="var(--mh-gray-100-blue-900)"
+                                            stroke-width="1px"
                                         />
                                     </svg>
                                 </div>
@@ -300,19 +289,22 @@
                 <div>
                     <svg
                         class="group-hover:translate-x-[3px] mh-transition"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        aria-hidden="true"
+                        width="20"
+                        height="20"
+                        fill="var(--mh-blue-700-gray-100)"
+                        data-name="Content"
                         xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 128 128"
                     >
                         <path
-                            d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke="var(--mh-blue-700-gray-100)"
-                            stroke-width="1.5"
+                            d="M96.38,65.9c2.1,0,3.81,1.71,3.81,3.81v22.86c0,6.3-5.13,11.43-11.43,11.43h-53.33c-6.3,0-11.43-5.13-11.43-11.43v-53.33c0-6.3,5.13-11.43,11.43-11.43h22.86c2.1,0,3.81,1.71,3.81,3.81s-1.71,3.81-3.81,3.81h-22.86c-2.1,0-3.81,1.71-3.81,3.81v53.33c0,2.1,1.71,3.81,3.81,3.81h53.33c2.1,0,3.81-1.71,3.81-3.81v-22.86c0-2.1,1.71-3.81,3.81-3.81Z"
+                            stroke="var(--mh-gray-100-blue-900)"
+                            stroke-width="1px"
+                        />
+                        <path
+                            d="M100.19,24c2.1,0,3.81,1.71,3.81,3.81v22.86c0,2.1-1.71,3.81-3.81,3.81s-3.81-1.71-3.81-3.81v-13.66l-31.59,31.59c-.74.74-1.72,1.12-2.69,1.12s-1.95-.37-2.69-1.12c-1.49-1.49-1.49-3.9,0-5.39l31.59-31.59h-13.66c-2.1,0-3.81-1.71-3.81-3.81s1.71-3.81,3.81-3.81h22.86Z"
+                            stroke="var(--mh-gray-100-blue-900)"
+                            stroke-width="1px"
                         />
                     </svg>
                 </div>

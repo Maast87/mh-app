@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="uuid-f45f5e2b-4f4c-49a6-aeb2-e85b9efb1def" data-name="Content" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <g id="uuid-993f94b6-9df0-439b-8590-3538d2748342" data-name="g88">
+    <g id="uuid-b3a367ba-71d3-4f44-bf7d-233b01876443" data-name="g86">
+      <ellipse id="uuid-a71f1e64-2efd-40f5-800b-925ddf0e965f" data-name="ellipse85" cx="64" cy="80.46" rx="16.22" ry="16.29" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.5px;"/>
+      <path id="uuid-11b3be95-17d8-477d-b95a-86cdf676dfda" data-name="path85" d="M64,54.53l-5.06,3.66-6.14-1.09-2.98,5.5-.7.2-5.31,1.5-.31,6.26-4.68,4.14,2.43,5.77-2.43,5.77,4.68,4.14.31,6.25,6,1.69,2.98,5.5,6.14-1.09,5.06,3.66,5.06-3.66,6.14,1.09,2.98-5.5,6-1.69.31-6.25,4.68-4.14-2.43-5.77,2.43-5.77-4.68-4.14-.31-6.26-5.31-1.5-.7-.2-2.98-5.5-6.14,1.09-5.06-3.66Z" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.5px;"/>
+      <path id="uuid-1f8631b2-4f86-41e1-9300-b16890a96ae5" data-name="path86" d="M78.88,33.32l-14.89,6.44-14.88-6.44v9.96l14.88,6.44,14.89-6.44v-9.96Z" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.5px;"/>
+      <path id="uuid-50a42cb9-578d-494a-b418-7225aee96dd6" data-name="path87" d="M49.11,21.62v11.71l14.88,6.44,14.89-6.44v-11.71h-29.77Z" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.5px;"/>
+    </g>
+    <path id="uuid-8276384c-4ffd-4006-9ac5-abc5e23fecb8" data-name="path88" d="M64,49.73v4.8" style="fill: none; stroke: #000; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.5px;"/>
+  </g>
+</svg>

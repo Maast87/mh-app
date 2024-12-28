@@ -15,7 +15,7 @@
                 <Breadcrumb />
             </div>
 
-            <div id="content" class="flex bg-gray_100_blue_900 rounded-xl">
+            <div id="content" class="flex flex-col bg-gray_100_blue_900 rounded-xl">
                 <slot />
             </div>
 

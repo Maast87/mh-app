@@ -64,18 +64,13 @@
                         <svg
                             width="28"
                             height="28"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            aria-hidden="true"
+                            id="uuid-11c75908-226c-48b9-bcea-78d8c4a6282d"
+                            data-name="Content"
                             xmlns="http://www.w3.org/2000/svg"
+                            viewBox="0 0 128 128"
                         >
-                            <path
-                                d="M6 18 18 6M6 6l12 12"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke="#0E122C"
-                                stroke-width="1.5"
-                            />
+                            <line x1="96.88" y1="96.88" x2="31.12" y2="31.12" style="fill: none; stroke: var(--mh-blue-700); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
+                            <line x1="96.88" y1="31.12" x2="31.12" y2="96.88" style="fill: none; stroke: var(--mh-blue-700); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
                         </svg>
                     </div>
                 </div>
@@ -95,37 +90,31 @@
                         <div>
                             <svg
                                 v-if="!isProfielMenuOpen"
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                aria-hidden="true"
+                                class="ml-2"
+                                width="20"
+                                height="20"
+                                fill="var(--mh-blue-700-gray-100)"
+                                data-name="Content"
                                 xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 128 128"
                             >
-                                <path
-                                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke="#0E122C"
-                                    stroke-width="2"
-                                />
+                                <line x1="29.82" y1="46.91" x2="64" y2="81.09" style="fill: var(--mh-blue-700-gray-100); stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
+                                <line x1="98.18" y1="46.91" x2="64" y2="81.09" style="fill: var(--mh-blue-700-gray-100); stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
                             </svg>
+
                             <svg
                                 v-if="isProfielMenuOpen"
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                aria-hidden="true"
+                                class="ml-2"
+                                width="20"
+                                height="20"
+                                fill="var(--mh-blue-700-gray-100)"
+                                data-name="Content"
                                 xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 128 128"
                             >
-                                <path
-                                    d="m4.5 15.75 7.5-7.5 7.5 7.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke="#0E122C"
-                                    stroke-width="2"
-                                />
+
+                                <line x1="98.18" y1="81.09" x2="64" y2="46.91" style="fill: var(--mh-blue-700-gray-100); stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
+                                <line x1="29.82" y1="81.09" x2="64" y2="46.91" style="fill: var(--mh-blue-700-gray-100); stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
                             </svg>
                         </div>
                     </div>
@@ -207,37 +196,31 @@
                         <div>
                             <svg
                                 v-if="!isOndersteuningMenuOpen"
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                aria-hidden="true"
+                                class="ml-2"
+                                width="20"
+                                height="20"
+                                fill="var(--mh-blue-700-gray-100)"
+                                data-name="Content"
                                 xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 128 128"
                             >
-                                <path
-                                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke="#0E122C"
-                                    stroke-width="2"
-                                />
+                                <line x1="29.82" y1="46.91" x2="64" y2="81.09" style="fill: var(--mh-blue-700-gray-100); stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
+                                <line x1="98.18" y1="46.91" x2="64" y2="81.09" style="fill: var(--mh-blue-700-gray-100); stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
                             </svg>
+
                             <svg
                                 v-if="isOndersteuningMenuOpen"
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                aria-hidden="true"
+                                class="ml-2"
+                                width="20"
+                                height="20"
+                                fill="var(--mh-blue-700-gray-100)"
+                                data-name="Content"
                                 xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 128 128"
                             >
-                                <path
-                                    d="m4.5 15.75 7.5-7.5 7.5 7.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke="#0E122C"
-                                    stroke-width="2"
-                                />
+
+                                <line x1="98.18" y1="81.09" x2="64" y2="46.91" style="fill: var(--mh-blue-700-gray-100); stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
+                                <line x1="29.82" y1="81.09" x2="64" y2="46.91" style="fill: var(--mh-blue-700-gray-100); stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
                             </svg>
                         </div>
                     </div>
@@ -299,37 +282,31 @@
                         <div>
                             <svg
                                 v-if="!isResultatenMenuOpen"
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                aria-hidden="true"
+                                class="ml-2"
+                                width="20"
+                                height="20"
+                                fill="var(--mh-blue-700-gray-100)"
+                                data-name="Content"
                                 xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 128 128"
                             >
-                                <path
-                                    d="m19.5 8.25-7.5 7.5-7.5-7.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke="#0E122C"
-                                    stroke-width="2"
-                                />
+                                <line x1="29.82" y1="46.91" x2="64" y2="81.09" style="fill: var(--mh-blue-700-gray-100); stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
+                                <line x1="98.18" y1="46.91" x2="64" y2="81.09" style="fill: var(--mh-blue-700-gray-100); stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
                             </svg>
+
                             <svg
                                 v-if="isResultatenMenuOpen"
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                aria-hidden="true"
+                                class="ml-2"
+                                width="20"
+                                height="20"
+                                fill="var(--mh-blue-700-gray-100)"
+                                data-name="Content"
                                 xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 128 128"
                             >
-                                <path
-                                    d="m4.5 15.75 7.5-7.5 7.5 7.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke="#0E122C"
-                                    stroke-width="2"
-                                />
+
+                                <line x1="98.18" y1="81.09" x2="64" y2="46.91" style="fill: var(--mh-blue-700-gray-100); stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
+                                <line x1="29.82" y1="81.09" x2="64" y2="46.91" style="fill: var(--mh-blue-700-gray-100); stroke: var(--mh-blue-700-gray-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 5px;"/>
                             </svg>
                         </div>
                     </div>

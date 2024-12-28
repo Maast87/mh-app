@@ -90,7 +90,7 @@ export default {
                 }],
                 base: [
                     '1rem', {
-                    lineHeight: '1.3em',
+                    lineHeight: '1.4em',
                     fontWeight: '400',
                 }],
                 button_text_l: [
