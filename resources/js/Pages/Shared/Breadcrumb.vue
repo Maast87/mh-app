@@ -1,6 +1,7 @@
 <script setup>
     import { Link } from "@inertiajs/vue3";
     import {inject} from "vue";
+    import ButtonFour from "@/Components/Buttons/ButtonFour.vue";
 
     const breadcrumbs = inject("breadcrumbs")
 
@@ -12,31 +13,7 @@
 
 <template>
     <div>
-        <button
-            id="previous"
-            @click="goBack"
-            class="flex flex-row gap-x-3 button-quaternary"
-        >
-            <div>
-                <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                >
-                    <path
-                        d="M15.75 19.5 8.25 12l7.5-7.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke="#0E122C"
-                        stroke-width="2"
-                    />
-                </svg>
-            </div>
-            <p class="text-blue-700">Vorige pagina</p>
-        </button>
+        <ButtonFour id="previous" title="Vorige pagina" @click="goBack" />
     </div>
     <div class="flex items-center pl-3 border-0 border-l border-blue_700_gray_100">
         <p>

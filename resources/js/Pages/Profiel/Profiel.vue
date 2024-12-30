@@ -3,6 +3,7 @@
     import {Head, Link} from "@inertiajs/vue3";
     import ProfileLayout from "@/Pages/Shared/ProfileLayout.vue";
     import {provide} from "vue";
+    import ButtonOne from "@/Components/Buttons/ButtonOne.vue";
 
     const breadcrumbs = [
         { label: "home", href: "/" },
@@ -29,9 +30,7 @@
                     <div class="border border-gray-300 bg-gray-100 rounded-lg p-3 mt-[-6px] z-1 relative">
                         <h3 class="text-header_s">Resultaten</h3>
                         <p>Bekijk al jouw resultaten</p>
-                        <Link href="/profiel/resultaten">
-                            <button class="button-primary w-full mt-4">Naar resultaten</button>
-                        </Link>
+                        <ButtonOne href="/profiel/resultaten" title="Naar resultaten" class="mt-4" />
                     </div>
                 </div>
                 <div class="w-full">
@@ -45,9 +44,7 @@
                     <div class="border border-gray-300 bg-gray-100 rounded-lg p-3 mt-[-6px] z-1 relative">
                         <h3 class="text-header_s">Instellingen</h3>
                         <p>Bekijk al jouw instellingen</p>
-                        <Link href="/profiel/instellingen">
-                            <button class="button-primary w-full mt-4">Naar instellingen</button>
-                        </Link>
+                        <ButtonOne href="/profiel/instellingen" title="Naar instellingen" class="mt-4" />
                     </div>
                 </div>
                 <div class="w-full">
@@ -61,9 +58,7 @@
                     <div class="border border-gray-300 bg-gray-100 rounded-lg p-3 mt-[-6px] z-1 relative">
                         <h3 class="text-header_s">Lidmaatschap</h3>
                         <p>Bekijk jouw lidmaatschap</p>
-                        <Link href="/profiel/lidmaatschap">
-                            <button class="button-primary w-full mt-4">Naar lidmaatschap</button>
-                        </Link>
+                        <ButtonOne href="/profiel/lidmaatschap" title="Naar lidmaatschap" class="mt-4" />
                     </div>
                 </div>
             </div>

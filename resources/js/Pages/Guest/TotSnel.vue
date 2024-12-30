@@ -2,6 +2,7 @@
     import Layout from "@/Pages/Shared/Layout.vue";
     import {Head, Link} from "@inertiajs/vue3";
     import {provide} from "vue";
+    import ButtonOne from "@/Components/Buttons/ButtonOne.vue";
 
     const breadcrumbs = [
         { label: "home", href: "/" },
@@ -19,9 +20,7 @@
             <p class="text-base text-blue_700_gray_100">Graag tot snel.</p>
 
             <div class="mt-2">
-                <Link href="/">
-                    <button class="button-primary">Naar home</button>
-                </Link>
+                <ButtonOne href="/" title="Home" />
             </div>
 
             <div class="pt-8">

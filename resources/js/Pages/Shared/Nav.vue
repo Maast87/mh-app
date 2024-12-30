@@ -7,6 +7,8 @@
     import PopoverProfiel from "../../Components/Popovers/PopoverProfiel.vue";
     import {useTheme} from "../../../composables/useTheme";
     import DarkModeToggle from "@/Components/DarkModeToggle.vue";
+    import ButtonTwo from "@/Components/Buttons/ButtonTwo.vue";
+    import ButtonSix from "@/Components/Buttons/ButtonSix.vue";
 
     const {dark} = useTheme();
 
@@ -63,16 +65,8 @@
                 id="nav-desktop-menu"
                 class="hidden lg:flex flex-row gap-x-1"
             >
-                <Link href="/me-learning">
-                    <button class="button-secondary hover:button-secondary-hover active:button-secondary-active">
-                        Me-learning
-                    </button>
-                </Link>
-                <Link href="/ik-loop-vast">
-                    <button class="button-secondary hover:button-secondary-hover active:button-secondary-active">
-                        Ik loop vast
-                    </button>
-                </Link>
+                <ButtonTwo href="/me-learning" title="Me-learning" />
+                <ButtonTwo href="/ik-loop-vast" title="Ik loop vast" />
                 <PopoverOndersteuning/>
                 <PopoverResultaten/>
             </div>
@@ -83,47 +77,23 @@
                 id="guest-nav-desktop-menu"
                 class="hidden lg:flex flex-row gap-x-1"
             >
-                <Link href="">
-                    <button class="button-secondary hover:button-secondary-hover active:button-secondary-active">
-                        Zo werkt het
-                    </button>
-                </Link>
-                <Link href="">
-                    <button class="button-secondary hover:button-secondary-hover active:button-secondary-active">
-                        Onze visie
-                    </button>
-                </Link>
-                <Link href="">
-                    <button class="button-secondary hover:button-secondary-hover active:button-secondary-active">
-                        Prijzen
-                    </button>
-                </Link>
+                <ButtonTwo href="/#zo-werkt-het" title="Zo werkt het" />
+                <ButtonTwo href="/#visie" title="Onze visie" />
+                <ButtonTwo href="/#prijzen" title="Prijzen" />
             </div>
 
             <!-- Desktop Profile Menu -->
             <div id="nav-desktop-profile-menu" class="hidden lg:flex lg:justify-end gap-x-1">
                 <template v-if="$page.props.auth.user">
                     <PopoverProfiel />
-                    <Link href="/word-lid" v-if="! $page.props.auth.user.subscribed">
-                        <button class="button-senary hover:button-senary-hover">
-                            <p class="drop-shadow-[0_2px_1px_rgba(0,0,0,0.4)]">Word lid</p>
-                        </button>
-                    </Link>
+                    <ButtonSix href="/word-lid" title="Word lid" v-if="! $page.props.auth.user.subscribed" />
                     <DarkModeToggle />
                 </template>
 
-                <template v-else>
+                <template v-if="!$page.props.auth.user">
                     <DarkModeToggle />
-                    <Link href="/login">
-                        <button class="button-secondary hover:button-secondary-hover active:button-secondary-active">
-                            Log in
-                        </button>
-                    </Link>
-                    <Link href="/registreren">
-                        <button class="button-senary hover:button-senary-hover group">
-                            <p class="text-gray_100_blue_800 group-hover:button-senary-text group-hover:text-gray-100">Start gratis</p>
-                        </button>
-                    </Link>
+                    <ButtonTwo href="/login" title="Log in" />
+                    <ButtonSix href="/registreren" title="Start gratis" />
                 </template>
             </div>
 

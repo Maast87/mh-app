@@ -1,8 +1,15 @@
 <?php
 
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\EnsureUserIsSubscribed;
+use App\Http\Resources\CommentResource;
+use App\Http\Resources\PostResource;
+use App\Http\Resources\UserResource;
+use App\Models\Post;
+use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -20,6 +27,8 @@ Route::get('/', function () { return Inertia::render('Public/Home'); })->name('h
 Route::get('/contact', function () { return Inertia::render('Public/Contact'); });
 Route::get('/privacybeleid', function () { return Inertia::render('Public/Privacybeleid'); });
 Route::get('/voorwaarden', function () { return Inertia::render('Public/Voorwaarden'); });
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show');
 
 // Logged in routes
 Route::middleware(['auth', 'verified'])->group(function () {

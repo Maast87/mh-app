@@ -7,6 +7,7 @@
     import {provide} from "vue";
     import GradientElement from "@/Components/PageLayoutElements/GradientElement.vue";
     import GradientWhiteElement from "@/Components/PageLayoutElements/GradientWhiteElement.vue";
+    import ButtonOne from "@/Components/Buttons/ButtonOne.vue";
 
     const breadcrumbs = [
         { label: "home", href: "/" },
@@ -118,13 +119,9 @@
                         </div>
 
                         <div class="mt-6 flex flex-col items-center justify-center gap-y-2">
-                            <button
-                                class="button-primary w-full"
-                                :class="{ 'opacity-25': form.processing }"
-                                :disabled="form.processing"
-                            >
-                                Maak mijn gratis account aan
-                            </button>
+
+                            <ButtonOne title="Maak mijn gratis account" :allowSpinner="true" />
+
                             <Link
                                 :href="route('login')"
                                 class="rounded-md text-base font-medium link-underline-green focus:ring-2 focus:ring-blue-700 focus:ring-offset-2"

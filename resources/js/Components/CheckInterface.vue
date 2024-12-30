@@ -198,7 +198,7 @@
                     class="flex"
                 >
                     <div
-                        class="group flex button-quinary cursor-pointer w-full"
+                        class="group flex button-five cursor-pointer w-full"
                         :class="{'button-quinary-current': selectedAnswer && selectedAnswer.text === choice.text}"
                         @click="onOptionClicked(choice)"
                     >
@@ -215,7 +215,7 @@
                     <button
                         :disabled="!selectedAnswer"
                         @click="onSaveAndProceed"
-                        class="button-primary disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed"
+                        class="button-one disabled:opacity-50 disabled:pointer-events-none disabled:cursor-not-allowed"
                     >
                         Opslaan en doorgaan
                     </button>

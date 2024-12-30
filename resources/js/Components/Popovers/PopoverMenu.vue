@@ -21,8 +21,8 @@
                 <span>{{ title }}</span>
                 <svg
                     class="ml-2"
-                    width="20"
-                    height="20"
+                    width="15"
+                    height="15"
                     fill="var(--mh-blue-700-gray-100)"
                     data-name="Content"
                     xmlns="http://www.w3.org/2000/svg"
@@ -65,8 +65,8 @@
                                 :key="item.name"
                                 :href="item.href"
                                 :method="item.method"
-                                class="group button-quinary"
-                                :class="{'button-quinary-current' : $page.url === item.href}"
+                                class="group button-five"
+                                :class="{'button-five-current' : $page.url === item.href}"
                                 @click="close"
                             >
                                 <div

@@ -3,9 +3,12 @@
     import { Head, Link } from "@inertiajs/vue3";
     import GradientHero from "../../Components/PageLayoutElements/GradientHero.vue";
     import DarkblueElement from "../../Components/PageLayoutElements/DarkblueElement.vue";
-    import {provide} from "vue";
     import GradientWhiteElement from "@/Components/PageLayoutElements/GradientWhiteElement.vue";
     import GradientElement from "@/Components/PageLayoutElements/GradientElement.vue";
+    import {provide} from "vue";
+    import ButtonThree from "@/Components/Buttons/ButtonThree.vue";
+    import ButtonFour from "@/Components/Buttons/ButtonFour.vue";
+    import ButtonOne from "@/Components/Buttons/ButtonOne.vue";
 
     const breadcrumbs = [
         { label: "  home" }
@@ -23,11 +26,14 @@
                 <div class="flex flex-col justify-center items-center w-full px-10 pt-20 pb-20 gap-y-4">
                     <h1 class="text-header_xl text-blue_700_gray_100 text-center">Welkom bij het<br><span class="gradient-text">Mental Hygiene</span> platform</h1>
                     <p class="text-base text-blue_700_gray_100">Hier volg je de me-learning; de meest interactieve online training over mentale ontwikkeling</p>
-                    <p>Twee buttons voor login en start gratis</p>
+                    <div class="flex gap-x-4 mt-4">
+                        <ButtonFour href="/login" title="Log in"/>
+                        <ButtonOne href="/registreren" title="Start gratis"/>
+                    </div>
                 </div>
 
                 <DarkblueElement class="items-center rounded-xl gap-y-0">
-                    <h2 class="text-header_m text-gray-100 text-center pb-12">Het <span class="gradient-text">resultaat</span> en de werkwijze <br>van de me-learning in beeld</h2>
+                    <h2 id="zo-werkt-het" class="text-header_m text-gray-100 text-center pb-12">Het <span class="gradient-text">resultaat</span> en de werkwijze <br>van de me-learning in beeld</h2>
                     <div class="w-[90%]">
                         <div style="position:relative; padding-top:56.25%;">
                             <iframe
@@ -40,7 +46,7 @@
                         </div>
                     </div>
 
-                    <h2 class="text-header_m text-gray-100 text-center pb-12 pt-20">Sluit je aan bij <span class="gradient-text">Mental Hygiene</span></h2>
+                    <h2 id="prijzen" class="text-header_m text-gray-100 text-center pb-12 pt-20">Sluit je aan bij <span class="gradient-text">Mental Hygiene</span></h2>
                     <GradientElement class="flex gap-x-4 gap-y-4 w-full">
                             <GradientWhiteElement class="flex gap-y-6 h-fit text-blue_700_gray_100">
                                 <div class="flex flex-col gap-y-3">
@@ -212,7 +218,7 @@
                 </DarkblueElement>
 
                 <div class="flex flex-col items-center pt-16 pb-10">
-                    <h2 class="text-header_m text-blue_700_gray_100 text-center pb-12">Onze visie voor een<br> <span class="gradient-text">fijne</span> wereld in beeld</h2>
+                    <h2 id="visie" class="text-header_m text-blue_700_gray_100 text-center pb-12">Onze visie voor een<br> <span class="gradient-text">fijne</span> wereld in beeld</h2>
                     <div class="w-[90%]">
                         <div style="position:relative; padding-top:56.25%;">
                             <iframe
@@ -225,9 +231,8 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
+
             <div v-if="$page.props.auth.user">
                 <GradientHero>
                     <template v-slot:subtitle>
@@ -256,30 +261,7 @@
                                 <p class="text-gray-100 mb-4">
                                     De laagdrempelige en praktische training over mentale uitdagingen. Te volgen op je eigen tempo, en altijd relevant voor jouw persoonlijk situatie.
                                 </p>
-                                <Link href="/me-learning">
-                                    <button class="button-tertiary flex gap-x-1 justify-center group">
-                                        <p class="text-button_text_s">Naar de me-learning</p>
-                                        <div>
-                                            <svg
-                                                class="group-hover:translate-x-[3px] mh-transition"
-                                                width="16"
-                                                height="16"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <path
-                                                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke="#0E122C"
-                                                    stroke-width="2"
-                                                />
-                                            </svg>
-                                        </div>
-                                    </button>
-                                </Link>
+                                <ButtonThree href="/me-learning" title="Naar de me-learning" />
                             </div>
                         </div>
                         <div id="card">
@@ -295,30 +277,7 @@
                                 <p class="text-gray-100 mb-4">
                                     Van 1-op-1 coaching tot supportgroepen en meer; onze vormen van ondersteuning vind je hier.
                                 </p>
-                                <Link href="/ondersteuning">
-                                    <button class="button-tertiary flex gap-x-1 justify-center group">
-                                        <p class="text-button_text_s">Naar ondersteuning</p>
-                                        <div>
-                                            <svg
-                                                class="group-hover:translate-x-[3px] mh-transition"
-                                                width="16"
-                                                height="16"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <path
-                                                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke="#0E122C"
-                                                    stroke-width="2"
-                                                />
-                                            </svg>
-                                        </div>
-                                    </button>
-                                </Link>
+                                <ButtonThree href="/ondersteuning" title="Naar ondersteuning" />
                             </div>
                         </div>
                         <div id="card">
@@ -334,30 +293,7 @@
                                 <p class="text-gray-100 mb-4">
                                     Al jouw doelen, sterke kanten en uitdagingen en ingevulde oefeningen vind je hier.
                                 </p>
-                                <Link href="/al-mijn-resultaten">
-                                    <button class="button-tertiary flex gap-x-1 justify-center group">
-                                        <p class="text-button_text_s">Naar resultaten</p>
-                                        <div>
-                                            <svg
-                                                class="group-hover:translate-x-[3px] mh-transition"
-                                                width="16"
-                                                height="16"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <path
-                                                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke="#0E122C"
-                                                    stroke-width="2"
-                                                />
-                                            </svg>
-                                        </div>
-                                    </button>
-                                </Link>
+                                <ButtonThree href="/profiel/resultaten" title="Naar resultaten" />
                             </div>
                         </div>
                         <div id="card">
@@ -374,27 +310,8 @@
                                     Bekijk hoe een wereld met Mental Hygiene eruit ziet, en hoe je met ons bijdraagt aan die visie.
                                 </p>
                                 <a href="https://mentalhygiene.me/over-mental-hygiene-onze-visie/" target="_blank">
-                                    <button class="button-tertiary flex gap-x-1 justify-center group">
+                                    <button class="button-three flex gap-x-1 justify-center group">
                                         <p class="text-button_text_s">Naar de visie</p>
-                                        <div>
-                                            <svg
-                                                class="group-hover:translate-x-[3px] mh-transition"
-                                                width="16"
-                                                height="16"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                aria-hidden="true"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <path
-                                                    d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
-                                                    stroke="#0E122C"
-                                                    stroke-width="2"
-                                                />
-                                            </svg>
-                                        </div>
                                     </button>
                                 </a>
                             </div>

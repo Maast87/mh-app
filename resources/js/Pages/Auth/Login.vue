@@ -8,6 +8,7 @@
     import {provide} from "vue";
     import GradientElement from "@/Components/PageLayoutElements/GradientElement.vue";
     import GradientWhiteElement from "@/Components/PageLayoutElements/GradientWhiteElement.vue";
+    import ButtonOne from "@/Components/Buttons/ButtonOne.vue";
 
     const breadcrumbs = [
         { label: "home", href: "/" },
@@ -95,13 +96,9 @@
                             </div>
 
                             <div class="mt-6 flex flex-col items-center justify-center gap-y-2">
-                                <button
-                                    class="button-primary w-full"
-                                    :class="{ 'opacity-25': form.processing }"
-                                    :disabled="form.processing"
-                                >
-                                    Log in
-                                </button>
+
+                                <ButtonOne title="Log in" :allowSpinner="true" class="w-full" />
+
                                 <Link
                                     v-if="canResetPassword"
                                     :href="route('password.request')"

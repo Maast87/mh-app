@@ -30,10 +30,10 @@
                 </div>
             </div>
             <div class="flex flex-col justify-center gap-y-2 pt-5 ">
-                <button class="button-quaternary">Volgen</button>
-                <!--                    <button class="button-quaternary">Ontvolgen</button>-->
-                <button class="button-quaternary">Stuur bericht</button>
-                <button class="button-quaternary">Melden</button>
+                <button class="button-four">Volgen</button>
+                <!--                    <button class="button-four">Ontvolgen</button>-->
+                <button class="button-four">Stuur bericht</button>
+                <button class="button-four">Melden</button>
             </div>
         </div>
     </div>
@@ -41,8 +41,8 @@
         <Link href="/profiel">
             <button
                 :class="{
-                    'button-secondary-current': $page.url === '/profiel',
-                    'button-secondary': $page.url !== '/profiel',
+                    'button-two-current': $page.url === '/profiel',
+                    'button-two': $page.url !== '/profiel',
                 }"
             >
                 Overzicht
@@ -51,8 +51,8 @@
         <Link href="/profiel/resultaten">
             <button
                 :class="{
-                    'button-secondary-current': $page.url === '/profiel/resultaten',
-                    'button-secondary': $page.url !== '/profiel/resultaten',
+                    'button-two-current': $page.url === '/profiel/resultaten',
+                    'button-two': $page.url !== '/profiel/resultaten',
                 }"
             >
                 Resultaten
@@ -61,8 +61,8 @@
         <Link href="/profiel/instellingen">
             <button
                 :class="{
-                    'button-secondary-current': $page.url === '/profiel/instellingen',
-                    'button-secondary': $page.url !== '/profiel/instellingen',
+                    'button-two-current': $page.url === '/profiel/instellingen',
+                    'button-two': $page.url !== '/profiel/instellingen',
                 }"
             >
                 Instellingen
@@ -71,8 +71,8 @@
         <Link href="/profiel/lidmaatschap">
             <button
                 :class="{
-                    'button-secondary-current': $page.url === '/profiel/lidmaatschap',
-                    'button-secondary': $page.url !== '/profiel/lidmaatschap',
+                    'button-two-current': $page.url === '/profiel/lidmaatschap',
+                    'button-two': $page.url !== '/profiel/lidmaatschap',
                 }"
             >
                 Lidmaatschap

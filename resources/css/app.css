@@ -127,7 +127,7 @@
         animation: spinner .6s linear infinite;
     }
 
-    .button-primary {
+    .button-one {
         @apply
             relative
             bg-blue_700_gray_100
@@ -145,50 +145,42 @@
             active:translate-y-[0px]
             active:shadow-mh_box_shadow_off;
     } /* donkerblauw */
-    .button-primary-loading {
+    .button-one-loading {
         @apply
-            bg-blue-700
-            rounded-lg
-            px-[25px]
-            py-[10px]
-            text-button_text_s
             text-transparent
             relative
             opacity-80
             pointer-events-none
             cursor-not-allowed
     } /* donkerblauw muted */
-    .button-primary-disabled {
+
+    .button-two {
         @apply
-            bg-blue-700
-            rounded-lg
-            px-[25px]
-            py-[10px]
-            text-button_text_s
-            text-gray-100
+        bg-none
+        rounded-lg
+        px-[25px]
+        py-[10px]
+        text-button_text_s
+        text-blue_700_gray_100
+        transition ease-in-out duration-300
+
+        hover:bg-gray-300
+        hover:text-blue-800
+        hover:translate-y-[-2px]
+        hover:shadow-mh_box_shadow
+
+        active:translate-y-[0px]
+        active:shadow-mh_box_shadow_off;
+    }
+        .button-two-loading {
+        @apply
+            text-transparent
             relative
             opacity-80
-    } /* donkerblauw muted */
-
-    .button-secondary {
-        @apply
-            bg-none
-            rounded-lg
-            px-[25px]
-            py-[10px]
-            text-button_text_s
-            text-blue_700_gray_100
-            transition ease-in-out duration-300
-
-            hover:bg-gray-300
-            hover:text-blue-800
-            hover:translate-y-[-2px]
-            hover:shadow-mh_box_shadow
-
-            active:translate-y-[0px]
-            active:shadow-mh_box_shadow_off;
+            pointer-events-none
+            cursor-not-allowed;
     } /* transparant > grijs */
-    .button-secondary-current {
+    .button-two-current {
         @apply
             rounded-lg
             px-[25px]
@@ -201,7 +193,7 @@
             cursor-not-allowed
     } /* transparant > grijs */
 
-    .button-tertiary {
+    .button-three {
         @apply
             bg-gray-100
             rounded-lg
@@ -219,7 +211,7 @@
             active:translate-y-[0px];
     } /* wit > grijs */
 
-    .button-quaternary {
+    .button-four {
         @apply
         bg-gray-300
         rounded-lg
@@ -238,7 +230,7 @@
         active:shadow-mh_box_shadow_off;
     } /* grijs > donkergrijs */
 
-    .button-quinary {
+    .button-five {
         @apply
             text-blue_700_gray_100
             -m-3
@@ -255,7 +247,7 @@
             active:translate-y-[0px]
             active:shadow-mh_box_shadow_off;
     }
-    .button-quinary-current {
+    .button-five-current {
         @apply
             bg-blue_700_gray_100
             text-gray_100_blue_800
@@ -264,7 +256,7 @@
             cursor-not-allowed
     }
 
-    .button-senary {
+    .button-six {
         @apply
             relative
             bg-gradient-to-r
@@ -277,7 +269,7 @@
             text-gray_100_blue_800
             transition ease-in-out duration-300;
     }
-    .button-senary:hover {
+    .button-six:hover {
         @apply
             bg-gradient-to-r
             from-green-100
@@ -285,12 +277,12 @@
             translate-y-[-2px]
             shadow-mh_box_shadow;
     }
-    .button-senary:active {
+    .button-six:active {
         @apply
             translate-y-[0px]
             shadow-mh_box_shadow_off;
     }
-    .button-senary-text {
+    .button-six-text {
         @apply
             drop-shadow-[0_2px_1px_rgba(0,0,0,0.4)]
     }
