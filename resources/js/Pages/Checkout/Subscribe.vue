@@ -127,8 +127,8 @@
                                 :class="{'pointer-events-none': ButtonOneClicked, 'pointer-events-none': DisableButtonOne}"
                             >
                                 <button
-                                    class="button-primary w-full"
-                                    :class="{'button-primary-loading spinner': ButtonOneClicked, 'button-primary-disabled': DisableButtonOne}"
+                                    class="button-one w-full"
+                                    :class="{'button-one-loading spinner': ButtonOneClicked, 'button-one-disabled': DisableButtonOne}"
                                     @click="handleClickButtonOne">
                                     Naar afrekenen
                                 </button>
@@ -209,8 +209,8 @@
                                 :class="{'pointer-events-none': ButtonTwoClicked, 'pointer-events-none': DisableButtonTwo}"
                             >
                                 <button
-                                    class="button-primary w-full"
-                                    :class="{'button-primary-loading spinner': ButtonTwoClicked, 'button-primary-disabled': DisableButtonTwo}"
+                                    class="button-one w-full"
+                                    :class="{'button-one-loading spinner': ButtonTwoClicked, 'button-one-disabled': DisableButtonTwo}"
                                     @click="handleClickButtonTwo">
                                     Naar afrekenen
                                 </button>

@@ -8,7 +8,7 @@
     import {provide} from "vue";
     import ButtonThree from "@/Components/Buttons/ButtonThree.vue";
     import ButtonFour from "@/Components/Buttons/ButtonFour.vue";
-    import ButtonOne from "@/Components/Buttons/ButtonOne.vue";
+    import ButtonSix from "@/Components/Buttons/ButtonSix.vue";
 
     const breadcrumbs = [
         { label: "  home" }
@@ -28,7 +28,7 @@
                     <p class="text-base text-blue_700_gray_100">Hier volg je de me-learning; de meest interactieve online training over mentale ontwikkeling</p>
                     <div class="flex gap-x-4 mt-4">
                         <ButtonFour href="/login" title="Log in"/>
-                        <ButtonOne href="/registreren" title="Start gratis"/>
+                        <ButtonSix href="/registreren" title="Start gratis"/>
                     </div>
                 </div>
 
@@ -310,7 +310,7 @@
                                     Bekijk hoe een wereld met Mental Hygiene eruit ziet, en hoe je met ons bijdraagt aan die visie.
                                 </p>
                                 <a href="https://mentalhygiene.me/over-mental-hygiene-onze-visie/" target="_blank">
-                                    <button class="button-three flex gap-x-1 justify-center group">
+                                    <button class="button-three w-full">
                                         <p class="text-button_text_s">Naar de visie</p>
                                     </button>
                                 </a>

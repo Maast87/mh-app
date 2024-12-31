@@ -10,54 +10,45 @@
         },
         allowSpinner: {
             type: Boolean,
-            default: false,
+            default: true,
         },
     });
 
     const DisableButton = ref(false);
 
-    const handleClickButton = (event) => {
-        if (props.href) {
-            event.preventDefault();
-            window.location.href = props.href;
-        }
-
-        if (! window.location.href === props.href) {
+    const handleClickButton = () => {
+        if (!DisableButton.value) {
             DisableButton.value = true;
         }
     };
 </script>
 
 <template>
-
     <Link
+        v-if="href"
         :href="href"
         :class="{'pointer-events-none': DisableButton}"
     >
         <button
             class="button-two w-full"
             :class="{
-                    'button-two-loading spinner': DisableButton && allowSpinner,
-                    'button-two-disabled': DisableButton
-                }"
+                'button-two-loading spinner': DisableButton && allowSpinner,
+                'button-two-loading': DisableButton
+            }"
             @click="handleClickButton"
         >
-            Link to {{ title }}
+            {{ title }}
         </button>
     </Link>
-<!--    <template v-if="href">-->
-<!--        -->
-<!--    </template>-->
-<!--    <template v-if="! href">-->
-<!--        <button-->
-<!--            class="button-two w-full mt-4"-->
-<!--            :class="{-->
-<!--                'button-two-loading spinner': DisableButton && allowSpinner,-->
-<!--                'button-two-disabled': DisableButton-->
-<!--            }"-->
-<!--            @click="handleClickButton"-->
-<!--        >-->
-<!--            Button to {{ title }}-->
-<!--        </button>-->
-<!--    </template>-->
+    <button
+        v-else
+        class="button-two w-full"
+        :class="{
+            'button-two-loading spinner': DisableButton && allowSpinner,
+            'button-two-loading': DisableButton
+        }"
+        @click="handleClickButton"
+    >
+        {{ title }}
+    </button>
 </template>

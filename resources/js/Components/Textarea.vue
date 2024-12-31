@@ -19,7 +19,7 @@
 
 <template>
     <textarea
-        class="rounded-lg bg-gray_100_blue_900 border-blue_700_gray_100 focus:ring-blue_700_gray_100 text-blue_700_gray_100 input-placeholder"
+        class="rounded-lg bg-gray_100_blue_900 border-blue_700_gray_100 focus:ring-blue_700_gray_100 text-blue_700_gray_100 input-placeholder w-full"
         v-model="model"
         ref="input"
     />

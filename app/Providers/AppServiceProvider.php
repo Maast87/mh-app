@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Models\Comment;
+use App\Models\User;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
 

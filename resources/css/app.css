@@ -172,14 +172,14 @@
         active:translate-y-[0px]
         active:shadow-mh_box_shadow_off;
     }
-        .button-two-loading {
-        @apply
-            text-transparent
-            relative
-            opacity-80
-            pointer-events-none
-            cursor-not-allowed;
-    } /* transparant > grijs */
+    .button-two-loading {
+    @apply
+        text-transparent
+        relative
+        opacity-80
+        pointer-events-none
+        cursor-not-allowed;
+} /* transparant > grijs */
     .button-two-current {
         @apply
             rounded-lg
@@ -195,6 +195,7 @@
 
     .button-three {
         @apply
+            relative
             bg-gray-100
             rounded-lg
             px-[25px]
@@ -202,7 +203,6 @@
             text-button_text_s
             text-blue-700
             transition ease-in-out duration-300
-            w-full
 
             hover:bg-gray-400
             hover:text-blue-800
@@ -210,28 +210,46 @@
 
             active:translate-y-[0px];
     } /* wit > grijs */
+    .button-three-loading {
+        @apply
+            text-transparent
+            relative
+            opacity-80
+            pointer-events-none
+            cursor-not-allowed;
+    } /* wit > grijs */
 
     .button-four {
         @apply
-        bg-gray-300
-        rounded-lg
-        px-[25px]
-        py-[10px]
-        text-button_text_s
-        text-blue-700
-        transition ease-in-out duration-300
+            relative
+            bg-gray-300
+            rounded-lg
+            px-[25px]
+            py-[10px]
+            text-button_text_s
+            text-blue-700
+            transition ease-in-out duration-300
 
-        hover:bg-gray-400
-        hover:text-blue-800
-        hover:translate-y-[-2px]
-        hover:shadow-mh_box_shadow
+            hover:bg-gray-400
+            hover:text-blue-800
+            hover:translate-y-[-2px]
+            hover:shadow-mh_box_shadow
 
-        active:translate-y-[0px]
-        active:shadow-mh_box_shadow_off;
+            active:translate-y-[0px]
+            active:shadow-mh_box_shadow_off;
+    } /* grijs > donkergrijs */
+    .button-four-loading {
+        @apply
+            text-transparent
+            relative
+            opacity-80
+            pointer-events-none
+            cursor-not-allowed;
     } /* grijs > donkergrijs */
 
     .button-five {
         @apply
+            relative
             text-blue_700_gray_100
             -m-3
             flex
@@ -246,6 +264,14 @@
 
             active:translate-y-[0px]
             active:shadow-mh_box_shadow_off;
+    }
+    .button-five-loading {
+        @apply
+            text-transparent
+            relative
+            opacity-80
+            pointer-events-none
+            cursor-not-allowed;
     }
     .button-five-current {
         @apply
@@ -269,6 +295,14 @@
             text-gray_100_blue_800
             transition ease-in-out duration-300;
     }
+    .button-six-loading {
+        @apply
+            text-transparent
+            relative
+            opacity-80
+            pointer-events-none
+            cursor-not-allowed;
+    }
     .button-six:hover {
         @apply
             bg-gradient-to-r
@@ -281,10 +315,6 @@
         @apply
             translate-y-[0px]
             shadow-mh_box_shadow_off;
-    }
-    .button-six-text {
-        @apply
-            drop-shadow-[0_2px_1px_rgba(0,0,0,0.4)]
     }
 
     .link-underline-green {

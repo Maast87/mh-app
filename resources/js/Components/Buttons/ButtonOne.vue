@@ -1,6 +1,6 @@
 <script setup>
+    import { defineProps, watch, ref } from "vue";
     import { Link } from "@inertiajs/vue3";
-    import { ref } from "vue";
 
     const props = defineProps({
         title: String,
@@ -10,51 +10,60 @@
         },
         allowSpinner: {
             type: Boolean,
+            default: true,
+        },
+        disabled: {
+            type: Boolean,
             default: false,
         },
     });
 
-    const DisableButton = ref(false);
+    const DisableButton = ref(props.disabled);
 
+    // Watch for prop changes and update the internal state
+    watch(() => props.disabled, (newValue) => {
+        DisableButton.value = newValue;
+    });
+
+    // Handle button click action, respecting the disabled state
     const handleClickButton = (event) => {
-        if (props.href) {
+        if (DisableButton.value) {
+            // Prevent any action if the button is disabled
             event.preventDefault();
-            window.location.href = props.href;
+            return;
         }
 
+        // Otherwise, proceed with the action
         DisableButton.value = true;
     };
 </script>
 
 <template>
-    <template v-if="href">
-        <Link
-            :href="href"
-            :class="{'pointer-events-none': DisableButton}"
-        >
-            <button
-                class="button-one w-full"
-                :class="{
-                    'button-one-loading spinner': DisableButton && allowSpinner,
-                    'button-one-disabled': DisableButton
-                }"
-                @click="handleClickButton"
-            >
-                Link to {{ title }}
-            </button>
-        </Link>
-    </template>
-
-    <template v-if="! href">
+    <Link
+        v-if="href"
+        :href="href"
+        :class="{'pointer-events-none': DisableButton}"
+    >
         <button
             class="button-one w-full"
             :class="{
                 'button-one-loading spinner': DisableButton && allowSpinner,
-                'button-one-disabled': DisableButton
+                'button-one-loading': DisableButton
             }"
             @click="handleClickButton"
         >
-            Button to {{ title }}
+            {{ title }}
         </button>
-    </template>
+    </Link>
+    <button
+        v-else
+        class="button-one w-full"
+        :class="{
+            'button-one-loading spinner': DisableButton && allowSpinner,
+            'button-one-loading': DisableButton
+        }"
+        @click="handleClickButton"
+    >
+        {{ title }}
+    </button>
 </template>
