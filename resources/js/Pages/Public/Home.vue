@@ -5,15 +5,26 @@
     import DarkblueElement from "../../Components/PageLayoutElements/DarkblueElement.vue";
     import GradientWhiteElement from "@/Components/PageLayoutElements/GradientWhiteElement.vue";
     import GradientElement from "@/Components/PageLayoutElements/GradientElement.vue";
-    import {provide} from "vue";
+    import {provide, ref} from "vue";
     import ButtonThree from "@/Components/Buttons/ButtonThree.vue";
     import ButtonFour from "@/Components/Buttons/ButtonFour.vue";
     import ButtonSix from "@/Components/Buttons/ButtonSix.vue";
+    import DefaultModal from "@/Components/Modals/DefaultModal.vue";
 
     const breadcrumbs = [
         { label: "  home" }
     ];
     provide('breadcrumbs', breadcrumbs);
+
+    const isModalVisible = ref(false);
+
+    const openModal = () => {
+        isModalVisible.value = true;
+    };
+
+    const closeModal = () => {
+        isModalVisible.value = false;
+    };
 
 </script>
 
@@ -317,6 +328,25 @@
                             </div>
                         </div>
                     </div>
+                    <div id="modal-trigger" class="flex justify-center mt-10">
+                        <button @click="openModal" class="bg-blue-500 text-white px-4 py-2 rounded">
+                            Open Modal
+                        </button>
+                    </div>
+
+                    <DefaultModal :show="isModalVisible" @close="closeModal">
+                        <template #title>
+                            Dit is de titel
+                        </template>
+                        <template #content>
+                            <div>
+                                <p>Dit is een lijn</p>
+                            </div>
+                            <div>
+                                <p>Dit een tweede lijn</p>
+                            </div>
+                        </template>
+                    </DefaultModal>
                 </DarkblueElement>
             </div>
         </div>

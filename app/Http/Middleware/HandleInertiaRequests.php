@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -39,6 +40,9 @@ class HandleInertiaRequests extends Middleware
                     'subscribed' => $request->user()->subscribed('prod_RRxWAeh2UK6qtl'),
                     'subscribed_to_monthly' => $request->user()->subscribedToPrice('price_1QZ3biDgwQ2kaUkEaEyAxWbH', 'prod_RRxWAeh2UK6qtl'),
                     'subscribed_to_yearly' => $request->user()->subscribedToPrice('price_1QZ3bEDgwQ2kaUkE5yC5gqO0', 'prod_RRxWAeh2UK6qtl'),
+                    'permissions' => [
+                      'create_posts' => $request->user()->can('create', Post::class),
+                    ],
                 ] : null,
             ],
         ];

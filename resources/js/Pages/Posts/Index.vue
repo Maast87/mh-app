@@ -3,7 +3,6 @@
     import Layout from "@/Pages/Shared/Layout.vue";
     import {provide} from "vue";
     import Pagination from "@/Components/Pagination.vue";
-    import {formatDistance, parseISO} from "date-fns";
     import {relativeDate} from "@/Utilities/date.js";
 
     const breadcrumbs = [
@@ -27,7 +26,7 @@
 
         <ul class="divide-y">
             <li v-for="post in posts.data" :key="post.id">
-                <Link :href="route('posts.show', post.id)" class="group block px-2 py-4">
+                <Link :href="post.routes.show" class="group block px-2 py-4">
                     <span class="group-hover:text-red-700 font-bold text-header_s">{{ post.title }}</span>
                     <p class="text-base ">{{ formattedDate(post) }} ago by {{ post.user.name }}</p>
                 </Link>

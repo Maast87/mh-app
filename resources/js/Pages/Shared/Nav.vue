@@ -5,7 +5,7 @@
     import PopoverResultaten from "../../Components/Popovers/PopoverResultaten.vue";
     import PopoverOndersteuning from "../../Components/Popovers/PopoverOndersteuning.vue";
     import PopoverProfiel from "../../Components/Popovers/PopoverProfiel.vue";
-    import {useTheme} from "../../../composables/useTheme";
+    import {useTheme} from "@/Utilities/composables/useTheme";
     import DarkModeToggle from "@/Components/DarkModeToggle.vue";
     import ButtonTwo from "@/Components/Buttons/ButtonTwo.vue";
     import ButtonSix from "@/Components/Buttons/ButtonSix.vue";

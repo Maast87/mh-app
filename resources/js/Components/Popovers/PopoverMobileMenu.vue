@@ -2,7 +2,7 @@
     import { ref, defineProps, defineEmits } from "vue";
     import { Link } from "@inertiajs/vue3";
     import { useMenuStore } from '../../stores/menuItems.js';
-    import {useTheme} from "../../../composables/useTheme";
+    import {useTheme} from "@/Utilities/composables/useTheme";
 
     defineProps({
         isOpen: { type: Boolean, required: true },

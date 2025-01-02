@@ -2,6 +2,7 @@
     import Nav from "@/Pages/Shared/Nav.vue";
     import Breadcrumb from "@/Pages/Shared/Breadcrumb.vue";
     import Footer from "@/Pages/Shared/Footer.vue";
+    import ConfirmationModal from "@/Components/Modals/ConfirmationModal.vue";
 
 </script>
 
@@ -23,5 +24,7 @@
                 <Footer />
             </div>
         </div>
+
+        <ConfirmationModal />
     </section>
 </template>

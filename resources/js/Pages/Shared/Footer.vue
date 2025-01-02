@@ -1,6 +1,6 @@
 <script setup>
     import {Link} from "@inertiajs/vue3";
-    import {useTheme} from "../../../composables/useTheme";
+    import {useTheme} from "@/Utilities/composables/useTheme";
 
     const {dark} = useTheme();
 

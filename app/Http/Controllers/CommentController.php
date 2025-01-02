@@ -22,7 +22,7 @@ class CommentController extends Controller
             ->post()->associate($post)
             ->save();
 
-        return to_route('posts.show', $post);
+        return redirect($post->showRoute());
     }
 
     /**
@@ -36,7 +36,7 @@ class CommentController extends Controller
 
         $comment->update($data);
 
-        return to_route('posts.show', ['post' => $comment->post_id, 'page' => $request->query('page')]);
+        return redirect($comment->post->showRoute(['page' => $request->query('page')]));
     }
 
     /**
@@ -44,12 +44,10 @@ class CommentController extends Controller
      */
     public function destroy(Request $request, Comment $comment)
     {
-        // Use Gate to authorize the action
         Gate::authorize('delete', $comment);
 
-        // If authorization passes, proceed with deletion
         $comment->delete();
 
-        return to_route('posts.show', ['post' => $comment->post_id, 'page' => $request->query('page')]);
+        return redirect($comment->post->showRoute(['page' => $request->query('page')]));
     }
 }

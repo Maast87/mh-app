@@ -43,11 +43,6 @@
         { value: 'Iets anders', label: 'Iets anders' },
     ];
 
-    // const submit = () => {
-    //     form.post(route('registreren'), {
-    //         onFinish: () => form.reset('password', 'password_confirmation'),
-    //     });
-    // };
 </script>
 
 <template>

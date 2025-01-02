@@ -10,7 +10,7 @@
         },
         allowSpinner: {
             type: Boolean,
-            default: true,
+            default: false,
         },
     });
 
