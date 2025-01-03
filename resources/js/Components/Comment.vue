@@ -14,7 +14,8 @@
 </script>
 
 <template>
-    <p class="text-base font-medium break-all">{{ comment.body }}</p>
+
+    <div class="mt-1 prose prose-sm max-w-none" v-html="comment.html" />
     <p class="text-xs">By {{ comment.user.name }}, {{ relativeDate(comment.created_at) }} ago</p>
     <div class="flex justify-end gap-x-2 mt-4 empty:hidden">
         <form v-if="comment.can?.update" @submit.prevent="$emit('edit', comment.id)">

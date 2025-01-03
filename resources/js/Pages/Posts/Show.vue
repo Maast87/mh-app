@@ -7,10 +7,11 @@
     import Comment from "@/Components/Comment.vue";
     import InputLabel from "@/Components/InputLabel.vue";
     import ButtonOne from "@/Components/Buttons/ButtonOne.vue";
-    import Textarea from "@/Components/Textarea.vue";
     import InputError from "@/Components/InputError.vue";
     import Modal from "@/Components/Modals/ModalLayout.vue";
     import {useConfirm} from "@/Utilities/composables/useComfirm.js";
+    import MarkdownEditor from "@/Components/MarkdownEditor.vue";
+    import Pill from "@/Components/Pill.vue";
 
     const breadcrumbs = [
         { label: "home" },
@@ -104,12 +105,14 @@
     <Head :title="post.title" />
 
     <Layout>
+        <div class="flex">
+            <Pill :href="route('posts.index', {topics: post.topic.slug})">{{ post.topic.name }}</Pill>
+        </div>
+
         <h1 class="text-header_s">{{ post.title }}</h1>
         <p class="text-base">{{ formattedDate }} ago by {{ post.user.name }}</p>
 
-        <article class="mt-4">
-            <pre class="whitespace-pre-wrap text-base font-sans">{{ post.body }}</pre>
-        </article>
+        <article class="mt-4 prose prose-sm max-w-none" v-html="post.html" />
 
         <div class="mt-12">
             <h2 class="text-header_s">Comments</h2>
@@ -117,7 +120,7 @@
             <form v-if="$page.props.auth.user" @submit.prevent="() => commentIdBeingEdited ? updateComment() : addComment()">
                 <div>
                     <InputLabel for="body" class="sr-only">Comment</InputLabel>
-                    <Textarea ref="commentTextAreaRef" id="body" v-model="commentForm.body" rows="4" placeholder="er was eens..." class="mt-4" />
+                    <MarkdownEditor ref="commentTextAreaRef" id="body" v-model="commentForm.body" placeholder="er was eens..." editorClass="min-h-[160px]" />
                     <InputError :message="commentForm.errors.body" />
                 </div>
                 <div class="flex mt-4 gap-x-2">

@@ -72,7 +72,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 // Forum public routes
-Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/{topic?}', [PostController::class, 'index'])->name('posts.index');
 Route::get('/posts/{post}/{slug}', [PostController::class, 'show'])
     ->where('slug', '.*')
     ->name('posts.show');

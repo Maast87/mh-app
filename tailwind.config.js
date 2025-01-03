@@ -109,6 +109,7 @@ export default {
 
     plugins: [
         forms,
+        require('@tailwindcss/typography'),
         plugin(({ addBase, theme }) => {
             addBase({
                 html: { color: theme("colors.blue-800") },
