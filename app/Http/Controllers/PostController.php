@@ -65,21 +65,22 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $request, Post $post, $slug)
+    public function show(Request $request, Post $post)
     {
-        $correctSlug = Str::slug($post->title);
-        if ($slug !== $correctSlug) {
-            return redirect()->route('posts.show', [
-                'post' => $post->id,
-                'slug' => $correctSlug,
-            ], 301);
+        if (! Str::endsWith($post->showRoute(), $request->path())) {
+            return redirect($post->showRoute($request->query()), status: 301);
         }
 
         $post->load('user', 'topic');
 
         return inertia('Posts/Show', [
-            'post' => fn () => PostResource::make($post),
-            'comments' => fn () => CommentResource::collection($post->comments()->with('user')->latest()->latest('id')->paginate(10)),
+            'post' => fn () => PostResource::make($post)->withLikePermission(),
+            'comments' => function () use ($post) {
+                $commentResource = CommentResource::collection($post->comments()->with('user')->latest()->latest('id')->paginate(10));
+                $commentResource->collection->transform(fn ($resource) => $resource->withLikePermission());
+
+                return $commentResource;
+            },
         ]);
     }
 
