@@ -6,14 +6,9 @@ use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\EnsureUserIsSubscribed;
-use App\Http\Resources\CommentResource;
-use App\Http\Resources\PostResource;
-use App\Http\Resources\UserResource;
-use App\Models\Post;
-use App\Models\User;
-use App\Models\Comment;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Http\Request;
 
 require __DIR__.'/auth.php';
 
@@ -35,7 +30,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profiel', function () { return Inertia::render('Profiel/Profiel'); });
     Route::get('/profiel/instellingen', function () { return Inertia::render('Profiel/ProfielInstellingen'); });
     Route::patch('/profiel/instellingen', [ProfileController::class, 'update'])->name('profile.update');
-    Route::get('/profiel/lidmaatschap', function () { return Inertia::render('Profiel/ProfielLidmaatschap'); });
+    Route::get('/profiel/lidmaatschap', function () { return Inertia::render('Profiel/ProfielLidmaatschap', ['pricing' => config('stripe.prices')]); });
     Route::get('/profiel/resultaten', function () { return Inertia::render('Profiel/ProfielResultaten'); });
     Route::get('/profiel/resultaten/doelen', function () { return Inertia::render('Profiel/ProfielResultatenDoelen'); });
     Route::get('/profiel/resultaten/antwoorden', function () { return Inertia::render('Profiel/ProfielResultatenAntwoorden'); });
@@ -50,13 +45,17 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 // Checkout routes
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/word-lid', function () { return Inertia::render('Checkout/Subscribe'); })->middleware(['auth', 'verified'])->name('subscribe');
+    Route::get('/word-lid', function () { return Inertia::render('Profiel/ProfielLidmaatschap', ['pricing' => config('stripe.prices')]); })->name('subscribe');
     Route::get('/checkout/{plan?}', CheckoutController::class)->middleware(['auth', 'verified'])->name('checkout');
     Route::get('/dankjewel', function () { return Inertia::render('Checkout/Dankjewel'); })->middleware(['auth', 'verified'])->name('success');
+    Route::get('/billing-portal', function (Request $request) {
+        return $request->user()->redirectToBillingPortal('http://mh-app.test/profiel/lidmaatschap');
+    });
 });
 
 // Me-learning routes
 Route::get('/me-learning', function () { return Inertia::render('Me-learning/MeLearning'); });
+
 Route::middleware(['auth', 'verified', EnsureUserIsSubscribed::class])->group(function () {
     Route::get('/me-learning/les', function () { return Inertia::render('Me-learning/Les'); });
     Route::get('/me-learning/les1', function () { return Inertia::render('Me-learning/Les'); });
@@ -81,4 +80,3 @@ Route::get('/posts/{topic?}', [PostController::class, 'index'])->name('posts.ind
 Route::get('/posts/{post}/{slug}', [PostController::class, 'show'])
     ->where('slug', '.*')
     ->name('posts.show');
-

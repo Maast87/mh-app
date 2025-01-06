@@ -30,8 +30,8 @@
                 </div>
             </div>
             <div class="flex flex-col justify-center gap-y-2 pt-5 ">
-                <button class="button-four">Volgen</button>
-                <!--                    <button class="button-four">Ontvolgen</button>-->
+<!--                <button class="button-four">Volgen</button>-->
+<!--                <button class="button-four">Ontvolgen</button>-->
                 <button class="button-four">Stuur bericht</button>
                 <button class="button-four">Melden</button>
             </div>

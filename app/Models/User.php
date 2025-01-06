@@ -24,6 +24,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'tag_name',
         'password',
     ];
 
@@ -40,6 +41,7 @@ class User extends Authenticatable
     protected $visible = [
         'id',
         'name',
+        'tag_name',
         'email',
         'updated_at'
     ];

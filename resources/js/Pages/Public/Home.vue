@@ -1,16 +1,14 @@
 <script setup>
     import Layout from "../Shared/Layout.vue";
-    import { Head, Link } from "@inertiajs/vue3";
+    import { Head } from "@inertiajs/vue3";
     import GradientHero from "../../Components/PageLayoutElements/GradientHero.vue";
     import DarkblueElement from "../../Components/PageLayoutElements/DarkblueElement.vue";
-    import GradientWhiteElement from "@/Components/PageLayoutElements/GradientWhiteElement.vue";
-    import GradientElement from "@/Components/PageLayoutElements/GradientElement.vue";
     import {provide, ref} from "vue";
     import ButtonThree from "@/Components/Buttons/ButtonThree.vue";
     import ButtonFour from "@/Components/Buttons/ButtonFour.vue";
     import ButtonSix from "@/Components/Buttons/ButtonSix.vue";
     import DefaultModal from "@/Components/Modals/DefaultModal.vue";
-    import ButtonOne from "@/Components/Buttons/ButtonOne.vue";
+    import PricingCards from "@/Pages/Shared/PricingCards.vue";
 
     const breadcrumbs = [
         { label: "  home" }
@@ -59,170 +57,9 @@
                     </div>
 
                     <h2 id="prijzen" class="text-header_m text-gray-100 text-center pb-12 pt-20">Sluit je aan bij <span class="gradient-text">Mental Hygiene</span></h2>
-                    <GradientElement class="flex gap-x-4 gap-y-4 w-full">
-                            <GradientWhiteElement class="flex gap-y-6 h-fit text-blue_700_gray_100">
-                                <div class="flex flex-col gap-y-3">
-                                    <p class="text-header_s">Starter account</p>
-                                    <p class="text-header_m leading-4">€0,-<span class="text-base"> voor altijd</span></p>
-                                    <p class="text-base font-medium">Je hebt:</p>
-                                    <div class="flex items-center gap-x-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="var(--mh-green-100)"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            class="size-5 ml-2"
-                                        >
-                                            <path
-                                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            />
-                                        </svg>
-                                        <p class="text-base">Toegang tot het Mental Hygiene Platform</p>
-                                    </div>
-                                    <div class="flex items-center gap-x-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="var(--mh-green-100)"
-                                            viewBox="0 0 24 24"
-                                            stroke-width="2"
-                                            class="size-5 ml-2"
-                                        >
-                                            <path
-                                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            />
-                                        </svg>
-                                        <p class="text-base">Toegang tot de zelfchecks</p>
-                                    </div>
-                                    <p class="text-base font-medium pt-2 border border-0 border-t border-blue-700-gray-100">Aanvullend op het platform te bestellen</p>
-                                    <div class="flex items-center gap-x-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 24 24"
-                                            fill="var(--mh-blue-100)"
-                                            class="size-5 ml-2"
-                                        >
-                                            <path
-                                                fill-rule="evenodd"
-                                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-                                                clip-rule="evenodd"
-                                            />
-                                        </svg>
-                                        <p class="text-base">Premium lidmaatschap voor toegang tot de me-learning (€19,99 per maand)</p>
-                                    </div>
-                                    <div class="flex items-center gap-x-2">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            viewBox="0 0 24 24"
-                                            fill="var(--mh-blue-100)"
-                                            class="size-5 ml-2"
-                                        >
-                                            <path
-                                                fill-rule="evenodd"
-                                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-                                                clip-rule="evenodd"
-                                            />
-                                        </svg>
-                                        <p class="text-base">1-op-1 coaching voor als je vastloopt (€74,99 per 60 minuten)</p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <ButtonOne href="/registreren" title="Maak gratis een account" />
-                                </div>
-                            </GradientWhiteElement>
-                            <GradientWhiteElement class="text-blue_700_gray_100">
-                                <p class="text-header_s">Premium lidmaatschap*</p>
-                                <p class="text-header_m leading-4">€19,99<span class="text-base">/mnd**</span></p>
-                                <p class="text-base font-medium">Je hebt:</p>
-                                <div class="flex items-center gap-x-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="var(--mh-green-100)"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="2"
-                                        class="size-5 ml-2"
-                                    >
-                                        <path
-                                            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        />
-                                    </svg>
-                                    <p class="text-base">Toegang tot het Mental Hygiene Platform</p>
-                                </div>
-                                <div class="flex items-center gap-x-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="var(--mh-green-100)"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="2"
-                                        class="size-5 ml-2"
-                                    >
-                                        <path
-                                            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        />
-                                    </svg>
-                                    <p class="text-base">Toegang tot de zelfchecks</p>
-                                </div>
-                                <div class="flex items-center gap-x-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="var(--mh-green-100)"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="2"
-                                        class="size-5 ml-2"
-                                    >
-                                        <path
-                                            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        />
-                                    </svg>
-                                    <p class="text-base">Toegang tot de Me-learning</p>
-                                </div>
-                                <div class="flex items-center gap-x-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="var(--mh-green-100)"
-                                        viewBox="0 0 24 24"
-                                        stroke-width="2"
-                                        class="size-5 ml-2"
-                                    >
-                                        <path
-                                            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm13.36-1.814a.75.75 0 1 0-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 0 0-1.06 1.06l2.25 2.25a.75.75 0 0 0 1.14-.094l3.75-5.25Z"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                        />
-                                    </svg>
-                                    <p class="text-base">Toegang tot relevante supportgroepen</p>
-                                </div>
-                                <p class="text-base font-medium pt-2 border border-0 border-t border-blue-700-gray-100">Aanvullend op het platform te bestellen</p>
-                                <div class="flex items-center gap-x-2">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        fill="var(--mh-blue-100)"
-                                        class="size-5 ml-2"
-                                    >
-                                        <path
-                                            fill-rule="evenodd"
-                                            d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12Zm8.706-1.442c1.146-.573 2.437.463 2.126 1.706l-.709 2.836.042-.02a.75.75 0 0 1 .67 1.34l-.04.022c-1.147.573-2.438-.463-2.127-1.706l.71-2.836-.042.02a.75.75 0 1 1-.671-1.34l.041-.022ZM12 9a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
-                                            clip-rule="evenodd"
-                                        />
-                                    </svg>
-                                    <p class="text-base">1-op-1 coaching voor als je vastloopt (€74,99 per 60 minuten)</p>
-                                </div>
-                                <div class="flex flex-col gap-y-1 pt-2 border border-0 border-t border-blue-700-gray-100">
-                                    <p class="text-base italic">* om dit lidmaatschap af te sluiten heb je een Starter account nodig.</p>
-                                    <p class="text-base italic">** je kunt starten en stoppen met het Premium lidmaatschap wanneer jij wil.</p>
-                                </div>
-                            </GradientWhiteElement>
-                    </GradientElement>
+
+                    <PricingCards />
+
                 </DarkblueElement>
 
                 <div class="flex flex-col items-center pt-16 pb-10">
