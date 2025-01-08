@@ -1,6 +1,6 @@
 <script setup>
     import Layout from "../Shared/Layout.vue";
-    import {Head, Link} from "@inertiajs/vue3";
+    import {Head} from "@inertiajs/vue3";
     import {provide} from "vue";
     import GradientHero from "@/Components/PageLayoutElements/GradientHero.vue";
     import DarkblueElement from "@/Components/PageLayoutElements/DarkblueElement.vue";

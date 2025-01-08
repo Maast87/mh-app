@@ -4,12 +4,19 @@
     import ProfileLayout from "@/Pages/Shared/ProfileLayout.vue";
     import {provide} from "vue";
     import ButtonOne from "@/Components/Buttons/ButtonOne.vue";
+    import {useCurrentUser} from "@/Utilities/composables/useCurrentUser.js";
 
     const breadcrumbs = [
         { label: "home", href: "/" },
         { label: "profiel" }
     ];
     provide('breadcrumbs', breadcrumbs);
+
+    const props = defineProps({
+        requestedUserId: String,
+    });
+
+    const {isAuthenticatedUser, authenticatedUserId } = useCurrentUser(props.requestedUserId);
 </script>
 
 <template>
@@ -17,7 +24,7 @@
         <Head title="Profiel" />
 
         <div class="flex flex-col w-full">
-            <ProfileLayout />
+            <ProfileLayout :requestedUserId="requestedUserId" :isAuthenticatedUser="isAuthenticatedUser" />
             <div class="flex w-full gap-x-4 p-6 bg-gray-100 rounded-xl">
                 <div class="w-full">
                     <div>

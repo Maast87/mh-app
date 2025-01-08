@@ -34,18 +34,15 @@ class RegisteredUserController extends Controller
             'name' => 'required|string|max:255',
             'tag_name' => 'required|string|max:255|lowercase',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()->min(10)->mixedCase()->numbers()],
         ]);
 
-        // Process the name field
         $name = $this->sanitizeName($request->name);
 
-        // Generate tag_name from the processed name
         $tagName = $this->generateTagNameFromName($name);
 
-        // Create the user with sanitized name and generated tag_name
         $user = User::create([
-            'name' => $name,  // Use sanitized name
+            'name' => $name,
             'tag_name' => $tagName,
             'email' => $request->email,
             'password' => Hash::make($request->password),

@@ -4,6 +4,7 @@
     import {provide} from "vue";
     import ProfileLayout from "@/Pages/Shared/ProfileLayout.vue";
     import PricingCards from "@/Pages/Shared/PricingCards.vue";
+    import {useCurrentUser} from "@/Utilities/composables/useCurrentUser.js";
 
     const breadcrumbs = [
         { label: "home", href: "/" },
@@ -13,8 +14,11 @@
     provide('breadcrumbs', breadcrumbs);
 
     const props = defineProps({
-        pricing: Object
+        pricing: Object,
+        requestedUserId: String,
     });
+
+    const {isAuthenticatedUser, authenticatedUserId } = useCurrentUser(props.requestedUserId);
 </script>
 
 <template>
@@ -22,7 +26,7 @@
         <Head title="Profiel" />
 
         <div class="flex flex-col w-full">
-            <ProfileLayout />
+            <ProfileLayout :requestedUserId="requestedUserId" :isAuthenticatedUser="isAuthenticatedUser" />
 
             <PricingCards :pricing="pricing" />
         </div>

@@ -1,5 +1,11 @@
 <script setup>
-    import {Link} from "@inertiajs/vue3";
+    import { Link } from "@inertiajs/vue3";
+
+    const props = defineProps({
+        requestedUserId: String,
+        isAuthenticatedUser: Boolean,
+    });
+
 </script>
 
 <template>
@@ -25,54 +31,58 @@
                         {{ $page.props.auth.user.name }}
                     </p>
                     <p>
-                        @johndoe
+                        {{ $page.props.auth.user.tag_name }}
                     </p>
                 </div>
             </div>
             <div class="flex flex-col justify-center gap-y-2 pt-5 ">
-<!--                <button class="button-four">Volgen</button>-->
-<!--                <button class="button-four">Ontvolgen</button>-->
-                <button class="button-four">Stuur bericht</button>
-                <button class="button-four">Melden</button>
+                <button v-if="! isAuthenticatedUser" class="button-four">Stuur bericht</button>
+                <button v-if="! isAuthenticatedUser" class="button-four">Melden</button>
             </div>
         </div>
     </div>
     <div class="flex w-full gap-x-2 py-4 bg-gray-200">
-        <Link href="/profiel">
+        <Link :href="`/profiel/${requestedUserId}/overzicht`">
             <button
                 :class="{
-                    'button-two-current': $page.url === '/profiel',
-                    'button-two': $page.url !== '/profiel',
+                    'button-two-current': $page.component === `Profiel/ProfielOverzicht`,
+                    'button-two': $page.component !== `Profiel/ProfielOverzicht`,
                 }"
             >
                 Overzicht
             </button>
         </Link>
-        <Link href="/profiel/resultaten">
+        <Link :href="`/profiel/${requestedUserId}/resultaten`">
             <button
                 :class="{
-                    'button-two-current': $page.url === '/profiel/resultaten',
-                    'button-two': $page.url !== '/profiel/resultaten',
+                    'button-two-current': $page.component === `Profiel/ProfielResultaten`,
+                    'button-two': $page.component !== `Profiel/ProfielResultaten`,
                 }"
             >
                 Resultaten
             </button>
         </Link>
-        <Link href="/profiel/instellingen">
+        <Link
+            v-if="isAuthenticatedUser"
+            :href="`/profiel/${requestedUserId}/instellingen`"
+        >
             <button
                 :class="{
-                    'button-two-current': $page.url === '/profiel/instellingen',
-                    'button-two': $page.url !== '/profiel/instellingen',
+                    'button-two-current': $page.component === `Profiel/ProfielInstellingen`,
+                    'button-two': $page.component !== `Profiel/ProfielInstellingen`,
                 }"
             >
                 Instellingen
             </button>
         </Link>
-        <Link href="/profiel/lidmaatschap">
+        <Link
+            v-if="isAuthenticatedUser"
+            :href="`/profiel/${requestedUserId}/lidmaatschap`"
+        >
             <button
                 :class="{
-                    'button-two-current': $page.url === '/profiel/lidmaatschap',
-                    'button-two': $page.url !== '/profiel/lidmaatschap',
+                    'button-two-current': $page.component === `Profiel/ProfielLidmaatschap`,
+                    'button-two': $page.component !== `Profiel/ProfielLidmaatschap`,
                 }"
             >
                 Lidmaatschap
@@ -80,7 +90,3 @@
         </Link>
     </div>
 </template>
-
-<style scoped>
-
-</style>

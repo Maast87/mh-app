@@ -3,6 +3,7 @@
     import ProfileLayout from "@/Pages/Shared/ProfileLayout.vue";
     import Layout from "@/Pages/Shared/Layout.vue";
     import {provide} from "vue";
+    import {useCurrentUser} from "@/Utilities/composables/useCurrentUser.js";
 
     const breadcrumbs = [
         { label: "home", href: "/" },
@@ -11,6 +12,12 @@
         { label: "achievements" }
     ];
     provide('breadcrumbs', breadcrumbs);
+
+    const props = defineProps({
+        requestedUserId: String,
+    });
+
+    const {isAuthenticatedUser, authenticatedUserId } = useCurrentUser(props.requestedUserId);
 </script>
 
 <template>
@@ -18,7 +25,7 @@
         <Head tag="Achievements" />
 
         <div class="flex flex-col w-full">
-            <ProfileLayout />
+            <ProfileLayout :requestedUserId="requestedUserId" :isAuthenticatedUser="isAuthenticatedUser" />
             <p>Pagina Mijn Achievements</p>
         </div>
     </Layout>

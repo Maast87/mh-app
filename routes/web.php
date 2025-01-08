@@ -4,13 +4,14 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfileAvatarController;
 use App\Http\Middleware\EnsureUserIsSubscribed;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 
 require __DIR__.'/auth.php';
+require __DIR__.'/profile.php';
 
 // Guest only routes
 Route::middleware(['guest'])->group(function () {
@@ -27,15 +28,6 @@ Route::get('/voorwaarden', function () { return Inertia::render('Public/Voorwaar
 
 // Logged in routes
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/profiel', function () { return Inertia::render('Profiel/Profiel'); });
-    Route::get('/profiel/instellingen', function () { return Inertia::render('Profiel/ProfielInstellingen'); });
-    Route::patch('/profiel/instellingen', [ProfileController::class, 'update'])->name('profile.update');
-    Route::get('/profiel/lidmaatschap', function () { return Inertia::render('Profiel/ProfielLidmaatschap', ['pricing' => config('stripe.prices')]); });
-    Route::get('/profiel/resultaten', function () { return Inertia::render('Profiel/ProfielResultaten'); });
-    Route::get('/profiel/resultaten/doelen', function () { return Inertia::render('Profiel/ProfielResultatenDoelen'); });
-    Route::get('/profiel/resultaten/antwoorden', function () { return Inertia::render('Profiel/ProfielResultatenAntwoorden'); });
-    Route::get('/profiel/resultaten/statistieken', function () { return Inertia::render('Profiel/ProfielResultatenStatistieken'); });
-    Route::get('/profiel/resultaten/achievements', function () { return Inertia::render('Profiel/ProfielResultatenAchievements'); });
     Route::get('/ondersteuning', function () { return Inertia::render('Public/Ondersteuning'); });
     Route::get('/ondersteuning/supportgroepen', function () { return Inertia::render('Public/Supportgroepen'); });
     Route::get('/ondersteuning/coaching', function () { return Inertia::render('Public/Coaching'); });
@@ -80,3 +72,4 @@ Route::get('/posts/{topic?}', [PostController::class, 'index'])->name('posts.ind
 Route::get('/posts/{post}/{slug}', [PostController::class, 'show'])
     ->where('slug', '.*')
     ->name('posts.show');
+
