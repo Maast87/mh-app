@@ -9,6 +9,7 @@ import GradientElement from "@/Components/PageLayoutElements/GradientElement.vue
 import GradientWhiteElement from "@/Components/PageLayoutElements/GradientWhiteElement.vue";
 import ButtonOne from "@/Components/Buttons/ButtonOne.vue";
 import { Switch } from '@headlessui/vue'
+import PasswordInput from '@/Components/PasswordInput.vue';
 
 const form = useForm({
     name: '',
@@ -24,9 +25,6 @@ const passwordValidations = ref({
     hasUppercase: false,
     hasNumber: false
 });
-
-const showPassword = ref(false);
-const showPasswordConfirmation = ref(false);
 
 watch(() => form.password, (newPassword) => {
     passwordValidations.value.minLength = newPassword.length >= 10;
@@ -62,9 +60,11 @@ const submit = () => {
         return;
     }
 
-    form.post(route('registreren'), {
-        onFinish: () => form.reset('password', 'password_confirmation'),
-    });
+    setTimeout(() => {
+        form.post(route('registreren'), {
+            onFinish: () => form.reset('password', 'password_confirmation'),
+        });
+    }, 450);
 };
 </script>
 
@@ -145,54 +145,13 @@ const submit = () => {
                             <!-- Password field -->
                             <div>
                                 <InputLabel for="password" value="Wachtwoord" class="flex"/>
-                                <div class="flex gap-x-3">
-                                    <div class="flex-1">
-                                        <TextInput
-                                            id="password"
-                                            :type="showPassword ? 'text' : 'password'"
-                                            class="mt-1 block w-full"
-                                            v-model="form.password"
-                                            required
-                                            autocomplete="new-password"
-                                        />
-                                    </div>
-                                    <div>
-                                        <button
-                                            type="button"
-                                            @click="showPassword = !showPassword"
-                                            class="flex items-center justify-center w-[42px] h-[42px] mt-1 bg-gray-300 rounded-lg hover:bg-gray-400 hover:translate-y-[-2px] mh-transition hover:shadow-mh_box_shadow active:translate-y-[0px] active:shadow-mh_box_shadow_off"
-                                        >
-                                            <svg
-                                                v-if="!showPassword"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                class="w-5 h-5"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <path d="M17 10.5C17 8.01472 14.9853 6 12.5 6C10.0147 6 8 8.01472 8 10.5C8 13.9853 10.0147 16 12.5 16C14.9853 16 17 13.9853 17 10.5Z"></path>
-                                                <path d="M1 1L23 23"></path>
-                                            </svg>
-                                            <svg
-                                                v-if="showPassword"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                class="w-5 h-5"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <path d="M3 3C3 3 7 9 12 9C17 9 21 3 21 3"></path>
-                                                <path d="M1 1L23 23"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
+                                <PasswordInput
+                                    v-model="form.password"
+                                    id="password"
+                                    name="password"
+                                    required
+                                    autocomplete="new-password"
+                                />
                                 <InputError class="mt-1.5" :message="form.errors.password"/>
                                 <p class="text-sm mt-1.5 text-blue_700_gray_100">
                                     Wachtwoord checklist:
@@ -236,54 +195,13 @@ const submit = () => {
                             <!-- Password Confirmation field -->
                             <div>
                                 <InputLabel for="password_confirmation" value="Bevestig wachtwoord"/>
-                                <div class="flex gap-x-3">
-                                    <div class="flex-1">
-                                        <TextInput
-                                            id="password_confirmation"
-                                            :type="showPasswordConfirmation ? 'text' : 'password'"
-                                            class="mt-1 block w-full"
-                                            v-model="form.password_confirmation"
-                                            required
-                                            autocomplete="new-password"
-                                        />
-                                    </div>
-                                    <div>
-                                        <button
-                                            type="button"
-                                            @click="showPasswordConfirmation = !showPasswordConfirmation"
-                                            class="flex items-center justify-center w-[42px] h-[42px] mt-1 bg-gray-300 rounded-lg hover:bg-gray-400 hover:translate-y-[-2px] mh-transition hover:shadow-mh_box_shadow active:translate-y-[0px] active:shadow-mh_box_shadow_off"
-                                        >
-                                            <svg
-                                                v-if="!showPasswordConfirmation"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                class="w-5 h-5"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <path d="M17 10.5C17 8.01472 14.9853 6 12.5 6C10.0147 6 8 8.01472 8 10.5C8 13.9853 10.0147 16 12.5 16C14.9853 16 17 13.9853 17 10.5Z"></path>
-                                                <path d="M1 1L23 23"></path>
-                                            </svg>
-                                            <svg
-                                                v-if="showPasswordConfirmation"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                viewBox="0 0 24 24"
-                                                fill="none"
-                                                stroke="currentColor"
-                                                class="w-5 h-5"
-                                                stroke-width="2"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                            >
-                                                <path d="M3 3C3 3 7 9 12 9C17 9 21 3 21 3"></path>
-                                                <path d="M1 1L23 23"></path>
-                                            </svg>
-                                        </button>
-                                    </div>
-                                </div>
+                                <PasswordInput
+                                    v-model="form.password_confirmation"
+                                    id="password_confirmation"
+                                    name="password_confirmation"
+                                    required
+                                    autocomplete="new-password"
+                                />
                                 <InputError class="mt-1.5" :message="form.errors.password_confirmation"/>
                             </div>
 
@@ -310,7 +228,11 @@ const submit = () => {
                             <InputError class="mt-1.5" :message="form.errors.terms_accepted"/>
 
                             <div class="flex flex-col items-center justify-center gap-y-2">
-                                <ButtonOne title="Maak mijn gratis account" :allowSpinner="true"/>
+                                <ButtonOne 
+                                    title="Maak mijn gratis account" 
+                                    :allowSpinner="true"
+                                    :disableAfterClick="true"
+                                />
                                 <Link
                                     :href="route('login')"
                                     class="rounded-md text-base font-medium link-underline-green focus:ring-2 focus:ring-blue-700 focus:ring-offset-2"

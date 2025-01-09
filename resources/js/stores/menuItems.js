@@ -1,21 +1,19 @@
 import { defineStore } from 'pinia';
-import {usePage} from "@inertiajs/vue3";
-import {computed} from "vue";
-
-const page = usePage();
-
-const requestedUserId = computed(() => {
-    return page.props.auth.user.id;
-});
+import { usePage } from "@inertiajs/vue3";
+import { computed } from "vue";
 
 export const useMenuStore = defineStore('menu', {
     state: () => ({
-        profielMenuItems: [
-            {
-                name: 'Mijn profiel',
-                description: 'Alles over @username',
-                href: `/profiel/${requestedUserId.value}/overzicht`,
-                icon: `
+        profielMenuItems: computed(() => {
+            const page = usePage();
+            const userId = page.props.auth?.user?.id;
+
+            return [
+                {
+                    name: 'Mijn profiel',
+                    description: 'Alles over @username',
+                    href: `/profiel/${userId}/overzicht`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -31,12 +29,12 @@ export const useMenuStore = defineStore('menu', {
                     </svg>
                 </div>
             `,
-            },
-            {
-                name: 'Al mijn resultaten',
-                description: 'Bekijk al jouw resultaten in één keer',
-                href: `/profiel/${requestedUserId.value}/resultaten`,
-                icon: `
+                },
+                {
+                    name: 'Al mijn resultaten',
+                    description: 'Bekijk al jouw resultaten in één keer',
+                    href: `/profiel/${userId}/resultaten`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -52,12 +50,12 @@ export const useMenuStore = defineStore('menu', {
                     </svg>
                 </div>
             `,
-            },
-            {
-                name: 'Instellingen',
-                description: 'Stel alles in zoals jij dat wil',
-                href: `/profiel/${requestedUserId.value}/instellingen`,
-                icon: `
+                },
+                {
+                    name: 'Instellingen',
+                    description: 'Stel alles in zoals jij dat wil',
+                    href: `/profiel/${userId}/instellingen`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -72,12 +70,12 @@ export const useMenuStore = defineStore('menu', {
                     </svg>
                 </div>
             `,
-            },
-            {
-                name: 'Lidmaatschap',
-                description: 'Alles over jouw lidmaatschap',
-                href: `/profiel/${requestedUserId.value}/lidmaatschap`,
-                icon: `
+                },
+                {
+                    name: 'Lidmaatschap',
+                    description: 'Alles over jouw lidmaatschap',
+                    href: `/profiel/${userId}/lidmaatschap`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -112,14 +110,19 @@ export const useMenuStore = defineStore('menu', {
                     </svg>
                 </div>
             `,
-            },
-        ],
-        resultatenMenuItems: [
-            {
-                name: 'Mijn doelen',
-                description: 'De doelen die je hebt gesteld',
-                href: `/profiel/${requestedUserId.value}/resultaten/doelen`,
-                icon: `
+                },
+            ];
+        }),
+        resultatenMenuItems: computed(() => {
+            const page = usePage();
+            const userId = page.props.auth?.user?.id;
+
+            return [
+                {
+                    name: 'Mijn doelen',
+                    description: 'De doelen die je hebt gesteld',
+                    href: `/profiel/${userId}/resultaten/doelen`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -137,12 +140,12 @@ export const useMenuStore = defineStore('menu', {
                     </svg>
                 </div>
             `,
-            },
-            {
-                name: 'Mijn antwoorden',
-                description: 'Beschrijving komt hier',
-                href: `/profiel/${requestedUserId.value}/resultaten/antwoorden`,
-                icon: `
+                },
+                {
+                    name: 'Mijn antwoorden',
+                    description: 'Beschrijving komt hier',
+                    href: `/profiel/${userId}/resultaten/antwoorden`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -162,12 +165,12 @@ export const useMenuStore = defineStore('menu', {
 
                 </div>
             `,
-            },
-            {
-                name: 'Mijn statistieken',
-                description: 'Beschrijving komt hier',
-                href: `/profiel/${requestedUserId.value}/resultaten/statistieken`,
-                icon: `
+                },
+                {
+                    name: 'Mijn statistieken',
+                    description: 'Beschrijving komt hier',
+                    href: `/profiel/${userId}/resultaten/statistieken`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -183,12 +186,12 @@ export const useMenuStore = defineStore('menu', {
                     </svg>
                 </div>
             `,
-            },
-            {
-                name: 'Mijn achievements',
-                description: 'Beschrijving komt hier',
-                href: `/profiel/${requestedUserId.value}/resultaten/achievements`,
-                icon: `
+                },
+                {
+                    name: 'Mijn achievements',
+                    description: 'Beschrijving komt hier',
+                    href: `/profiel/${userId}/resultaten/achievements`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -210,12 +213,12 @@ export const useMenuStore = defineStore('menu', {
                     </svg>
                 </div>
             `,
-            },
-            {
-                name: 'Al mijn resultaten',
-                description: 'Bekijk al jouw resultaten in één keer',
-                href: `/profiel/${requestedUserId.value}/resultaten`,
-                icon: `
+                },
+                {
+                    name: 'Al mijn resultaten',
+                    description: 'Bekijk al jouw resultaten in één keer',
+                    href: `/profiel/${userId}/resultaten`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -231,8 +234,9 @@ export const useMenuStore = defineStore('menu', {
                     </svg>
                 </div>
             `,
-            },
-        ],
+                },
+            ];
+        }),
         ondersteuningMenuItems: [
             {
                 name: 'Supportgroepen',

@@ -1,5 +1,6 @@
 <script setup>
     import { Link } from "@inertiajs/vue3";
+    import defaultUserImage from '../../../images/mental-hygiene-default-user-image.png';
 
     const props = defineProps({
         requestedUserId: String,
@@ -20,10 +21,21 @@
         <div class="flex w-full justify-between bg-gray-100 rounded-bl-xl rounded-br-xl pb-5 px-5 border border-white border-0 border-r border-l border-b rounded-bl-xl rounded-br-xl ml-[1px] mr-[1px]">
             <div class="flex">
                 <div class="flex items-center justify-center w-[175px] h-[175px] rounded-full bg-gray-100 mt-[-30px] p-1">
-                    <div class="flex items-center justify-center w-full h-full rounded-full bg-gray-400">
-                        <p>
-                            foto
-                        </p>
+                    <div class="flex items-center justify-center w-full h-full rounded-full">
+                        <div v-if="$page.props.auth.user?.avatar" class="w-full h-full">
+                            <img
+                                :src="$page.props.auth.user.avatar"
+                                alt="Profile picture"
+                                class="w-full h-full rounded-full object-cover"
+                            />
+                        </div>
+                        <div v-else class="w-full h-full">
+                            <img
+                                :src="defaultUserImage"
+                                alt="Default profile picture"
+                                class="w-full h-full rounded-full object-cover"
+                            />
+                        </div>
                     </div>
                 </div>
                 <div class="flex flex-col justify-center pl-8">

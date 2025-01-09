@@ -36,8 +36,8 @@
                     </div>
                     <div class="border border-gray-300 bg-gray-100 rounded-lg p-3 mt-[-6px] z-1 relative">
                         <h3 class="text-header_s">Resultaten</h3>
-                        <p>Bekijk al jouw resultaten</p>
-                        <ButtonOne href="/profiel/resultaten" title="Naar resultaten" class="mt-4" />
+                        <p class="mb-4">Bekijk al jouw resultaten</p>
+                        <ButtonOne href="/profiel/resultaten" title="Naar resultaten" />
                     </div>
                 </div>
                 <div class="w-full">
@@ -50,7 +50,7 @@
                     </div>
                     <div class="border border-gray-300 bg-gray-100 rounded-lg p-3 mt-[-6px] z-1 relative">
                         <h3 class="text-header_s">Instellingen</h3>
-                        <p>Bekijk al jouw instellingen</p>
+                        <p class="mb-4">Bekijk al jouw instellingen</p>
                         <ButtonOne href="/profiel/instellingen" title="Naar instellingen" class="mt-4" />
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                     </div>
                     <div class="border border-gray-300 bg-gray-100 rounded-lg p-3 mt-[-6px] z-1 relative">
                         <h3 class="text-header_s">Lidmaatschap</h3>
-                        <p>Bekijk jouw lidmaatschap</p>
+                        <p class="mb-4">Bekijk jouw lidmaatschap</p>
                         <ButtonOne href="/profiel/lidmaatschap" title="Naar lidmaatschap" class="mt-4" />
                     </div>
                 </div>
