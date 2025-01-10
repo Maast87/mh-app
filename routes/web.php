@@ -19,7 +19,7 @@ Route::middleware(['guest'])->group(function () {
 });
 
 // Public routes (split view)
-Route::get('/', function () { return Inertia::render('Public/Home'); })->name('home');
+Route::get('/', function () { return Inertia::render('Public/Home', ['pricing' => config('stripe.prices')]); })->name('home');
 
 // Public routes (static)
 Route::get('/contact', function () { return Inertia::render('Public/Contact'); });
@@ -36,12 +36,18 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 // Checkout routes
+Route::get('/word-lid', function () {
+    if (auth()->check() && auth()->user()->hasVerifiedEmail()) {
+        return Inertia::render('Profiel/ProfielLidmaatschap', ['pricing' => config('stripe.prices')]);
+    }
+    return redirect()->route('home', ['#prijzen']);
+})->name('subscribe');
+
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/word-lid', function () { return Inertia::render('Profiel/ProfielLidmaatschap', ['pricing' => config('stripe.prices')]); })->name('subscribe');
-    Route::get('/checkout/{plan?}', CheckoutController::class)->middleware(['auth', 'verified'])->name('checkout');
-    Route::get('/dankjewel', function () { return Inertia::render('Checkout/Dankjewel'); })->middleware(['auth', 'verified'])->name('success');
+    Route::get('/checkout/{plan?}', CheckoutController::class)->name('checkout');
+    Route::get('/dankjewel', function () { return Inertia::render('Checkout/Dankjewel'); })->name('success');
     Route::get('/billing-portal', function (Request $request) {
-        return $request->user()->redirectToBillingPortal('http://mh-app.test/profiel/lidmaatschap');
+        return $request->user()->redirectToBillingPortal(route('profiel.lidmaatschap', ['tagname' => $request->user()->tag_name]));
     });
 });
 

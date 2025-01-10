@@ -7,23 +7,12 @@
     import ButtonThree from "@/Components/Buttons/ButtonThree.vue";
     import ButtonFour from "@/Components/Buttons/ButtonFour.vue";
     import ButtonSix from "@/Components/Buttons/ButtonSix.vue";
-    import DefaultModal from "@/Components/Modals/DefaultModal.vue";
     import PricingCards from "@/Pages/Shared/PricingCards.vue";
 
     const breadcrumbs = [
         { label: "  home" }
     ];
     provide('breadcrumbs', breadcrumbs);
-
-    const isModalVisible = ref(false);
-
-    const openModal = () => {
-        isModalVisible.value = true;
-    };
-
-    const closeModal = () => {
-        isModalVisible.value = false;
-    };
 
 </script>
 
@@ -58,7 +47,7 @@
 
                     <h2 id="prijzen" class="text-header_m text-gray-100 text-center pb-12 pt-20">Sluit je aan bij <span class="gradient-text">Mental Hygiene</span></h2>
 
-                    <PricingCards />
+                    <PricingCards :pricing="$page.props.pricing" />
 
                 </DarkblueElement>
 
@@ -112,7 +101,7 @@
                         <div id="card">
                             <div class="mb-[-10px] z-0">
                                 <img
-                                    src="../../../images/mental-hygiene-vormgeving-brian-1-op-1-coaching.png"
+                                    src="../../../images/mental-hygiene-vormgeving-brian-support.png"
                                     alt="Mental Hygiene afbeelding me-learning"
                                     class="rounded-tl-xl rounded-tr-xl"
                                 >
@@ -186,25 +175,13 @@
                             </div>
                         </div>
                     </div>
-                    <!-- <div id="modal-trigger" class="flex justify-center mt-10">
-                        <button @click="openModal" class="bg-blue-500 text-white px-4 py-2 rounded">
-                            Open Modal
-                        </button>
+
+                    <div v-if="$page.props.auth.user && !$page.props.auth.user.subscribed">
+                        <p id="prijzen" class="text-header_m text-gray-100 text-center pb-10">Sluit je aan bij <span class="gradient-text">Mental Hygiene</span></p>
+
+                        <PricingCards :pricing="$page.props.pricing" />
                     </div>
 
-                    <DefaultModal :show="isModalVisible" @close="closeModal">
-                        <template #title>
-                            Dit is de titel
-                        </template>
-                        <template #content>
-                            <div>
-                                <p>Dit is een lijn</p>
-                            </div>
-                            <div>
-                                <p>Dit een tweede lijn</p>
-                            </div>
-                        </template>
-                    </DefaultModal> -->
                 </DarkblueElement>
             </div>
         </div>
