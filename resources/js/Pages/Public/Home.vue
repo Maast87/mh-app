@@ -186,7 +186,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="modal-trigger" class="flex justify-center mt-10">
+                    <!-- <div id="modal-trigger" class="flex justify-center mt-10">
                         <button @click="openModal" class="bg-blue-500 text-white px-4 py-2 rounded">
                             Open Modal
                         </button>
@@ -204,7 +204,7 @@
                                 <p>Dit een tweede lijn</p>
                             </div>
                         </template>
-                    </DefaultModal>
+                    </DefaultModal> -->
                 </DarkblueElement>
             </div>
         </div>

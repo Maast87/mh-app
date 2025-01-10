@@ -1,21 +1,19 @@
 import { defineStore } from 'pinia';
-import {usePage} from "@inertiajs/vue3";
-import {computed} from "vue";
-
-const page = usePage();
-
-const requestedUserId = computed(() => {
-    return page.props.auth.user.id;
-});
+import { usePage } from "@inertiajs/vue3";
+import { computed } from "vue";
 
 export const useMenuStore = defineStore('menu', {
     state: () => ({
-        profielMenuItems: [
-            {
-                name: 'Mijn profiel',
-                description: 'Alles over @username',
-                href: `/profiel/${requestedUserId.value}/overzicht`,
-                icon: `
+        profielMenuItems: computed(() => {
+            const page = usePage();
+            const tagname = page.props.auth?.user?.tag_name;
+
+            return [
+                {
+                    name: 'Mijn profiel',
+                    description: 'Alles over @username',
+                    href: `/profiel/${tagname}/overzicht`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -31,12 +29,12 @@ export const useMenuStore = defineStore('menu', {
                     </svg>
                 </div>
             `,
-            },
-            {
-                name: 'Al mijn resultaten',
-                description: 'Bekijk al jouw resultaten in één keer',
-                href: `/profiel/${requestedUserId.value}/resultaten`,
-                icon: `
+                },
+                {
+                    name: 'Al mijn resultaten',
+                    description: 'Bekijk al jouw resultaten in één keer',
+                    href: `/profiel/${tagname}/resultaten`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -52,12 +50,12 @@ export const useMenuStore = defineStore('menu', {
                     </svg>
                 </div>
             `,
-            },
-            {
-                name: 'Instellingen',
-                description: 'Stel alles in zoals jij dat wil',
-                href: `/profiel/${requestedUserId.value}/instellingen`,
-                icon: `
+                },
+                {
+                    name: 'Instellingen',
+                    description: 'Stel alles in zoals jij dat wil',
+                    href: `/profiel/${tagname}/instellingen`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -72,12 +70,12 @@ export const useMenuStore = defineStore('menu', {
                     </svg>
                 </div>
             `,
-            },
-            {
-                name: 'Lidmaatschap',
-                description: 'Alles over jouw lidmaatschap',
-                href: `/profiel/${requestedUserId.value}/lidmaatschap`,
-                icon: `
+                },
+                {
+                    name: 'Lidmaatschap',
+                    description: 'Alles over jouw lidmaatschap',
+                    href: `/profiel/${tagname}/lidmaatschap`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -91,13 +89,13 @@ export const useMenuStore = defineStore('menu', {
                     </svg>
                 </div>
             `,
-            },
-            {
-                name: 'Log uit',
-                description: 'Log uit van het platform',
-                href: '/logout',
-                method: 'POST',
-                icon: `
+                },
+                {
+                    name: 'Log uit',
+                    description: 'Log uit van het platform',
+                    href: '/logout',
+                    method: 'POST',
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -112,14 +110,19 @@ export const useMenuStore = defineStore('menu', {
                     </svg>
                 </div>
             `,
-            },
-        ],
-        resultatenMenuItems: [
-            {
-                name: 'Mijn doelen',
-                description: 'De doelen die je hebt gesteld',
-                href: `/profiel/${requestedUserId.value}/resultaten/doelen`,
-                icon: `
+                },
+            ];
+        }),
+        resultatenMenuItems: computed(() => {
+            const page = usePage();
+            const tagname = page.props.auth?.user?.tag_name;
+
+            return [
+                {
+                    name: 'Mijn doelen',
+                    description: 'De doelen die je hebt gesteld',
+                    href: `/profiel/${tagname}/resultaten/doelen`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -137,12 +140,12 @@ export const useMenuStore = defineStore('menu', {
                     </svg>
                 </div>
             `,
-            },
-            {
-                name: 'Mijn antwoorden',
-                description: 'Beschrijving komt hier',
-                href: `/profiel/${requestedUserId.value}/resultaten/antwoorden`,
-                icon: `
+                },
+                {
+                    name: 'Mijn antwoorden',
+                    description: 'Beschrijving komt hier',
+                    href: `/profiel/${tagname}/resultaten/antwoorden`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -152,7 +155,7 @@ export const useMenuStore = defineStore('menu', {
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 128 128"
                     >
-                      <path d="M93.87,62.81c-1.75,0-3.2,1.45-3.2,3.2v17.08c0,7.65-6.24,13.88-13.88,13.88h-34.17c-7.65,0-13.88-6.24-13.88-13.88v-34.17c0-7.65,6.24-13.88,13.88-13.88h17.08c1.75,0,3.2-1.45,3.2-3.2s-1.45-3.2-3.2-3.2h-17.08c-11.19,0-20.29,9.1-20.29,20.29v34.17c0,11.19,9.1,20.29,20.29,20.29h34.17c11.19,0,20.29-9.1,20.29-20.29v-17.08c0-1.75-1.45-3.2-3.2-3.2Z" style="stroke: var(--mh-gray-300); stroke-miterlimit: 10; stroke-width: 2.5px;"/>
+                      <path d="M93.87,62.81c-1.75,0-3.2,1.45-3.2,3.2v17.08c0,7.65-6.24,13.88-13.88,13.88h-34.17c-7.65,0-13.88-6.24-13.88-13.88v-34.17c0-7.65,6.24-13.88,13.88-13.88h17.08c1.75,0,3.2-1.45,3.2-3.2s-1.45-3.2-3.2-3.2h-17.08c-11.19,0-20.29,9.1-20.29,20.29v34.17c0,11.19,9.1,20.29,20.29,20.29h34.17c11.19,0,20.29-9.1,20.29-20.29v-17.08c0-1.75-1.45-3.2-3.2-3.2Z" style="fill: none; stroke: var(--mh-blue-700); stroke-miterlimit: 10; stroke-width: 2.5px;"/>
                       <path d="M58.63,48.93c0-1.75-1.45-3.2-3.2-3.2h-12.81c-1.75,0-3.2,1.45-3.2,3.2s1.45,3.2,3.2,3.2h12.81c1.75,0,3.2-1.45,3.2-3.2Z" style="stroke: var(--mh-gray-300); stroke-miterlimit: 10; stroke-width: 2.5px;"/>
                       <path d="M42.61,69.21h4.27c1.75,0,3.2-1.45,3.2-3.2s-1.45-3.2-3.2-3.2h-4.27c-1.75,0-3.2,1.45-3.2,3.2s1.45,3.2,3.2,3.2Z" style="stroke: var(--mh-gray-300); stroke-miterlimit: 10; stroke-width: 2.5px;"/>
                       <path d="M42.61,86.3h34.17c1.75,0,3.2-1.45,3.2-3.2s-1.45-3.2-3.2-3.2h-34.17c-1.75,0-3.2,1.45-3.2,3.2s1.45,3.2,3.2,3.2Z" style="stroke: var(--mh-gray-300); stroke-miterlimit: 10; stroke-width: 2.5px;"/>
@@ -162,12 +165,12 @@ export const useMenuStore = defineStore('menu', {
 
                 </div>
             `,
-            },
-            {
-                name: 'Mijn statistieken',
-                description: 'Beschrijving komt hier',
-                href: `/profiel/${requestedUserId.value}/resultaten/statistieken`,
-                icon: `
+                },
+                {
+                    name: 'Mijn statistieken',
+                    description: 'Beschrijving komt hier',
+                    href: `/profiel/${tagname}/resultaten/statistieken`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -183,12 +186,12 @@ export const useMenuStore = defineStore('menu', {
                     </svg>
                 </div>
             `,
-            },
-            {
-                name: 'Mijn achievements',
-                description: 'Beschrijving komt hier',
-                href: `/profiel/${requestedUserId.value}/resultaten/achievements`,
-                icon: `
+                },
+                {
+                    name: 'Mijn achievements',
+                    description: 'Beschrijving komt hier',
+                    href: `/profiel/${tagname}/resultaten/achievements`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -210,12 +213,12 @@ export const useMenuStore = defineStore('menu', {
                     </svg>
                 </div>
             `,
-            },
-            {
-                name: 'Al mijn resultaten',
-                description: 'Bekijk al jouw resultaten in één keer',
-                href: `/profiel/${requestedUserId.value}/resultaten`,
-                icon: `
+                },
+                {
+                    name: 'Al mijn resultaten',
+                    description: 'Bekijk al jouw resultaten in één keer',
+                    href: `/profiel/${tagname}/resultaten`,
+                    icon: `
                 <div class="flex items-center justify-center bg-mh_gray_blue rounded-md w-[48px] h-[48px]">
                     <svg
                         width="40"
@@ -225,14 +228,15 @@ export const useMenuStore = defineStore('menu', {
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 128 128"
                     >
-                        <path d="M61.3,66.34l37.4,15.49c-6.09,14.67-20.53,24.99-37.4,24.99-22.36,0-40.49-18.13-40.49-40.49,0-22.36,18.12-40.49,40.49-40.49h0v40.49Z" style="fill: none; stroke: var(--mh-blue-700); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.5px;"/>
-                        <path d="M69.4,56.54V21.18c13.54,2.41,25.01,10.76,31.66,22.25l-31.66,13.11Z" style="fill: none; stroke: var(--mh-blue-700); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.5px;"/>
-                        <path d="M107.19,66.34c0,3.37-.37,6.64-1.06,9.8l-31.44-13.02,29.77-12.33c1.75,4.86,2.72,10.09,2.72,15.55Z" style="fill: none; stroke: var(--mh-blue-700); stroke-linecap: round; stroke-linejoin: round; stroke-width: 3.5px;"/>
+                        <path d="M61.3,66.34l37.4,15.49c-6.09,14.67-20.53,24.99-37.4,24.99-22.36,0-40.49-18.13-40.49-40.49,0-22.36,18.12-40.49,40.49-40.49h0v40.49Z" style="fill: none; stroke: var(--mh-blue-700); stroke-linecap: round; stroke-linejoin: round; stroke-width: 4.5px;"/>
+                        <path d="M69.4,56.54V21.18c13.54,2.41,25.01,10.76,31.66,22.25l-31.66,13.11Z" style="fill: none; stroke: var(--mh-blue-700); stroke-linecap: round; stroke-linejoin: round; stroke-width: 4.5px;"/>
+                        <path d="M107.19,66.34c0,3.37-.37,6.64-1.06,9.8l-31.44-13.02,29.77-12.33c1.75,4.86,2.72,10.09,2.72,15.55Z" style="fill: none; stroke: var(--mh-blue-700); stroke-linecap: round; stroke-linejoin: round; stroke-width: 4.5px;"/>
                     </svg>
                 </div>
             `,
-            },
-        ],
+                },
+            ];
+        }),
         ondersteuningMenuItems: [
             {
                 name: 'Supportgroepen',
@@ -291,7 +295,7 @@ export const useMenuStore = defineStore('menu', {
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 128 128"
                         >
-                            <path d="M70.32,94.13c.51.51.77,1.17.77,1.95v7.22c0,.79-.26,1.44-.77,1.95-.51.51-1.2.77-2.07.77h-7.7c-.79,0-1.44-.26-1.95-.77-.51-.51-.77-1.16-.77-1.95v-7.22c0-.79.26-1.44.77-1.95.51-.51,1.16-.77,1.95-.77h7.7c.87,0,1.56.26,2.07.77ZM90.15,36.3c-.95-2.6-2.47-4.99-4.56-7.16-2.09-2.17-4.85-3.91-8.29-5.21-3.43-1.3-7.56-1.95-12.37-1.95-4.26,0-8.11.65-11.54,1.95-3.43,1.3-6.39,3.06-8.88,5.27-2.49,2.21-4.4,4.78-5.74,7.7-1.34,2.92-2.05,6-2.13,9.23,0,.79.26,1.42.77,1.89.51.47,1.12.71,1.84.71h5.68c.71,0,1.34-.2,1.89-.59.55-.39.95-1.07,1.18-2.01.95-5.13,2.9-8.78,5.86-10.95,2.96-2.17,6.53-3.26,10.71-3.26,2.6,0,5.13.51,7.58,1.54,2.45,1.03,4.38,2.51,5.8,4.44,1.42,1.93,1.97,4.32,1.66,7.16-.32,2.21-1.17,4.3-2.55,6.27-1.38,1.97-3.06,3.93-5.03,5.86-1.97,1.93-3.93,3.97-5.86,6.1-1.93,2.13-3.57,4.5-4.91,7.1-1.34,2.6-2.09,5.6-2.25,9,0,.79,0,1.58,0,2.37,0,.79,0,1.58,0,2.37,0,.79.24,1.4.71,1.83.47.43,1.07.65,1.78.65h6.39c.87,0,1.54-.24,2.01-.71.47-.47.79-1.14.95-2.01,0-.79.02-1.6.06-2.43.04-.83.1-1.68.18-2.55.16-2.53.93-4.87,2.31-7.04,1.38-2.17,3.04-4.26,4.97-6.27,1.93-2.01,3.85-4.06,5.74-6.16,1.89-2.09,3.51-4.38,4.85-6.87,1.34-2.49,2.13-5.31,2.37-8.46.16-2.6-.24-5.21-1.18-7.81Z" style="fill: none; stroke: var(--mh-blue-700); stroke-miterlimit: 10; stroke-width: 4px;"/>
+                            <path d="M70.32,94.13c.51.51.77,1.17.77,1.95v7.22c0,.79-.26,1.44-.77,1.95-.51.51-1.2.77-2.07.77h-7.7c-.79,0-1.44-.26-1.95-.77-.51-.51-.77-1.16-.77-1.95v-7.22c0-.79.26-1.44.77-1.95.51-.51,1.16-.77,1.95-.77h7.7c.87,0,1.56.26,2.07.77ZM90.15,36.3c-.95-2.6-2.47-4.99-4.56-7.16-2.09-2.17-4.85-3.91-8.29-5.21-3.43-1.3-7.56-1.95-12.37-1.95-4.26,0-8.11.65-11.54,1.95-3.43,1.3-6.39,3.06-8.88,5.27-2.49,2.21-4.4,4.78-5.74,7.7-1.34,2.92-2.05,6-2.13,9.23,0,.79.26,1.42.77,1.89.51.47,1.12.71,1.84.71h5.68c.71,0,1.34-.24,1.89-.59.55-.39.95-1.07,1.18-2.01.95-5.13,2.9-8.78,5.86-10.95,2.96-2.17,6.53-3.26,10.71-3.26,2.6,0,5.13.51,7.58,1.54,2.45,1.03,4.38,2.51,5.8,4.44,1.42,1.93,1.97,4.32,1.66,7.16-.32,2.21-1.17,4.3-2.55,6.27-1.38,1.97-3.06,3.93-5.03,5.86-1.97,1.93-3.93,3.97-5.86,6.1-1.93,2.13-3.57,4.5-4.91,7.1-1.34,2.6-2.09,5.6-2.25,9,0,.79,0,1.58,0,2.37,0,.79,0,1.58,0,2.37,0,.79.24,1.4.71,1.83.47.43,1.07.65,1.78.65h6.39c.87,0,1.54-.24,2.01-.71.47-.47.79-1.14.95-2.01,0-.79.02-1.6.06-2.43.04-.83.1-1.68.18-2.55.16-2.53.93-4.87,2.31-7.04,1.38-2.17,3.04-4.26,4.97-6.27,1.93-2.01,3.85-4.06,5.74-6.16,1.89-2.09,3.51-4.38,4.85-6.87,1.34-2.49,2.13-5.31,2.37-8.46.16-2.6-.24-5.21-1.18-7.81Z" style="fill: none; stroke: var(--mh-blue-700); stroke-miterlimit: 10; stroke-width: 4px;"/>
                         </svg>
                     </div>
                 `,

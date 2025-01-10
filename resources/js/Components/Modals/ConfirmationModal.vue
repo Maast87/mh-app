@@ -51,7 +51,7 @@
         </template>
         <template #footer>
             <div class="flex gap-x-4">
-                <ButtonOne ref="confirmButtonRef" @click="confirm" title="Bevestig" allowSpinner="true" />
+                <ButtonOne ref="confirmButtonRef" @click="confirm" title="Bevestig" />
                 <ButtonFour @click="cancel" title="Terug" />
             </div>
         </template>

@@ -1,54 +1,75 @@
 <?php
 
 use App\Http\Controllers\ProfileAvatarController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    $renderPrivateProfilePage = fn($requestedUserId, $view, $data = []) => $requestedUserId == auth()->user()->id
-        ? Inertia::render($view, $data)
+    $renderPrivateProfilePage = fn($tagname, $view, $data = []) =>
+        ($user = User::where('tag_name', $tagname)
+            ->select('id', 'name', 'tag_name', 'avatar')
+            ->firstOrFail()) ?
+        ($user->id == auth()->user()->id
+            ? Inertia::render($view, array_merge($data, [
+                'requestedTagname' => $tagname,
+                'requestedUser' => $user
+            ]))
+            : abort(404))
         : abort(404);
 
-    Route::get('profiel/{id}/instellingen', fn($id) => $renderPrivateProfilePage($id, 'Profiel/ProfielInstellingen', [
-        'requestedUserId' => $id,
-    ]))->name('profiel.instellingen');
-
-    Route::get('profiel/{id}/lidmaatschap', fn($id) => $renderPrivateProfilePage($id, 'Profiel/ProfielLidmaatschap', [
-        'pricing' => config('stripe.prices'),
-        'requestedUserId' => $id,
-    ]))->name('profiel.lidmaatschap');
+        Route::get('profiel/{tagname}/instellingen', fn($tagname) => $renderPrivateProfilePage($tagname, 'Profiel/ProfielInstellingen'))
+            ->name('profiel.instellingen')
+            ->where('tagname', '@[a-z0-9-]+');
+    
+        Route::get('profiel/{tagname}/lidmaatschap', fn($tagname) => $renderPrivateProfilePage($tagname, 'Profiel/ProfielLidmaatschap', [
+            'pricing' => config('stripe.prices'),
+        ]))
+            ->name('profiel.lidmaatschap')
+            ->where('tagname', '@[a-z0-9-]+');
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    $renderPublicProfilePage = fn($requestedUserId, $view, $data = []) => Inertia::render($view, $data);
+    $renderPublicProfilePage = fn($tagname, $view, $data = []) =>
+        ($user = User::where('tag_name', $tagname)
+            ->select('id', 'name', 'tag_name', 'avatar')
+            ->firstOrFail()) ?
+        Inertia::render($view, array_merge($data, [
+            'requestedTagname' => $tagname,
+            'requestedUser' => $user
+        ])) : abort(404);
 
-    Route::get('profiel/{id}/overzicht', fn($id) => $renderPublicProfilePage($id, 'Profiel/ProfielOverzicht', [
-        'requestedUserId' => $id,
-    ]))->name('profiel.overzicht');
 
-    Route::get('profiel/{id}/resultaten', fn($id) => $renderPublicProfilePage($id, 'Profiel/ProfielResultaten', [
-        'requestedUserId' => $id,
-    ]))->name('profiel.resultaten');
+    Route::get('profiel/{tagname}/overzicht', fn($tagname) => $renderPublicProfilePage($tagname, 'Profiel/ProfielOverzicht'))
+    ->name('profiel.overzicht')
+    ->where('tagname', '@[a-z0-9-]+');
 
-    Route::get('profiel/{id}/resultaten/doelen', fn($id) => $renderPublicProfilePage($id, 'Profiel/ProfielResultatenDoelen', [
-        'requestedUserId' => $id,
-    ]))->name('profiel.resultaten.doelen');
 
-    Route::get('profiel/{id}/resultaten/antwoorden', fn($id) => $renderPublicProfilePage($id, 'Profiel/ProfielResultatenAntwoorden', [
-        'requestedUserId' => $id,
-    ]))->name('profiel.resultaten.antwoorden');
+    Route::get('profiel/{tagname}/resultaten', fn($tagname) => $renderPublicProfilePage($tagname, 'Profiel/ProfielResultaten'))
+        ->name('profiel.resultaten')
+        ->where('tagname', '@[a-z0-9-]+');
 
-    Route::get('profiel/{id}/resultaten/statistieken', fn($id) => $renderPublicProfilePage($id, 'Profiel/ProfielResultatenStatistieken', [
-        'requestedUserId' => $id,
-    ]))->name('profiel.resultaten.statistieken');
+    Route::get('profiel/{tagname}/resultaten/doelen', fn($tagname) => $renderPublicProfilePage($tagname, 'Profiel/ProfielResultatenDoelen'))
+        ->name('profiel.resultaten.doelen')
+        ->where('tagname', '@[a-z0-9-]+');
 
-    Route::get('profiel/{id}/resultaten/achievements', fn($id) => $renderPublicProfilePage($id, 'Profiel/ProfielResultatenAchievements', [
-        'requestedUserId' => $id,
-    ]))->name('profiel.resultaten.achievements');
+    Route::get('profiel/{tagname}/resultaten/antwoorden', fn($tagname) => $renderPublicProfilePage($tagname, 'Profiel/ProfielResultatenAntwoorden'))
+        ->name('profiel.resultaten.antwoorden')
+        ->where('tagname', '@[a-z0-9-]+');
+
+    Route::get('profiel/{tagname}/resultaten/statistieken', fn($tagname) => $renderPublicProfilePage($tagname, 'Profiel/ProfielResultatenStatistieken'))
+        ->name('profiel.resultaten.statistieken')
+        ->where('tagname', '@[a-z0-9-]+');
+
+    Route::get('profiel/{tagname}/resultaten/achievements', fn($tagname) => $renderPublicProfilePage($tagname, 'Profiel/ProfielResultatenAchievements'))
+        ->name('profiel.resultaten.achievements')
+        ->where('tagname', '@[a-z0-9-]+');
 });
+
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/profile/avatar', [ProfileAvatarController::class, 'store'])->name('profile.avatar.store');
+    Route::delete('/profile/avatar', [ProfileAvatarController::class, 'destroy'])->name('profile.avatar.destroy');
 });
 
 

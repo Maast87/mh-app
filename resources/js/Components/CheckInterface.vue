@@ -220,9 +220,9 @@
                         Opslaan en doorgaan
                     </button>
                 </div>
-                <div>
+                <!-- <div>
                     Score: {{ score }} (nog op hide zetten)
-                </div>
+                </div> -->
         </div>
     </div>
 

@@ -14,18 +14,18 @@
     provide('breadcrumbs', breadcrumbs);
 
     const props = defineProps({
-        requestedUserId: String,
+        requestedTagname: String,
     });
 
-    const {isAuthenticatedUser, authenticatedUserId } = useCurrentUser(props.requestedUserId);
+    useCurrentUser(props.requestedTagname);
 </script>
 
 <template>
     <Layout>
-        <Head tag="Antwoorden" />
+        <Head title="Profiel resultaten antwoorden" />
 
         <div class="flex flex-col w-full">
-            <ProfileLayout :requestedUserId="requestedUserId" :isAuthenticatedUser="isAuthenticatedUser" />
+            <ProfileLayout :requestedTagname="requestedTagname" />
             <p>Pagina Mijn Antwoorden</p>
         </div>
     </Layout>

@@ -15,18 +15,19 @@
 
     const props = defineProps({
         pricing: Object,
-        requestedUserId: String,
+        requestedTagname: String,
     });
 
-    const {isAuthenticatedUser, authenticatedUserId } = useCurrentUser(props.requestedUserId);
+    // Remove unused variable since we're not passing it to ProfileLayout anymore
+    const {isAuthenticatedUser} = useCurrentUser(props.requestedTagname);
 </script>
 
 <template>
     <Layout>
-        <Head title="Profiel" />
+        <Head title="Profiel lidmaatschap" />
 
         <div class="flex flex-col w-full">
-            <ProfileLayout :requestedUserId="requestedUserId" :isAuthenticatedUser="isAuthenticatedUser" />
+            <ProfileLayout :requestedTagname="requestedTagname" />
 
             <PricingCards :pricing="pricing" />
         </div>

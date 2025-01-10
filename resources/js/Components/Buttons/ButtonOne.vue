@@ -16,6 +16,10 @@
             type: Boolean,
             default: false,
         },
+        disableAfterClick: {
+            type: Boolean,
+            default: false,
+        },
     });
 
     const DisableButton = ref(props.disabled);
@@ -33,8 +37,10 @@
             return;
         }
 
-        // Otherwise, proceed with the action
-        DisableButton.value = true;
+        // Only disable the button if disableAfterClick is true
+        if (props.disableAfterClick) {
+            DisableButton.value = true;
+        }
     };
 </script>
 

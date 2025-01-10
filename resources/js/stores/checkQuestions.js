@@ -4,20 +4,20 @@ export const useCheckQuestionsStore = defineStore('checkQuestions', {
         dummyCheckQuestions: [
             {
                 id: 1,
-                question: "Which language?",
-                description: "Pick a language",
+                question: "Welke taal?",
+                description: "Kies een taal",
                 choices: [
-                    { text: "Java", value: 5, next: 3 },
-                    { text: "Python", value: 5, next: 3 },
-                    { text: "C", value: 10, next: 3 },
-                    { text: "HTML", value: 5, next: 3 },
-                    { text: "Greek", value: 85, next: 2 }
+                    { text: "Frans", value: 5, next: 3 },
+                    { text: "Engels", value: 5, next: 3 },
+                    { text: "Duits", value: 10, next: 3 },
+                    { text: "Spaans", value: 5, next: 3 },
+                    { text: "Grieks", value: 85, next: 2 }
                 ],
             },
             {
                 id: 2,
-                question: "What is the limit?",
-                description: "Pick a limit",
+                question: "Wat is de limiet?",
+                description: "Kies een limiet",
                 choices: [
                     { text: "100", value: 10, next: 3 },
                     { text: "200", value: 5, next: 3 },
@@ -27,8 +27,8 @@ export const useCheckQuestionsStore = defineStore('checkQuestions', {
             },
             {
                 id: 3,
-                question: "What does it stand for?",
-                description: "Pick a stand",
+                question: "Waar staat MP in MP3 voor?",
+                description: "Kies een antwoord",
                 choices: [
                     { text: "Music Player", value: 20, next: 4 },
                     { text: "Multi Pass", value: 30, next: 4 },
@@ -37,8 +37,8 @@ export const useCheckQuestionsStore = defineStore('checkQuestions', {
             },
             {
                 id: 4,
-                question: "What is the age?",
-                description: "Pick an age",
+                question: "Wat is de leeftijd?",
+                description: "Kies een leeftijd",
                 choices: [
                     { text: "20", value: 10, next: 5 },
                     { text: "900", value: 15, next: "end" },
@@ -47,11 +47,11 @@ export const useCheckQuestionsStore = defineStore('checkQuestions', {
             },
             {
                 id: 5,
-                question: "What is the recipe?",
-                description: "Pick a recipe",
+                question: "Wat is de recept?",
+                description: "Kies een recept",
                 choices: [
                     { text: "Trifle", value: 5, next: "end" },
-                    { text: "Beans", value: 55, next: "end" },
+                    { text: "Bonen", value: 55, next: "end" },
                     { text: "Hotdog", value: 50, next: "end" }
                 ],
             }
@@ -59,21 +59,21 @@ export const useCheckQuestionsStore = defineStore('checkQuestions', {
         testCheckQuestions: [
             {
                 id: 1,
-                question: "How much",
-                description: "Pick a value",
+                question: "Hoeveel",
+                description: "Kies een waarde",
                 choices: [
-                    { text: "A little", value: 5, next: 2 },
-                    { text: "A lot", value: 5, next: 2 },
-                    { text: "Huge amounts", value: 10, next: 2 }
+                    { text: "Een beetje", value: 5, next: 2 },
+                    { text: "Een lot", value: 5, next: 2 },
+                    { text: "Grote hoeveelheden", value: 10, next: 2 }
                 ],
             },
             {
                 id: 2,
-                question: "Is there a limit?",
-                description: "Pick a limit",
+                question: "Is er een limiet?",
+                description: "Kies een optie",
                 choices: [
-                    { text: "Yes", value: 10, next: "end" },
-                    { text: "No", value: 10, next: "end" }
+                    { text: "Ja", value: 10, next: "end" },
+                    { text: "Nee", value: 10, next: "end" }
                 ],
             }
         ],

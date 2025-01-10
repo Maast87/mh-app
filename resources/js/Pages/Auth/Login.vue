@@ -5,10 +5,11 @@
     import InputLabel from '@/Components/InputLabel.vue';
     import TextInput from '@/Components/TextInput.vue';
     import { Head, Link, useForm } from '@inertiajs/vue3';
-    import {provide} from "vue";
+    import {provide, ref} from "vue";
     import GradientElement from "@/Components/PageLayoutElements/GradientElement.vue";
     import GradientWhiteElement from "@/Components/PageLayoutElements/GradientWhiteElement.vue";
     import ButtonOne from "@/Components/Buttons/ButtonOne.vue";
+    import PasswordInput from '@/Components/PasswordInput.vue';
 
     const breadcrumbs = [
         { label: "home", href: "/" },
@@ -32,9 +33,11 @@
     });
 
     const submit = () => {
-        form.post(route('login'), {
-            onFinish: () => form.reset('password'),
-        });
+        setTimeout(() => {
+            form.post(route('login'), {
+                onFinish: () => form.reset('password'),
+            });
+        }, 25);
     };
 </script>
 
@@ -74,16 +77,14 @@
 
                             <div class="mt-4">
                                 <InputLabel for="password" value="Wachtwoord" />
-
-                                <TextInput
-                                    id="password"
-                                    type="password"
-                                    class="mt-1 block w-full"
+                                <PasswordInput
                                     v-model="form.password"
+                                    id="password"
+                                    name="password"
+                                    placeholder="Wachtwoord"
                                     required
                                     autocomplete="current-password"
                                 />
-
                                 <InputError class="mt-2" :message="form.errors.password" />
                             </div>
 
@@ -97,7 +98,12 @@
 
                             <div class="mt-6 flex flex-col items-center justify-center gap-y-2">
 
-                                <ButtonOne title="Log in" :allowSpinner="true" class="w-full" />
+                                <ButtonOne 
+                                    title="Log in" 
+                                    :allowSpinner="true" 
+                                    class="w-full" 
+                                    :disableAfterClick="true"
+                                />
 
                                 <Link
                                     v-if="canResetPassword"

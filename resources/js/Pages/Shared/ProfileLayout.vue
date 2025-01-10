@@ -1,11 +1,33 @@
 <script setup>
     import { Link } from "@inertiajs/vue3";
+    import defaultUserImage from '../../../images/mental-hygiene-default-user-image.png';
+    import { useCurrentUser } from "@/Utilities/composables/useCurrentUser.js";
+    import { usePage } from "@inertiajs/vue3";
+    import { computed } from 'vue';
 
     const props = defineProps({
-        requestedUserId: String,
-        isAuthenticatedUser: Boolean,
+        requestedTagname: {
+            type: String,
+            required: true
+        },
+        requestedUser: {
+            type: Object,
+            default: null
+        }
     });
 
+    const page = usePage();
+    const authUser = page.props.auth.user;
+
+    console.log('ProfileLayout - Props:', {
+        requestedTagname: props.requestedTagname,
+        requestedUser: props.requestedUser,
+        authUser: authUser,
+        currentRoute: page.url,
+        component: page.component
+    });
+
+    const { isAuthenticatedUser } = useCurrentUser(props.requestedTagname);
 </script>
 
 <template>
@@ -20,18 +42,29 @@
         <div class="flex w-full justify-between bg-gray-100 rounded-bl-xl rounded-br-xl pb-5 px-5 border border-white border-0 border-r border-l border-b rounded-bl-xl rounded-br-xl ml-[1px] mr-[1px]">
             <div class="flex">
                 <div class="flex items-center justify-center w-[175px] h-[175px] rounded-full bg-gray-100 mt-[-30px] p-1">
-                    <div class="flex items-center justify-center w-full h-full rounded-full bg-gray-400">
-                        <p>
-                            foto
-                        </p>
+                    <div class="flex items-center justify-center w-full h-full rounded-full">
+                        <div class="w-full h-full" v-if="$page.props.requestedUser.avatar">
+                            <img
+                                :src="$page.props.requestedUser.avatar"
+                                alt="Profile picture"
+                                class="w-full h-full rounded-full object-cover"
+                            />
+                        </div>
+                        <div class="w-full h-full" v-if="! $page.props.requestedUser.avatar">
+                            <img
+                                :src="defaultUserImage"
+                                alt="Default profile picture"
+                                class="w-full h-full rounded-full object-cover"
+                            />
+                        </div>
                     </div>
                 </div>
                 <div class="flex flex-col justify-center pl-8">
                     <p class="text-header_s">
-                        {{ $page.props.auth.user.name }}
+                        <span>{{ $page.props.requestedUser.name }}</span>
                     </p>
                     <p>
-                        {{ $page.props.auth.user.tag_name }}
+                        <span>{{ $page.props.requestedUser.tag_name }}</span>
                     </p>
                 </div>
             </div>
@@ -42,8 +75,9 @@
         </div>
     </div>
     <div class="flex w-full gap-x-2 py-4 bg-gray-200">
-        <Link :href="`/profiel/${requestedUserId}/overzicht`">
+        <Link :href="`/profiel/${requestedTagname}/overzicht`">
             <button
+                v-if="isAuthenticatedUser"
                 :class="{
                     'button-two-current': $page.component === `Profiel/ProfielOverzicht`,
                     'button-two': $page.component !== `Profiel/ProfielOverzicht`,
@@ -52,7 +86,7 @@
                 Overzicht
             </button>
         </Link>
-        <Link :href="`/profiel/${requestedUserId}/resultaten`">
+        <Link :href="`/profiel/${requestedTagname}/resultaten`">
             <button
                 :class="{
                     'button-two-current': $page.component === `Profiel/ProfielResultaten`,
@@ -64,7 +98,7 @@
         </Link>
         <Link
             v-if="isAuthenticatedUser"
-            :href="`/profiel/${requestedUserId}/instellingen`"
+            :href="`/profiel/${requestedTagname}/instellingen`"
         >
             <button
                 :class="{
@@ -77,7 +111,7 @@
         </Link>
         <Link
             v-if="isAuthenticatedUser"
-            :href="`/profiel/${requestedUserId}/lidmaatschap`"
+            :href="`/profiel/${requestedTagname}/lidmaatschap`"
         >
             <button
                 :class="{

@@ -65,7 +65,7 @@
                     </svg>
                     <p class="text-base">Toegang tot de zelfchecks</p>
                 </div>
-                <p class="text-base font-medium pt-2 border border-0 border-t border-blue-700-gray-100">Aanvullend op het platform te bestellen</p>
+                <p class="text-base font-medium pt-2 border border-0 border-t border-blue_700_gray_100">Aanvullend op het platform te bestellen</p>
                 <div class="flex items-center gap-x-2">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -101,7 +101,7 @@
                 v-if="! $page.props.auth.user"
                 class="p-3"
             >
-                <ButtonOne href="/registreren" title="Maak gratis een account" />
+                <ButtonOne href="/registreren" title="Maak gratis een account" :disableAfterClick="true" />
             </div>
         </GradientWhiteElement>
         <GradientWhiteElement id="price-monthly" class="flex flex-col h-fit text-blue_700_gray_100 !gap-y-0 !p-0 w-1/2">
@@ -165,7 +165,7 @@
                     </svg>
                     <p class="text-base">Toegang tot relevante supportgroepen</p>
                 </div>
-                <p class="text-base font-medium pt-2 border border-0 border-t border-blue-700-gray-100">Aanvullend op het platform te bestellen</p>
+                <p class="text-base font-medium pt-2 border border-0 border-t border-blue_700_gray_100">Aanvullend op het platform te bestellen</p>
                 <div class="flex items-center gap-x-2">
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -203,11 +203,11 @@
                         <a
                             :href="`/billing-portal`"
                             class=""
-                            :class="{'pointer-events-none': ButtonOneClicked, 'pointer-events-none': DisableButtonOne}"
+                            :class="{'pointer-events-none': ButtonOneClicked || ButtonTwoClicked, 'pointer-events-none': DisableButtonOne || DisableButtonTwo}"
                         >
                             <button
                                 class="button-one w-full"
-                                :class="{'button-one-loading spinner': ButtonOneClicked, 'button-one-disabled': DisableButtonOne}"
+                                :class="{'button-one-loading spinner': ButtonOneClicked, 'button-one-disabled': DisableButtonOne || DisableButtonTwo}"
                                 @click="handleClickButtonOne">
                                 Wijzig je betaalmethode
                             </button>
@@ -215,12 +215,12 @@
                         <a
                             :href="`/billing-portal`"
                             class=""
-                            :class="{'pointer-events-none': ButtonOneClicked, 'pointer-events-none': DisableButtonOne}"
+                            :class="{'pointer-events-none': ButtonOneClicked || ButtonTwoClicked, 'pointer-events-none': DisableButtonOne || DisableButtonTwo}"
                         >
                             <button
                                 class="button-one w-full"
-                                :class="{'button-one-loading spinner': ButtonOneClicked, 'button-one-disabled': DisableButtonOne}"
-                                @click="handleClickButtonOne">
+                                :class="{'button-one-loading spinner': ButtonTwoClicked, 'button-one-disabled': DisableButtonOne || DisableButtonTwo }"
+                                @click="handleClickButtonTwo">
                                 Lidmaatschap opzeggen
                             </button>
                         </a>
@@ -231,7 +231,7 @@
                 </div>
                 <div
                     v-if="! $page.props.auth.user"
-                    class="flex flex-col gap-y-1 pt-2 border border-0 border-t border-blue-700-gray-100"
+                    class="flex flex-col gap-y-1 pt-2 border border-0 border-t border-blue_700_gray_100"
                 >
                     <p class="text-base italic">* om dit lidmaatschap af te sluiten heb je een Starter account nodig.</p>
                     <p class="text-base italic">** je kunt starten en stoppen met het Premium lidmaatschap wanneer jij wil.</p>

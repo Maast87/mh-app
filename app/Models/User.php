@@ -44,7 +44,8 @@ class User extends Authenticatable
         'name',
         'tag_name',
         'email',
-        'updated_at'
+        'updated_at',
+        'avatar',
     ];
 
     /**
