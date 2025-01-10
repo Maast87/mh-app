@@ -42,13 +42,13 @@
         hasSelectedFile.value = event.target.files.length > 0;
         showSaveButton.value = false;
         uploadProgress.value = 0;
-        
+
         if (hasSelectedFile.value) {
             // Start progress animation using the same cubic-bezier timing
             const duration = 2000;
             const steps = 100;
             const stepDuration = duration / steps;
-            
+
             setTimeout(() => {
                 const startTime = Date.now();
                 progressInterval = setInterval(() => {
@@ -77,14 +77,14 @@
         const cx = 3 * x1;
         const bx = 3 * (x2 - x1) - cx;
         const ax = 1 - cx - bx;
-        
+
         const cy = 3 * y1;
         const by = 3 * (y2 - y1) - cy;
         const ay = 1 - cy - by;
-        
+
         const sampleCurveX = (t) => ((ax * t + bx) * t + cx) * t;
         const sampleCurveY = (t) => ((ay * t + by) * t + cy) * t;
-        
+
         // Find t for given x using Newton-Raphson iteration
         let t0 = t;
         for (let i = 0; i < 4; i++) {
@@ -94,7 +94,7 @@
             if (Math.abs(dx) < 0.000001) break;
             t0 = t0 - x / dx;
         }
-        
+
         return sampleCurveY(t0);
     }
 
@@ -146,7 +146,7 @@
     const chooseNewFile = () => {
         clearInterval(progressInterval);
         uploadProgress.value = 0;
-        
+
         // Trigger file input click
         document.getElementById('avatar').click();
     };
@@ -157,7 +157,11 @@
         <Head title="Profiel instellingen" />
 
         <div class="flex flex-col w-full">
+<<<<<<< HEAD
             <ProfileLayout :requestedTagname="requestedTagname" />
+=======
+            <ProfileLayout :requestedUserId="requestedUserId" :isAuthenticatedUser="isAuthenticatedUser" />
+>>>>>>> ea72d2271543eea9c4745dc50e1855802984c8a7
             <div class="flex flex-col w-full gap-y-6 p-6 bg-gray-100 rounded-xl">
                 <div id="avatar" class="border border-0 border-b border-blue_700_gray_100 pb-4">
                     <div class="flex flex-col w-2/3 gap-y-6">
@@ -191,9 +195,9 @@
                                         </div>
                                         <div class="flex justify-center border border-0 border-t border-blue_700_gray_100 gap-x-4 mt-3 pt-4 w-full">
                                             <div class="w-full">
-                                                <form 
-                                                    v-if="isAuthenticatedUser" 
-                                                    @submit.prevent="submitAvatar" 
+                                                <form
+                                                    v-if="isAuthenticatedUser"
+                                                    @submit.prevent="submitAvatar"
                                                     class="flex-col w-full"
                                                 >
                                                     <div>
@@ -281,10 +285,10 @@
                                                             <div v-if="showSaveButton && isFileTooLarge" id="error-message" class="flex flex-col gap-y-2 mt-4 border border-blue_700_gray_100 rounded-lg p-2">
                                                                 <div class="flex gap-x-4">
                                                                     <div class="w-20 h-20">
-                                                                        <svg 
-                                                                            id="uuid-5e00ec1d-c691-43cc-a035-8f7535066b85" 
-                                                                            data-name="Content" 
-                                                                            xmlns="http://www.w3.org/2000/svg" 
+                                                                        <svg
+                                                                            id="uuid-5e00ec1d-c691-43cc-a035-8f7535066b85"
+                                                                            data-name="Content"
+                                                                            xmlns="http://www.w3.org/2000/svg"
                                                                             viewBox="0 0 128 128"
                                                                         >
                                                                             <path d="M60.97,21.37L17.23,97.14c-1.35,2.33.34,5.24,3.03,5.24h87.49c2.69,0,4.37-2.91,3.03-5.24L67.03,21.37c-1.35-2.33-4.71-2.33-6.05,0Z" style="fill: none; stroke: var(--mh-red-200); stroke-miterlimit: 10; stroke-width: 4.5px;"/>
@@ -309,7 +313,7 @@
                                                     </div>
                                                 </form>
                                             </div>
-                                            <div 
+                                            <div
                                                 v-if="! isUploading && ! hasSelectedFile && $page.props.auth.user?.avatar"
                                                 class="w-full"
                                             >
