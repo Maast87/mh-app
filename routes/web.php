@@ -4,7 +4,6 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\ProfileAvatarController;
 use App\Http\Middleware\EnsureUserIsSubscribed;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -20,11 +19,11 @@ Route::middleware(['guest'])->group(function () {
 });
 
 // Public routes (split view)
-Route::get('/', function () { 
+Route::get('/', function () {
     if (auth()->check() && !auth()->user()->hasVerifiedEmail()) {
         return redirect()->route('verification.notice');
     }
-    return Inertia::render('Public/Home', ['pricing' => config('stripe.prices')]); 
+    return Inertia::render('Public/Home', ['pricing' => config('stripe.prices')]);
 })->name('home');
 
 // Public routes (static)
