@@ -23,8 +23,35 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $name = fake()->name();
+        $tagName = '@' . strtolower(
+            trim(
+                preg_replace(
+                    '/-+/',
+                    '-',
+                    preg_replace(
+                        '/[^a-z0-9-]/',
+                        '',
+                        preg_replace(
+                            '/\s+/',
+                            '-',
+                            strtolower(
+                                preg_replace(
+                                    '/[^a-zA-Z0-9\s]/',
+                                    '',
+                                    preg_replace('/\s+/', ' ', $name)
+                                )
+                            )
+                        )
+                    )
+                ),
+                '-'
+            )
+        );
+
         return [
-            'name' => fake()->name(),
+            'name' => $name,
+            'tag_name' => $tagName,
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),

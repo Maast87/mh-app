@@ -86,7 +86,7 @@
             <div id="nav-desktop-profile-menu" class="hidden lg:flex lg:justify-end gap-x-1">
                 <template v-if="$page.props.auth.user">
                     <PopoverProfiel />
-                    <ButtonSix href="/word-lid" title="Word lid" v-if="! $page.props.auth.user.subscribed" />
+                    <ButtonSix :href="`/profiel/${$page.props.auth.user.tag_name}/lidmaatschap`" title="Word lid" v-if="! $page.props.auth.user.subscribed" />
                     <DarkModeToggle />
                 </template>
 

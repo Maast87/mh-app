@@ -1,12 +1,16 @@
 <script setup>
     import Layout from "../Shared/Layout.vue";
     import {Head, useForm} from "@inertiajs/vue3";
-    import {provide, ref, computed} from "vue";
+    import {provide, ref, computed, watch} from "vue";
     import ProfileLayout from "@/Pages/Shared/ProfileLayout.vue";
     import { useCurrentUser } from "@/Utilities/composables/useCurrentUser.js";
     import ButtonOne from "@/Components/Buttons/ButtonOne.vue";
     import {useConfirm} from "@/Utilities/composables/useComfirm.js";
     import defaultUserImage from '@/../../resources/images/mental-hygiene-default-user-image.png';
+    import PasswordInput from '@/Components/PasswordInput.vue';
+    import InputError from '@/Components/InputError.vue';
+    import InputLabel from '@/Components/InputLabel.vue';
+    import DefaultModal from "@/Components/Modals/DefaultModal.vue";
 
     const breadcrumbs = [
         { label: "home", href: "/" },
@@ -150,6 +154,44 @@
         // Trigger file input click
         document.getElementById('avatar').click();
     };
+
+    const passwordForm = useForm({
+        current_password: '',
+        password: '',
+        password_confirmation: '',
+    });
+
+    const passwordValidations = ref({
+        minLength: false,
+        hasUppercase: false,
+        hasNumber: false
+    });
+
+    watch(() => passwordForm.password, (newPassword) => {
+        passwordValidations.value.minLength = newPassword.length >= 10;
+        passwordValidations.value.hasUppercase = /[A-Z]/.test(newPassword);
+        passwordValidations.value.hasNumber = /\d/.test(newPassword);
+    });
+
+    const updatePassword = () => {
+        passwordForm.put(route('password.update'), {
+            preserveScroll: true,
+            onSuccess: () => {
+                openModal();
+                passwordForm.reset();
+            }
+        });
+    };
+
+    const isModalVisible = ref(false);
+
+    const openModal = () => {
+        isModalVisible.value = true;
+    };
+
+    const closeModal = () => {
+        isModalVisible.value = false;
+    };
 </script>
 
 <template>
@@ -157,11 +199,7 @@
         <Head title="Profiel instellingen" />
 
         <div class="flex flex-col w-full">
-<<<<<<< HEAD
             <ProfileLayout :requestedTagname="requestedTagname" />
-=======
-            <ProfileLayout :requestedUserId="requestedUserId" :isAuthenticatedUser="isAuthenticatedUser" />
->>>>>>> ea72d2271543eea9c4745dc50e1855802984c8a7
             <div class="flex flex-col w-full gap-y-6 p-6 bg-gray-100 rounded-xl">
                 <div id="avatar" class="border border-0 border-b border-blue_700_gray_100 pb-4">
                     <div class="flex flex-col w-2/3 gap-y-6">
@@ -338,8 +376,90 @@
                             <h3 class="text-header_s text-blue_700_gray_100">Wachtwoord wijzigen</h3>
                             <p class="text-base text-blue_700_gray_100">Wijzig je wachtwoord.</p>
                         </div>
-                        <div class="flex">
-                            <p>Hier komt de content</p>
+                        <div class="flex flex-col gap-y-6">
+                            <form @submit.prevent="updatePassword" class="flex flex-col gap-y-6">
+                                <div>
+                                    <InputLabel for="current_password" value="Huidig wachtwoord" />
+                                    <PasswordInput
+                                        v-model="passwordForm.current_password"
+                                        id="current_password"
+                                        name="current_password"
+                                        required
+                                        autocomplete="current-password"
+                                    />
+                                    <InputError class="mt-1.5" :message="passwordForm.errors.current_password"/>
+                                </div>
+
+                                <div>
+                                    <InputLabel for="password" value="Nieuw wachtwoord" />
+                                    <PasswordInput
+                                        v-model="passwordForm.password"
+                                        id="password"
+                                        name="password"
+                                        required
+                                        autocomplete="new-password"
+                                    />
+                                    <InputError class="mt-1.5" :message="passwordForm.errors.password"/>
+                                    <p class="text-sm mt-1.5 text-blue_700_gray_100">
+                                        Wachtwoord checklist:
+                                    </p>
+                                    <div>
+                                        <ul class="text-sm">
+                                            <li
+                                                :class="{
+                                                    'text-green-100': passwordValidations.minLength,
+                                                    'text-blue-700 opacity-60': !passwordValidations.minLength
+                                                }"
+                                                class="list-disc pl-5"
+                                                style="list-style-position: inside"
+                                            >
+                                                Minimale lengte van 10 tekens
+                                            </li>
+                                            <li
+                                                :class="{
+                                                    'text-green-100': passwordValidations.hasUppercase,
+                                                    'text-blue-700 opacity-60': !passwordValidations.hasUppercase
+                                                }"
+                                                class="list-disc pl-5"
+                                                style="list-style-position: inside"
+                                            >
+                                                Ten minste 1 hoofdletter
+                                            </li>
+                                            <li
+                                                :class="{
+                                                    'text-green-100': passwordValidations.hasNumber,
+                                                    'text-blue-700 opacity-60': !passwordValidations.hasNumber
+                                                }"
+                                                class="list-disc pl-5"
+                                                style="list-style-position: inside"
+                                            >
+                                                Ten minste 1 cijfer
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <InputLabel for="password_confirmation" value="Bevestig nieuw wachtwoord" />
+                                    <PasswordInput
+                                        v-model="passwordForm.password_confirmation"
+                                        id="password_confirmation"
+                                        name="password_confirmation"
+                                        required
+                                        autocomplete="new-password"
+                                    />
+                                    <InputError class="mt-1.5" :message="passwordForm.errors.password_confirmation"/>
+                                </div>
+
+                                <div>
+                                    <ButtonOne 
+                                        title="Wijzig wachtwoord" 
+                                        :disabled="passwordForm.processing"
+                                        :allowSpinner="true"
+                                        :disableAfterClick="true"
+                                    />
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -367,6 +487,17 @@
                 </div>
             </div>
         </div>
+
+        <DefaultModal :show="isModalVisible" @close="closeModal">
+            <template #title>
+                Het is gelukt!
+            </template>
+            <template #content>
+                <div>
+                    <p>De volgende keer dat je inlogt, kun je je nieuwe wachtwoord gebruiken.</p>
+                </div>
+            </template>
+        </DefaultModal>
     </Layout>
 </template>
 

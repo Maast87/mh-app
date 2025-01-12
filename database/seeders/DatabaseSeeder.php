@@ -37,6 +37,7 @@ class DatabaseSeeder extends Seeder
             ))
             ->create([
                 'name' => 'Maarten van Demo',
+                'tag_name' => '@maarten-van-demo',
                 'email' => 'maarten@example.com',
         ]);
     }

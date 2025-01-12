@@ -137,7 +137,7 @@
 
                         <div class="mt-6 flex flex-col items-center justify-center gap-y-2">
                             <button
-                                class="button-primary w-full"
+                                class="button-one w-full"
                                 :class="{ 'opacity-25': form.processing }"
                                 :disabled="form.processing"
                             >

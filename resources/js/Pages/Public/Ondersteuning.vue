@@ -34,7 +34,7 @@
                 <div id="card">
                     <div class="mb-[-10px] z-0">
                         <img
-                            src="../../../images/mental-hygiene-vormgeving-brian-me-learning.png"
+                            src="../../../images/mental-hygiene-vormgeving-brian-support.png"
                             alt="Mental Hygiene afbeelding me-learning"
                             class="rounded-tl-xl rounded-tr-xl"
                         >
@@ -66,7 +66,7 @@
                 <div id="card">
                     <div class="mb-[-10px] z-0">
                         <img
-                            src="../../../images/mental-hygiene-vormgeving-brian-1-op-1-coaching.png"
+                            src="../../../images/mental-hygiene-vormgeving-brian-faq.png"
                             alt="Mental Hygiene afbeelding me-learning"
                             class="rounded-tl-xl rounded-tr-xl"
                         >

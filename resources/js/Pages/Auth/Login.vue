@@ -5,7 +5,7 @@
     import InputLabel from '@/Components/InputLabel.vue';
     import TextInput from '@/Components/TextInput.vue';
     import { Head, Link, useForm } from '@inertiajs/vue3';
-    import {provide, ref} from "vue";
+    import {provide, ref, computed} from "vue";
     import GradientElement from "@/Components/PageLayoutElements/GradientElement.vue";
     import GradientWhiteElement from "@/Components/PageLayoutElements/GradientWhiteElement.vue";
     import ButtonOne from "@/Components/Buttons/ButtonOne.vue";
@@ -30,6 +30,11 @@
         email: '',
         password: '',
         remember: false,
+    });
+
+    const isFormValid = computed(() => {
+        return form.email !== '' &&
+            form.password !== ''
     });
 
     const submit = () => {
@@ -100,9 +105,9 @@
 
                                 <ButtonOne 
                                     title="Log in" 
-                                    :allowSpinner="true" 
-                                    class="w-full" 
+                                    :allowSpinner="true"
                                     :disableAfterClick="true"
+                                    :class="{ 'pointer-events-none opacity-50': !isFormValid }"
                                 />
 
                                 <Link

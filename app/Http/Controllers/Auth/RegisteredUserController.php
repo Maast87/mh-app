@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rules;
 use Inertia\Inertia;
 use Inertia\Response;
+use Illuminate\Support\Facades\Log;
 
 class RegisteredUserController extends Controller
 {
@@ -30,16 +31,25 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        Log::info('Starting user registration process', [
+            'email' => $request->email
+        ]);
+
         $request->validate([
-            'name' => 'required|string|max:255',
-            'tag_name' => 'required|string|max:255|lowercase',
+            'name' => 'required|string|max:255|unique:users,name',
+            'tag_name' => 'required|string|max:255|lowercase|unique:users,tag_name',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
             'password' => ['required', 'confirmed', Rules\Password::defaults()->min(10)->mixedCase()->numbers()],
         ]);
 
         $name = $this->sanitizeName($request->name);
-
         $tagName = $this->generateTagNameFromName($name);
+
+        Log::info('Creating new user', [
+            'name' => $name,
+            'tag_name' => $tagName,
+            'email' => $request->email
+        ]);
 
         $user = User::create([
             'name' => $name,
@@ -48,11 +58,18 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        Log::info('User created successfully', [
+            'user_id' => $user->id,
+            'email' => $user->email
+        ]);
+
         event(new Registered($user));
+        Log::info('Registered event dispatched');
 
         Auth::login($user);
+        Log::info('User logged in successfully');
 
-        return redirect(route('home', absolute: false));
+        return redirect()->route('verification.notice');
     }
 
     /**
