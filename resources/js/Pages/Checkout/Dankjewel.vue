@@ -4,7 +4,7 @@
     import DarkblueElement from "@/Components/PageLayoutElements/DarkblueElement.vue";
     import {Head} from "@inertiajs/vue3";
     import {provide} from "vue";
-    import ButtonFifth from "@/Components/Buttons/ButtonFifth.vue";
+    import ButtonOne from "@/Components/Buttons/ButtonOne.vue";
 
     const breadcrumbs = [
         { label: "home", href: "/" },
@@ -44,7 +44,7 @@
                 </div>
 
                 <div class="flex justify-center">
-                    <ButtonFifth title="Naar de me-learning" href="me-learning" />
+                    <ButtonOne title="Naar de me-learning" href="me-learning" />
                 </div>
             </DarkblueElement>
         </div>
