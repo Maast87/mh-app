@@ -37,10 +37,18 @@
             form.password !== ''
     });
 
+    const loginSuccessful = ref(false);
+
     const submit = () => {
         setTimeout(() => {
             form.post(route('login'), {
-                onFinish: () => form.reset('password'),
+                onSuccess: () => {
+                    loginSuccessful.value = true;
+                },
+                onError: () => {
+                    loginSuccessful.value = false;
+                    form.processing = false;
+                }
             });
         }, 25);
     };
@@ -102,11 +110,10 @@
                             </div>
 
                             <div class="mt-6 flex flex-col items-center justify-center gap-y-2">
-
                                 <ButtonOne 
                                     title="Log in" 
-                                    :allowSpinner="true"
-                                    :disableAfterClick="true"
+                                    :allowSpinner="isFormValid && loginSuccessful"
+                                    :disableAfterClick="isFormValid && loginSuccessful"
                                     :class="{ 'pointer-events-none opacity-50': !isFormValid }"
                                 />
 
@@ -117,8 +124,6 @@
                                 >
                                     Wachtwoord vergeten?
                                 </Link>
-
-
                             </div>
                         </form>
                 </GradientWhiteElement>

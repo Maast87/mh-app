@@ -155,7 +155,7 @@
                                                 class="group-hover:translate-x-[3px] mh-transition"
                                                 width="20"
                                                 height="20"
-                                                fill="var(--mh-blue-700-gray-100)"
+                                                fill="var(--mh-blue-700)"
                                                 data-name="Content"
                                                 xmlns="http://www.w3.org/2000/svg"
                                                 viewBox="0 0 128 128"

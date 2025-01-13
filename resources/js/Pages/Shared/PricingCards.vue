@@ -41,7 +41,7 @@
                 class="flex justify-center"
 
             >
-                <p class="bg-blue-700 rounded-br-xl rounded-bl-xl text-gray-100 py-1 w-10/12 items-center text-center font-semibold">
+                <p class="bg-blue_700_gray_100 rounded-br-xl rounded-bl-xl text-gray_100_blue_900 py-1 w-10/12 items-center text-center font-semibold">
                     Huidig lidmaatschap
                 </p>
             </div>
@@ -109,7 +109,7 @@
                 v-if="$page.props.auth.user && $page.props.auth.user?.subscribed_to_monthly"
                 class="flex justify-center"
             >
-                <p class="bg-blue-700 rounded-br-xl rounded-bl-xl text-gray-100 py-1 w-10/12 items-center text-center font-semibold">
+                <p class="bg-blue_700_gray_100 rounded-br-xl rounded-bl-xl text-gray_100_blue_900 py-1 w-10/12 items-center text-center font-semibold">
                     Huidig lidmaatschap
                 </p>
             </div>

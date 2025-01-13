@@ -1,6 +1,6 @@
 <script setup>
+    import { defineProps, watch, ref } from "vue";
     import { Link } from "@inertiajs/vue3";
-    import { ref } from "vue";
 
     const props = defineProps({
         title: String,
@@ -12,12 +12,29 @@
             type: Boolean,
             default: false,
         },
+        disabled: {
+            type: Boolean,
+            default: false,
+        },
+        disableAfterClick: {
+            type: Boolean,
+            default: false,
+        },
     });
 
-    const DisableButton = ref(false);
+    const DisableButton = ref(props.disabled);
 
-    const handleClickButton = () => {
-        if (!DisableButton.value) {
+    watch(() => props.disabled, (newValue) => {
+        DisableButton.value = newValue;
+    });
+
+    const handleClickButton = (event) => {
+        if (DisableButton.value) {
+            event.preventDefault();
+            return;
+        }
+
+        if (props.disableAfterClick) {
             DisableButton.value = true;
         }
     };
@@ -44,7 +61,7 @@
     </Link>
     <button
         v-else
-        class="button-six w-full"
+        class="button-six w-full group"
         :class="{
             'button-six-loading spinner': DisableButton && allowSpinner,
             'button-six-loading': DisableButton

@@ -28,6 +28,10 @@
                 required: true,
             }
         },
+        checkId: {
+            type: Number,
+            required: true
+        }
     });
 
     const currentQuestionStore = useCheckQuestionsStore();
@@ -157,13 +161,14 @@
             };
 
             requestAnimationFrame(animate);
+            saveScore();
         }
     });
 
     const saveScore = () => {
         router.post('/me-learning', {
             score: score.value,
-            check_id: 1  // Hardcoded to 1 as requested
+            check_id: props.checkId
         });
     };
 
@@ -261,9 +266,6 @@
                 <div>
                     <slot name="message-high-threshold" />
                 </div>
-            </div>
-            <div>
-                <ButtonOne @click="saveScore" class="button-one" title="Opslaan"></ButtonOne>
             </div>
         </div>
     </div>

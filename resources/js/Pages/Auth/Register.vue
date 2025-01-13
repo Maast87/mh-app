@@ -27,10 +27,47 @@
         terms_accepted: false,
     });
 
+    const emailValidation = ref({
+        isValid: false,
+        error: '',
+        touched: false
+    });
+
+    const validateEmail = (email) => {
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        
+        if (!email) {
+            emailValidation.value.isValid = false;
+            emailValidation.value.error = 'E-mailadres is verplicht';
+            return;
+        }
+        
+        if (!emailRegex.test(email)) {
+            emailValidation.value.isValid = false;
+            emailValidation.value.error = 'Voer een geldig e-mailadres in';
+            return;
+        }
+
+        emailValidation.value.isValid = true;
+        emailValidation.value.error = '';
+    };
+
+    const handleEmailBlur = (email) => {
+        emailValidation.value.touched = true;
+        validateEmail(email);
+    };
+
+    watch(() => form.email, (newEmail) => {
+        if (emailValidation.value.touched) {
+            validateEmail(newEmail);
+        }
+    });
+
     const isFormValid = computed(() => {
         return form.name !== '' &&
             form.tag_name !== '' &&
             form.email !== '' &&
+            emailValidation.value.isValid &&
             form.password !== '' &&
             form.password_confirmation !== '' &&
             form.terms_accepted === true &&
@@ -44,7 +81,10 @@
         hasNumber: false
     });
 
+    const hasStartedTyping = ref(false);
+
     watch(() => form.password, (newPassword) => {
+        if (newPassword) hasStartedTyping.value = true;
         passwordValidations.value.minLength = newPassword.length >= 10;
         passwordValidations.value.hasUppercase = /[A-Z]/.test(newPassword);
         passwordValidations.value.hasNumber = /\d/.test(newPassword);
@@ -231,8 +271,12 @@
                                     required
                                     autocomplete="username"
                                     placeholder="brian@voorbeeld.nl"
+                                    @blur="handleEmailBlur(form.email)"
                                 />
-                                <InputError class="mt-1.5" :message="form.errors.email"/>
+                                <InputError 
+                                    class="mt-1.5" 
+                                    :message="(emailValidation.touched ? emailValidation.error : '') || form.errors.email"
+                                />
                                 <p class="text-sm mt-1.5 text-blue_700_gray_100">
                                     Je e-mailadres is niet zichtbaar voor anderen. Op dit e-mailadres ontvang je een e-mail met een verificatiecode.
                                 </p>
@@ -253,36 +297,69 @@
                                     Wachtwoord checklist:
                                 </p>
                                 <div>
-                                    <ul class="text-sm">
-                                        <li
-                                            :class="{
-                                                'text-green-100': passwordValidations.minLength,
-                                                'text-blue-700 opacity-60': !passwordValidations.minLength
-                                            }"
-                                            class="list-disc pl-5"
-                                            style="list-style-position: inside"
-                                        >
-                                            Minimale lengte van 10 tekens
+                                    <ul class="text-sm space-y-1">
+                                        <li class="flex items-center gap-x-2">
+                                            <div class="w-5 h-5">
+                                                <svg v-if="passwordValidations.minLength" id="mental-hygiene-icon-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                                                    <path d="M64,10c29.7,0,54,24.3,54,54s-24.3,54-54,54S10,93.7,10,64,34.3,10,64,10Z" style="fill: none; stroke: var(--mh-green-100); stroke-miterlimit: 10; stroke-width: 4.5px"/>
+                                                    <polyline points="34.96 64.43 56.16 85.63 92.33 42.37" style="fill: none; stroke: var(--mh-green-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 4.5px"/>
+                                                </svg>
+                                                <svg v-else="!passwordValidations.minLength" id="mental-hygiene-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                                                    <path d="M64,10c29.7,0,54,24.3,54,54s-24.3,54-54,54S10,93.7,10,64,34.3,10,64,10Z" style="fill: none; stroke: var(--mh-blue-700); stroke-miterlimit: 10; stroke-width: 4.5px; opacity: 0.6"/>
+                                                    <line x1="40.5" y1="40.5" x2="87.5" y2="87.5" style="fill: none; stroke: var(--mh-blue-700); stroke-linecap: round; stroke-linejoin: round; stroke-width: 4.5px; opacity: 0.6"/>
+                                                    <line x1="87.5" y1="40.5" x2="40.5" y2="87.5" style="fill: none; stroke: var(--mh-blue-700); stroke-linecap: round; stroke-linejoin: round; stroke-width: 4.5px; opacity: 0.6"/>
+                                                </svg>
+                                            </div>
+                                            <span
+                                                :class="{
+                                                    'text-green-100': passwordValidations.minLength,
+                                                    'text-blue-700 opacity-60': !passwordValidations.minLength
+                                                }"
+                                            >
+                                                Minimale lengte van 10 tekens
+                                            </span>
                                         </li>
-                                        <li
-                                            :class="{
-                                                'text-green-100': passwordValidations.hasUppercase,
-                                                'text-blue-700 opacity-60': !passwordValidations.hasUppercase
-                                            }"
-                                            class="list-disc pl-5"
-                                            style="list-style-position: inside"
-                                        >
-                                            Ten minste 1 hoofdletter
+                                        <li class="flex items-center gap-x-2">
+                                            <div class="w-5 h-5">
+                                                <svg v-if="passwordValidations.hasUppercase" id="mental-hygiene-icon-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                                                    <path d="M64,10c29.7,0,54,24.3,54,54s-24.3,54-54,54S10,93.7,10,64,34.3,10,64,10Z" style="fill: none; stroke: var(--mh-green-100); stroke-miterlimit: 10; stroke-width: 4.5px"/>
+                                                    <polyline points="34.96 64.43 56.16 85.63 92.33 42.37" style="fill: none; stroke: var(--mh-green-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 4.5px"/>
+                                                </svg>
+                                                <svg v-else="!passwordValidations.hasUppercase" id="mental-hygiene-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                                                    <path d="M64,10c29.7,0,54,24.3,54,54s-24.3,54-54,54S10,93.7,10,64,34.3,10,64,10Z" style="fill: none; stroke: var(--mh-blue-700); stroke-miterlimit: 10; stroke-width: 4.5px; opacity: 0.6"/>
+                                                    <line x1="40.5" y1="40.5" x2="87.5" y2="87.5" style="fill: none; stroke: var(--mh-blue-700); stroke-linecap: round; stroke-linejoin: round; stroke-width: 4.5px; opacity: 0.6"/>
+                                                    <line x1="87.5" y1="40.5" x2="40.5" y2="87.5" style="fill: none; stroke: var(--mh-blue-700); stroke-linecap: round; stroke-linejoin: round; stroke-width: 4.5px; opacity: 0.6"/>
+                                                </svg>
+                                            </div>
+                                            <span
+                                                :class="{
+                                                    'text-green-100': passwordValidations.hasUppercase,
+                                                    'text-blue-700 opacity-60': !passwordValidations.hasUppercase
+                                                }"
+                                            >
+                                                Ten minste 1 hoofdletter
+                                            </span>
                                         </li>
-                                        <li
-                                            :class="{
-                                                'text-green-100': passwordValidations.hasNumber,
-                                                'text-blue-700 opacity-60': !passwordValidations.hasNumber
-                                            }"
-                                            class="list-disc pl-5"
-                                            style="list-style-position: inside"
-                                        >
-                                            Ten minste 1 cijfer
+                                        <li class="flex items-center gap-x-2">
+                                            <div class="w-5 h-5">
+                                                <svg v-if="passwordValidations.hasNumber" id="mental-hygiene-icon-checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                                                    <path d="M64,10c29.7,0,54,24.3,54,54s-24.3,54-54,54S10,93.7,10,64,34.3,10,64,10Z" style="fill: none; stroke: var(--mh-green-100); stroke-miterlimit: 10; stroke-width: 4.5px"/>
+                                                    <polyline points="34.96 64.43 56.16 85.63 92.33 42.37" style="fill: none; stroke: var(--mh-green-100); stroke-linecap: round; stroke-linejoin: round; stroke-width: 4.5px"/>
+                                                </svg>
+                                                <svg v-else="!passwordValidations.hasNumber" id="mental-hygiene-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                                                    <path d="M64,10c29.7,0,54,24.3,54,54s-24.3,54-54,54S10,93.7,10,64,34.3,10,64,10Z" style="fill: none; stroke: var(--mh-blue-700); stroke-miterlimit: 10; stroke-width: 4.5px; opacity: 0.6"/>
+                                                    <line x1="40.5" y1="40.5" x2="87.5" y2="87.5" style="fill: none; stroke: var(--mh-blue-700); stroke-linecap: round; stroke-linejoin: round; stroke-width: 4.5px; opacity: 0.6"/>
+                                                    <line x1="87.5" y1="40.5" x2="40.5" y2="87.5" style="fill: none; stroke: var(--mh-blue-700); stroke-linecap: round; stroke-linejoin: round; stroke-width: 4.5px; opacity: 0.6"/>
+                                                </svg>
+                                            </div>
+                                            <span
+                                                :class="{
+                                                    'text-green-100': passwordValidations.hasNumber,
+                                                    'text-blue-700 opacity-60': !passwordValidations.hasNumber
+                                                }"
+                                            >
+                                                Ten minste 1 cijfer
+                                            </span>
                                         </li>
                                     </ul>
                                 </div>
@@ -327,8 +404,8 @@
                             <div class="flex flex-col items-center justify-center gap-y-2">
                                 <ButtonOne 
                                     title="Maak mijn gratis account" 
-                                    :allowSpinner="!nameExists"
-                                    :disableAfterClick="!nameExists"
+                                    :allowSpinner="isFormValid"
+                                    :disableAfterClick="isFormValid"
                                     :class="{ 'pointer-events-none opacity-50': !isFormValid }"
                                 />
                                 <Link

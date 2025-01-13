@@ -48,6 +48,12 @@
     --mh-blue-700-blue-900: var(--mh-blue-900);
 }
 
+@media (min-width: 1024px) {
+    html {
+        overflow-y: scroll;
+    }
+}
+
 @layer components {
 
     .content-container {

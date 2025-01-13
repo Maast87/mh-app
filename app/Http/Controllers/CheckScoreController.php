@@ -30,15 +30,21 @@ class CheckScoreController extends Controller
     {
         $user = User::where('tag_name', $tagname)->firstOrFail();
         
-        $scores = UserCheckScore::where('user_id', $user->id)
+        $belastbaarheidScores = UserCheckScore::where('user_id', $user->id)
             ->where('check_id', 1)
-            ->orderBy('created_at', 'desc')
+            ->orderBy('created_at', 'asc')
+            ->get();
+
+        $testScores = UserCheckScore::where('user_id', $user->id)
+            ->where('check_id', 2)
+            ->orderBy('created_at', 'asc')
             ->get();
 
         return Inertia::render('Profiel/ProfielResultaten', [
             'requestedTagname' => $tagname,
             'requestedUser' => $user,
-            'scores' => $scores
+            'belastbaarheidScores' => $belastbaarheidScores,
+            'testScores' => $testScores
         ]);
     }
 }

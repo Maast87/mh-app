@@ -24,20 +24,16 @@
 
     const DisableButton = ref(props.disabled);
 
-    // Watch for prop changes and update the internal state
     watch(() => props.disabled, (newValue) => {
         DisableButton.value = newValue;
     });
 
-    // Handle button click action, respecting the disabled state
     const handleClickButton = (event) => {
         if (DisableButton.value) {
-            // Prevent any action if the button is disabled
             event.preventDefault();
             return;
         }
 
-        // Only disable the button if disableAfterClick is true
         if (props.disableAfterClick) {
             DisableButton.value = true;
         }
