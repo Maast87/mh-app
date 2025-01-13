@@ -13,6 +13,8 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('user_check_scores');
+        
         Schema::create('user_check_scores', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained();
@@ -27,6 +29,8 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('user_check_scores');
+        Schema::enableForeignKeyConstraints();
     }
 }; 
