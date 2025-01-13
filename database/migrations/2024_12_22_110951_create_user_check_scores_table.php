@@ -13,11 +13,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users_checks', function (Blueprint $table) {
+        Schema::create('user_check_scores', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class)->constrained();
             $table->foreignIdFor(Check::class)->constrained();
             $table->integer('score')->default(0);
+            $table->timestamps();
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users_checks');
+        Schema::dropIfExists('user_check_scores');
     }
 };

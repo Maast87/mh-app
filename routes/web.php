@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\UsernameValidationController;
+use App\Http\Controllers\CheckScoreController;
 
 require __DIR__.'/auth.php';
 require __DIR__.'/profile.php';
@@ -58,6 +59,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 // Me-learning routes
 Route::get('/me-learning', function () { return Inertia::render('Me-learning/MeLearning'); });
+Route::post('/me-learning', [CheckScoreController::class, 'store'])->name('checkscore.store');
 
 Route::middleware(['auth', 'verified', EnsureUserIsSubscribed::class])->group(function () {
     Route::get('/me-learning/les', function () { return Inertia::render('Me-learning/Les'); });

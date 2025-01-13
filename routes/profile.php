@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileAvatarController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Http\Controllers\CheckScoreController;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     $renderPrivateProfilePage = fn($tagname, $view, $data = []) =>
@@ -45,7 +46,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     ->where('tagname', '@[a-z0-9-]+');
 
 
-    Route::get('profiel/{tagname}/resultaten', fn($tagname) => $renderPublicProfilePage($tagname, 'Profiel/ProfielResultaten'))
+    Route::get('profiel/{tagname}/resultaten', [CheckScoreController::class, 'show'])
         ->name('profiel.resultaten')
         ->where('tagname', '@[a-z0-9-]+');
 

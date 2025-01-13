@@ -34,7 +34,8 @@
             form.password !== '' &&
             form.password_confirmation !== '' &&
             form.terms_accepted === true &&
-            !nameExists.value;
+            !nameExists.value &&
+            !passwordConfirmationError.value;
     });
 
     const passwordValidations = ref({
@@ -52,6 +53,8 @@
     const nameExists = ref(false);
     const isCheckingName = ref(false);
     let nameCheckTimeout = null;
+    const passwordConfirmationError = ref('');
+    const passwordCheckTimeout = ref(null);
 
     const checkNameExists = async (name) => {
         if (!name) {
@@ -105,6 +108,27 @@
         } else {
             form.tag_name = '';
         }
+    });
+
+    watch(() => form.password_confirmation, (newValue) => {
+        if (passwordCheckTimeout.value) clearTimeout(passwordCheckTimeout.value);
+        
+        if (!newValue) {
+            passwordConfirmationError.value = '';
+            return;
+        }
+        
+        passwordCheckTimeout.value = setTimeout(() => {
+            if (form.password !== newValue) {
+                passwordConfirmationError.value = 'De wachtwoorden komen niet overeen.';
+            } else {
+                passwordConfirmationError.value = '';
+            }
+        }, 1000);
+    });
+
+    watch(() => form.password, () => {
+        passwordConfirmationError.value = '';
     });
 
     const submit = () => {
@@ -210,7 +234,7 @@
                                 />
                                 <InputError class="mt-1.5" :message="form.errors.email"/>
                                 <p class="text-sm mt-1.5 text-blue_700_gray_100">
-                                    Je e-mailadres is niet zichtbaar voor anderen.
+                                    Je e-mailadres is niet zichtbaar voor anderen. Op dit e-mailadres ontvang je een e-mail met een verificatiecode.
                                 </p>
                             </div>
 
@@ -275,6 +299,7 @@
                                     autocomplete="new-password"
                                 />
                                 <InputError class="mt-1.5" :message="form.errors.password_confirmation"/>
+                                <InputError class="mt-2" :message="passwordConfirmationError" />
                             </div>
 
                             <!-- Terms and Submit -->

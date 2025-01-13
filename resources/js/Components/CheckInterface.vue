@@ -1,6 +1,8 @@
 <script setup>
     import { ref, computed, onMounted, watch } from "vue";
     import { useCheckQuestionsStore } from "@/stores/checkQuestions.js";
+    import ButtonOne from "./Buttons/ButtonOne.vue";
+    import { router } from '@inertiajs/vue3';
 
     const props = defineProps({
         store: String,
@@ -158,6 +160,13 @@
         }
     });
 
+    const saveScore = () => {
+        router.post('/me-learning', {
+            score: score.value,
+            check_id: 1  // Hardcoded to 1 as requested
+        });
+    };
+
     onMounted(() => {
         loadProgress();
         loadQuestion();
@@ -220,9 +229,6 @@
                         Opslaan en doorgaan
                     </button>
                 </div>
-                <!-- <div>
-                    Score: {{ score }} (nog op hide zetten)
-                </div> -->
         </div>
     </div>
 
@@ -256,13 +262,9 @@
                     <slot name="message-high-threshold" />
                 </div>
             </div>
+            <div>
+                <ButtonOne @click="saveScore" class="button-one" title="Opslaan"></ButtonOne>
+            </div>
         </div>
     </div>
 </template>
-
-<style scoped>
-    #result-bar .progress {
-        transition: width 1.5s ease-in-out;
-        width: 0;
-    }
-</style>

@@ -6,8 +6,9 @@
     import InputLabel from '@/Components/InputLabel.vue';
     import VerificationCodeInput from '@/Components/VerificationCodeInput.vue';
     import ButtonOne from "@/Components/Buttons/ButtonOne.vue";
-    import { Head, useForm } from '@inertiajs/vue3';
-    import { provide, watch, ref } from "vue";
+    import { Head, useForm, Link } from '@inertiajs/vue3';
+    import { provide, watch, ref, nextTick } from "vue";
+    import DefaultModal from "@/Components/Modals/DefaultModal.vue";
 
     const breadcrumbs = [
             { label: "home", href: "/" },
@@ -15,17 +16,44 @@
         ];
     provide('breadcrumbs', breadcrumbs);
 
+    const isModalVisible = ref(false);
+    const codeInput = ref(null);
+
+    const openModal = () => {
+        isModalVisible.value = true;
+    };
+
+    const closeModal = () => {
+        isModalVisible.value = false;
+        // reload to automatically focus on the input
+        setTimeout(() => {
+            window.location.reload();
+        }, 400);
+    };
+
     const isSubmitting = ref(false);
     const form = useForm({
         code: '',
     });
+
+    const resendForm = useForm({});
+
+    const resendVerification = () => {
+        resendForm.post(route('verification.send'), {
+            preserveScroll: true,
+            onSuccess: () => {
+                form.reset();
+                openModal();
+            },
+        });
+    };
 
     const submit = () => {
         if (isSubmitting.value) return;
         isSubmitting.value = true;
         setTimeout(() => {
             form.post(route('verification.verify'));
-        }, 450);
+        }, 750);
     };
 
     watch(() => form.code, (newCode) => {
@@ -52,7 +80,7 @@
                     <span class="gradient-text">Bevestig</span> je e-mailadres
                 </h1>
                 <p class="text-base text-blue_700_gray_100 text-center">
-                    We hebben een code naar je e-mailadres gestuurd.<br>
+                    We hebben je een mail met de bevestigingscode gestuurd.<br>
                     Vul deze code hieronder in om je e-mailadres te bevestigen.
                 </p>
             </div>
@@ -66,13 +94,14 @@
                                 <div class="mt-1">
                                     <VerificationCodeInput
                                         v-model="form.code"
+                                        ref="codeInput"
                                         autofocus
                                     />
                                 </div>
                                 <InputError class="mt-2" :message="form.errors.code" />
                             </div>
 
-                            <div class="flex flex-col items-center justify-center gap-y-2">
+                            <div class="flex flex-col items-center justify-center">
                                 <ButtonOne 
                                     title="Bevestig e-mailadres" 
                                     :allowSpinner="true"
@@ -83,8 +112,28 @@
                             </div>
                         </div>
                     </form>
+                    <div class="flex justify-center">
+                        <Link
+                            @click.prevent="resendVerification"
+                            as="button"
+                            class="rounded-md text-base font-medium link-underline-green focus:ring-2 focus:ring-blue-700 focus:ring-offset-2"
+                        >
+                            Geen mail ontvangen? Klik hier om de code opnieuw te sturen.
+                        </Link>
+                    </div>
                 </GradientWhiteElement>
             </GradientElement>
         </div>
+
+        <DefaultModal :show="isModalVisible" @close="closeModal">
+            <template #title>
+                We hebben een nieuwe mail gestuurd
+            </template>
+            <template #content>
+                <div>
+                    <p>Met de code die je ontvangt, kun je je e-mailadres bevestigen.</p>
+                </div>
+            </template>
+        </DefaultModal>
     </Layout>
 </template>

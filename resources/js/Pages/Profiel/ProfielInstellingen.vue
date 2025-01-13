@@ -1,6 +1,6 @@
 <script setup>
     import Layout from "../Shared/Layout.vue";
-    import {Head, useForm} from "@inertiajs/vue3";
+    import {Head, useForm, usePage} from "@inertiajs/vue3";
     import {provide, ref, computed, watch} from "vue";
     import ProfileLayout from "@/Pages/Shared/ProfileLayout.vue";
     import { useCurrentUser } from "@/Utilities/composables/useCurrentUser.js";
@@ -11,6 +11,7 @@
     import InputError from '@/Components/InputError.vue';
     import InputLabel from '@/Components/InputLabel.vue';
     import DefaultModal from "@/Components/Modals/DefaultModal.vue";
+    import TextInput from '@/Components/TextInput.vue';
 
     const breadcrumbs = [
         { label: "home", href: "/" },
@@ -167,10 +168,38 @@
         hasNumber: false
     });
 
+    const passwordConfirmationError = ref('');
+    let passwordConfirmationTimeout;
+
     watch(() => passwordForm.password, (newPassword) => {
         passwordValidations.value.minLength = newPassword.length >= 10;
         passwordValidations.value.hasUppercase = /[A-Z]/.test(newPassword);
         passwordValidations.value.hasNumber = /\d/.test(newPassword);
+        // Clear confirmation error when password changes
+        passwordConfirmationError.value = '';
+    });
+
+    watch(() => passwordForm.password_confirmation, (newConfirmation) => {
+        clearTimeout(passwordConfirmationTimeout);
+        passwordConfirmationError.value = '';
+        
+        if (!newConfirmation) return;
+
+        passwordConfirmationTimeout = setTimeout(() => {
+            if (newConfirmation !== passwordForm.password) {
+                passwordConfirmationError.value = 'De wachtwoorden komen niet overeen.';
+            }
+        }, 500);
+    });
+
+    const isPasswordFormValid = computed(() => {
+        return passwordForm.current_password && 
+               passwordForm.password && 
+               passwordForm.password_confirmation &&
+               passwordForm.password === passwordForm.password_confirmation &&
+               passwordValidations.value.minLength &&
+               passwordValidations.value.hasUppercase &&
+               passwordValidations.value.hasNumber;
     });
 
     const updatePassword = () => {
@@ -191,6 +220,50 @@
 
     const closeModal = () => {
         isModalVisible.value = false;
+    };
+
+    const emailForm = useForm({
+        email: '',
+        email_confirmation: ''
+    });
+
+    const currentEmail = usePage().props.auth.user.email;
+    const emailError = ref('');
+    const isEmailSame = ref(false);
+
+    // Add debounced watcher for email validation
+    let emailCheckTimeout;
+    watch(() => emailForm.email, (newEmail) => {
+        clearTimeout(emailCheckTimeout);
+        emailError.value = '';
+        isEmailSame.value = false;
+
+        if (!newEmail) return;
+
+        emailCheckTimeout = setTimeout(() => {
+            if (newEmail.toLowerCase() === currentEmail.toLowerCase()) {
+                emailError.value = 'Het nieuwe e-mailadres moet verschillen van je huidige e-mailadres.';
+                isEmailSame.value = true;
+            }
+        }, 500);
+    });
+
+    const isEmailFormValid = computed(() => {
+        return emailForm.email && 
+               emailForm.email_confirmation && 
+               emailForm.email === emailForm.email_confirmation &&
+               !isEmailSame.value;
+    });
+
+    const confirmEmailChange = async () => {
+        if (! await confirmation(
+            'E-mailadres wijzigen',
+            `Je staat op het punt om het e-mailadres wat aan je account gekoppeld is te wijzigen van ${currentEmail} naar ${emailForm.email}. Wil je deze doorgaan met deze actie? Als je op 'bevestig' klikt, sturen we een bevestigingscode naar het nieuwe mailadres.`
+        )) {
+            return;
+        }
+
+        emailForm.post(route('email.update'));
     };
 </script>
 
@@ -371,7 +444,7 @@
                     </div>
                 </div>
                 <div id="update-password" class="border border-0 border-b border-blue_700_gray_100 pb-4">
-                    <div class="flex flex-col w-2/3 gap-y-6">
+                    <div class="flex flex-col w-1/2 gap-y-6">
                         <div>
                             <h3 class="text-header_s text-blue_700_gray_100">Wachtwoord wijzigen</h3>
                             <p class="text-base text-blue_700_gray_100">Wijzig je wachtwoord.</p>
@@ -449,14 +522,13 @@
                                         autocomplete="new-password"
                                     />
                                     <InputError class="mt-1.5" :message="passwordForm.errors.password_confirmation"/>
+                                    <InputError class="mt-1.5" :message="passwordConfirmationError"/>
                                 </div>
 
                                 <div>
-                                    <ButtonOne 
-                                        title="Wijzig wachtwoord" 
-                                        :disabled="passwordForm.processing"
-                                        :allowSpinner="true"
-                                        :disableAfterClick="true"
+                                    <ButtonOne
+                                        title="Wijzig wachtwoord"
+                                        :class="{ 'opacity-50 pointer-events-none': !isPasswordFormValid }"
                                     />
                                 </div>
                             </form>
@@ -464,13 +536,47 @@
                     </div>
                 </div>
                 <div id="update-email" class="border border-0 border-b border-blue_700_gray_100 pb-4">
-                    <div class="flex flex-col w-2/3 gap-y-6">
+                    <div class="flex flex-col w-1/2 gap-y-6">
                         <div>
                             <h3 class="text-header_s text-blue_700_gray_100">E-mailadres wijzigen</h3>
-                            <p class="text-base text-blue_700_gray_100">Wijzig je e-mailadres.</p>
+                            <p class="text-base text-blue_700_gray_100">Wijzig je e-mailadres. Je huidige e-mailadres is {{ currentEmail }}.</p>
                         </div>
-                        <div class="flex">
-                            <p>Hier komt de content</p>
+                        <div class="flex flex-col w-full gap-y-6">
+                            <form @submit.prevent="confirmEmailChange" class="space-y-6">
+                                <div>
+                                    <InputLabel for="email" value="Nieuw e-mailadres" />
+                                    <TextInput
+                                        id="email"
+                                        type="email"
+                                        class="mt-1 block w-full"
+                                        v-model="emailForm.email"
+                                        required
+                                        autocomplete="email"
+                                    />
+                                    <InputError :message="emailForm.errors.email" class="mt-2" />
+                                    <InputError :message="emailError" class="mt-2" />
+                                </div>
+
+                                <div>
+                                    <InputLabel for="email_confirmation" value="Bevestig nieuw e-mailadres" />
+                                    <TextInput
+                                        id="email_confirmation"
+                                        type="email"
+                                        class="mt-1 block w-full"
+                                        v-model="emailForm.email_confirmation"
+                                        required
+                                        autocomplete="email"
+                                    />
+                                    <InputError :message="emailForm.errors.email_confirmation" class="mt-2" />
+                                </div>
+
+                                <div class="flex items-center gap-4">
+                                    <ButtonOne
+                                        title="Wijzig e-mailadres"
+                                        :class="{ 'opacity-50 pointer-events-none': !isEmailFormValid }"
+                                    />
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
