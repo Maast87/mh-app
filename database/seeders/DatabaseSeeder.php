@@ -40,5 +40,11 @@ class DatabaseSeeder extends Seeder
                 'tag_name' => '@maarten-van-demo',
                 'email' => 'maarten@example.com',
         ]);
+
+        $this->call([
+            AchievementTypeSeeder::class,
+            AchievementSeeder::class,
+            TestAchievementProgressSeeder::class,
+        ]);
     }
 }

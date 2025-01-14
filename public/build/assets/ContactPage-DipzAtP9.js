@@ -1,1 +1,0 @@
-import{c as t,a as o,u as n,b as a,F as r,o as l,Z as s}from"./app-B-77ZMTg.js";const m={__name:"ContactPage",setup(c){return(u,e)=>(l(),t(r,null,[o(n(s),{tag:"Contact"}),e[0]||(e[0]=a("div",null,[a("p",null," Hello world ")],-1))],64))}};export{m as default};

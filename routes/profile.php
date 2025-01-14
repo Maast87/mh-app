@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\CheckScoreController;
+use App\Http\Controllers\AchievementController;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     $renderPrivateProfilePage = fn($tagname, $view, $data = []) =>
@@ -62,7 +63,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         ->name('profiel.resultaten.statistieken')
         ->where('tagname', '@[a-z0-9-]+');
 
-    Route::get('profiel/{tagname}/resultaten/achievements', fn($tagname) => $renderPublicProfilePage($tagname, 'Profiel/ProfielResultatenAchievements'))
+    Route::get('profiel/{tagname}/resultaten/achievements', [AchievementController::class, 'show'])
         ->name('profiel.resultaten.achievements')
         ->where('tagname', '@[a-z0-9-]+');
 });

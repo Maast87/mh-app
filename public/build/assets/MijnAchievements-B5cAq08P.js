@@ -1,1 +1,0 @@
-import a from"./Layout-B6217ubW.js";import{c as t,a as n,u as s,b as r,F as o,o as m,Z as c}from"./app-B-77ZMTg.js";import"./Nav-CT0USX7J.js";const f=Object.assign({layout:a},{__name:"MijnAchievements",setup(i){return(l,e)=>(m(),t(o,null,[n(s(c),{tag:"Achievements"}),e[0]||(e[0]=r("p",null,"Pagina Mijn Achievements",-1))],64))}});export{f as default};

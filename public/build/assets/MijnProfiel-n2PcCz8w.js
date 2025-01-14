@@ -1,1 +1,0 @@
-import r from"./Layout-B6217ubW.js";import{c as t,a,u as o,b as n,F as s,o as l,Z as i}from"./app-B-77ZMTg.js";import"./Nav-CT0USX7J.js";const _=Object.assign({layout:r},{__name:"MijnProfiel",setup(m){return(p,e)=>(l(),t(s,null,[a(o(i),{title:"Profiel"}),e[0]||(e[0]=n("p",null,"Mijn profiel",-1))],64))}});export{_ as default};

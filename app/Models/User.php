@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -76,6 +77,36 @@ class User extends Authenticatable implements MustVerifyEmail
     public function likes(): HasMany
     {
         return $this->hasMany(Like::class);
+    }
+
+    /**
+     * Get all achievements earned by the user.
+     */
+    public function achievements(): BelongsToMany
+    {
+        return $this->belongsToMany(Achievement::class, 'user_achievements')
+            ->withPivot('earned_at')
+            ->withTimestamps();
+    }
+
+    /**
+     * Get all achievement progress records for the user.
+     */
+    public function achievementProgress(): HasMany
+    {
+        return $this->hasMany(AchievementProgress::class);
+    }
+
+    /**
+     * Get progress for a specific achievement type.
+     */
+    public function getProgressForType(AchievementType $type)
+    {
+        return $this->achievementProgress()
+            ->firstOrCreate(
+                ['achievement_type_id' => $type->id],
+                ['points' => 0]
+            );
     }
 
     /**

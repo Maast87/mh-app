@@ -10,6 +10,7 @@ use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\UsernameValidationController;
 use App\Http\Controllers\CheckScoreController;
+use App\Http\Controllers\AchievementController;
 
 require __DIR__.'/auth.php';
 require __DIR__.'/profile.php';
@@ -88,4 +89,9 @@ Route::get('/posts/{post}/{slug}', [PostController::class, 'show'])
 
 Route::post('/validate-username', [UsernameValidationController::class, 'checkUsername'])
     ->name('validate.username');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    // Achievement routes
+    Route::post('/achievements/award', [AchievementController::class, 'award'])->name('achievements.award');
+});
 

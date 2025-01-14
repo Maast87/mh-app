@@ -3,7 +3,10 @@
     import Breadcrumb from "@/Pages/Shared/Breadcrumb.vue";
     import Footer from "@/Pages/Shared/Footer.vue";
     import ConfirmationModal from "@/Components/Modals/ConfirmationModal.vue";
+    import AchievementModal from "@/Components/Modals/AchievementModal.vue";
+    import { useAchievementStore } from "@/stores/achievement";
 
+    const achievementStore = useAchievementStore();
 </script>
 
 <template>
@@ -26,5 +29,9 @@
         </div>
 
         <ConfirmationModal />
+        <AchievementModal 
+            :show="achievementStore.showModal"
+            @close="achievementStore.clearCurrentAchievement"
+        />
     </section>
 </template>
