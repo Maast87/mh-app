@@ -1,24 +1,23 @@
 import { defineStore } from 'pinia';
-import { ref } from 'vue';
+import { usePage } from '@inertiajs/vue3';
+import { watch, onMounted } from 'vue';
+import { useAchievementModal } from '@/Utilities/composables/useAchievementModal';
 
 export const useAchievementStore = defineStore('achievement', () => {
-    const showModal = ref(false);
-    const currentAchievement = ref(null);
+    const { showAchievement } = useAchievementModal();
+    
 
-    function setCurrentAchievement(achievement) {
-        currentAchievement.value = achievement;
-        showModal.value = true;
-    }
+    // Watch for achievement_unlocked in page props
+    watch(
+        () => usePage().props.achievement_unlocked,
+        (achievement) => {
+            if (achievement) {
+                const typeSlug = achievement.achievement_type_id === 1 ? 'log-in-achievements' : 'zelfcheck-achievements';
+                showAchievement(achievement, typeSlug);
+            }
+        },
+        { immediate: true }
+    );
 
-    function clearCurrentAchievement() {
-        currentAchievement.value = null;
-        showModal.value = false;
-    }
-
-    return {
-        showModal,
-        currentAchievement,
-        setCurrentAchievement,
-        clearCurrentAchievement,
-    };
+    return {};
 }); 

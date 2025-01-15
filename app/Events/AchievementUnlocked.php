@@ -4,6 +4,7 @@ namespace App\Events;
 
 use App\Models\Achievement;
 use App\Models\User;
+use App\Http\Resources\AchievementUnlockedResource;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
@@ -27,12 +28,7 @@ class AchievementUnlocked
     public function getData(): array
     {
         return [
-            'achievement' => [
-                'name' => $this->achievement->name,
-                'description' => $this->achievement->description,
-                'tier_name' => $this->achievement->tier_name,
-                'icon_path' => $this->achievement->icon_path,
-            ],
+            'achievement' => (new AchievementUnlockedResource($this->achievement))->resolve(),
         ];
     }
 }

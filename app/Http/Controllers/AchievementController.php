@@ -22,6 +22,7 @@ class AchievementController extends Controller
         
         return Inertia::render('Profiel/ProfielResultatenAchievements', [
             'achievementTypes' => $this->achievementService->getUserAchievements($user),
+            'requestedTagname' => $tagname,
             'requestedUser' => [
                 'id' => $user->id,
                 'name' => $user->name,

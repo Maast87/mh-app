@@ -8,6 +8,8 @@ use App\Models\AchievementProgress;
 use App\Models\AchievementType;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
+use App\Http\Resources\AchievementTypeResource;
+use App\Http\Resources\AchievementUnlockedResource;
 
 class AchievementService
 {
@@ -16,36 +18,28 @@ class AchievementService
      */
     public function getUserAchievements(User $user)
     {
-        $types = AchievementType::with(['achievements', 'progress' => function ($query) use ($user) {
-            $query->where('user_id', $user->id);
-        }])->get();
+        $types = AchievementType::with([
+            'achievements' => function ($query) {
+                $query->orderBy('required_points', 'asc');
+            },
+            'progress' => function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            },
+            'achievements.users' => function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            }
+        ])->get();
 
-        return $types->map(function ($type) use ($user) {
-            return [
-                'id' => $type->id,
-                'name' => $type->name,
-                'description' => $type->description,
-                'progress' => [
-                    'points' => $type->progress->first()?->points ?? 0,
-                    'last_action_at' => $type->progress->first()?->last_action_at,
-                ],
-                'achievements' => $type->achievements->map(function ($achievement) use ($user) {
-                    return [
-                        'id' => $achievement->id,
-                        'name' => $achievement->name,
-                        'description' => $achievement->description,
-                        'required_points' => $achievement->required_points,
-                        'tier_name' => $achievement->tier_name,
-                        'icon_path' => $achievement->icon_path,
-                        'is_earned' => $achievement->isEarnedByUser($user),
-                        'can_be_earned' => $achievement->canBeEarnedByUser($user),
-                        'earned_at' => $user->achievements()
-                            ->where('achievement_id', $achievement->id)
-                            ->first()?->pivot->earned_at,
-                    ];
-                })->sortByDesc('required_points')->values(),
-            ];
+        // Add can_be_earned attribute to achievements
+        $types->each(function ($type) {
+            $points = $type->progress->first()?->points ?? 0;
+            $type->achievements->each(function ($achievement) use ($points) {
+                $achievement->can_be_earned = !$achievement->users->isNotEmpty() && 
+                    $points >= $achievement->required_points;
+            });
         });
+
+        return AchievementTypeResource::collection($types);
     }
 
     /**
@@ -85,29 +79,99 @@ class AchievementService
     /**
      * Increment achievement progress for a user.
      */
-    public function incrementProgress(User $user, AchievementType $type, int $amount = 1): void
+    public function incrementProgress(User $user, AchievementType $type): array
     {
-        DB::transaction(function () use ($user, $type, $amount) {
-            $progress = $user->getProgressForType($type);
-            
-            // Increment points
-            $progress->points += $amount;
-            $progress->last_action_at = now();
-            $progress->save();
+        \Log::info('AchievementService: Starting progress increment', [
+            'user_id' => $user->id,
+            'type_id' => $type->id,
+            'type_slug' => $type->slug
+        ]);
 
-            // Check for newly earned achievements
-            $newAchievements = Achievement::where('achievement_type_id', $type->id)
-                ->where('required_points', '<=', $progress->points)
-                ->whereDoesntHave('users', function ($query) use ($user) {
-                    $query->where('user_id', $user->id);
-                })
-                ->get();
+        $progress = AchievementProgress::firstOrCreate(
+            [
+                'user_id' => $user->id,
+                'achievement_type_id' => $type->id,
+            ],
+            ['points' => 0]
+        );
 
-            // Award achievements
-            foreach ($newAchievements as $achievement) {
-                $this->awardAchievement($user, $achievement);
-            }
-        });
+        $progress->increment('points');
+        $progress->last_action_at = now();
+        $progress->save();
+
+        \Log::info('AchievementService: Progress updated', [
+            'new_points' => $progress->points,
+            'last_action' => $progress->last_action_at
+        ]);
+
+        // Check for newly earned achievements
+        $achievements = $this->checkForNewAchievements($user, $type);
+        
+        \Log::info('AchievementService: Checked for new achievements', [
+            'achievements_found' => count($achievements)
+        ]);
+
+        return [
+            'points' => $progress->points,
+            'achievements_earned' => $achievements
+        ];
+    }
+
+    private function checkForNewAchievements(User $user, AchievementType $type): array
+    {
+        \Log::info('AchievementService: Checking for new achievements', [
+            'user_id' => $user->id,
+            'type_id' => $type->id
+        ]);
+
+        $progress = $user->achievementProgress()->where('achievement_type_id', $type->id)->first();
+        $earnedAchievements = [];
+        
+        \Log::info('AchievementService: Current progress', [
+            'points' => $progress->points ?? 0
+        ]);
+
+        if (!$progress) {
+            \Log::warning('AchievementService: No progress found for user');
+            return [];
+        }
+
+        // First, get all achievements for this type
+        $allAchievements = Achievement::where('achievement_type_id', $type->id)->get();
+        \Log::info('AchievementService: All achievements for type', [
+            'achievements' => $allAchievements->map(fn($a) => [
+                'id' => $a->id,
+                'name' => $a->name,
+                'required_points' => $a->required_points,
+            ])->toArray()
+        ]);
+
+        // Then, get user's earned achievements
+        $userAchievements = $user->achievements()
+            ->where('achievement_type_id', $type->id)
+            ->get();
+        \Log::info('AchievementService: Already earned achievements', [
+            'earned' => $userAchievements->pluck('id')->toArray()
+        ]);
+
+        $achievements = Achievement::where('achievement_type_id', $type->id)
+            ->where('required_points', '<=', $progress->points)
+            ->whereDoesntHave('users', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })
+            ->get();
+
+        \Log::info('AchievementService: Found potential achievements', [
+            'count' => $achievements->count(),
+            'achievements' => $achievements->pluck('name', 'id')->toArray()
+        ]);
+
+        foreach ($achievements as $achievement) {
+            $this->awardAchievement($user, $achievement);
+            $earnedAchievements[] = $achievement;
+        }
+
+        return $earnedAchievements;
     }
 
     /**
@@ -115,16 +179,19 @@ class AchievementService
      */
     public function awardAchievement(User $user, Achievement $achievement): void
     {
-        DB::transaction(function () use ($user, $achievement) {
-            // Only award if not already earned
-            if (!$user->achievements()->where('achievement_id', $achievement->id)->exists()) {
-                $user->achievements()->attach($achievement->id, [
-                    'earned_at' => now(),
-                ]);
+        \Log::info('AchievementService: Awarding achievement', [
+            'user_id' => $user->id,
+            'achievement_id' => $achievement->id,
+            'achievement_name' => $achievement->name
+        ]);
 
-                event(new AchievementUnlocked($user, $achievement));
-            }
-        });
+        $user->achievements()->attach($achievement->id, [
+            'earned_at' => now(),
+        ]);
+
+        event(new AchievementUnlocked($user, $achievement));
+
+        \Log::info('AchievementService: Achievement awarded and event dispatched');
     }
 
     /**

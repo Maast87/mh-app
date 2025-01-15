@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class UserLoggedIn
+class CheckCompleted
 {
     use Dispatchable, SerializesModels;
 
@@ -16,4 +16,4 @@ class UserLoggedIn
     public function __construct(
         public User $user
     ) {}
-}
+} 

@@ -1,6 +1,6 @@
 <script setup>
     import Layout from "../Shared/Layout.vue";
-    import { Head, Link } from "@inertiajs/vue3";
+    import { Head, Link, useForm } from "@inertiajs/vue3";
     import GradientHero from "../../Components/PageLayoutElements/GradientHero.vue";
     import DarkblueElement from "../../Components/PageLayoutElements/DarkblueElement.vue";
     import {provide, ref} from "vue";
@@ -8,12 +8,30 @@
     import ButtonFour from "@/Components/Buttons/ButtonFour.vue";
     import ButtonSix from "@/Components/Buttons/ButtonSix.vue";
     import PricingCards from "@/Pages/Shared/PricingCards.vue";
+    import { useAchievementModal } from '@/Utilities/composables/useAchievementModal';
 
     const breadcrumbs = [
         { label: "  home" }
     ];
     provide('breadcrumbs', breadcrumbs);
 
+    const { showAchievement } = useAchievementModal();
+
+    const testAchievement = () => {
+        showAchievement({
+            name: 'Test Achievement',
+            description: 'This is a test achievement to verify the modal works',
+            tier_name: 'Level 1'
+        });
+    };
+
+    const confettiRef = ref(null);
+
+    const testConfetti = () => {
+        if (confettiRef.value) {
+            confettiRef.value.startAnimation();
+        }
+    };
 </script>
 
 <template>
@@ -185,6 +203,22 @@
                     </div>
 
                 </DarkblueElement>
+
+                <div class="flex flex-col gap-y-4">
+                    <button
+                        class="rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+                        @click="testAchievement"
+                    >
+                        Test Achievement Modal
+                    </button>
+                    
+                    <button
+                        class="rounded-md bg-green-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-green-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600"
+                        @click="testConfetti"
+                    >
+                        Test Confetti
+                    </button>
+                </div>
             </div>
         </div>
     </Layout>

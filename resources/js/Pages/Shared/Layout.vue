@@ -6,7 +6,9 @@
     import AchievementModal from "@/Components/Modals/AchievementModal.vue";
     import { useAchievementStore } from "@/stores/achievement";
 
+    // Initialize the store
     const achievementStore = useAchievementStore();
+    console.log('[Layout] Achievement store initialized');
 </script>
 
 <template>
@@ -29,9 +31,6 @@
         </div>
 
         <ConfirmationModal />
-        <AchievementModal 
-            :show="achievementStore.showModal"
-            @close="achievementStore.clearCurrentAchievement"
-        />
+        <AchievementModal />
     </section>
 </template>

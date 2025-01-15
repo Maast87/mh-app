@@ -9,4 +9,8 @@ class Check extends Model
 {
     /** @use HasFactory<\Database\Factories\CheckFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+    ];
 }

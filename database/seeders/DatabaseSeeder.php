@@ -42,9 +42,11 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call([
+            TopicSeeder::class,
             AchievementTypeSeeder::class,
-            AchievementSeeder::class,
-            TestAchievementProgressSeeder::class,
+            LoginAchievementSeeder::class,
+            CheckAchievementSeeder::class,
+            CheckSeeder::class,
         ]);
     }
 }

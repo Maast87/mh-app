@@ -3,12 +3,13 @@
 namespace App\Providers;
 
 use App\Events\UserLoggedIn;
-use App\Listeners\DispatchUserLoggedInEvent;
+use App\Events\CheckCompleted;
 use App\Listeners\TrackLoginAchievement;
-use Illuminate\Auth\Events\Login;
+use App\Listeners\TrackCheckAchievement;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -21,13 +22,11 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
-        
-        Login::class => [
-            DispatchUserLoggedInEvent::class,
-        ],
-
         UserLoggedIn::class => [
             TrackLoginAchievement::class,
+        ],
+        CheckCompleted::class => [
+            TrackCheckAchievement::class,
         ],
     ];
 

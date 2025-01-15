@@ -59,8 +59,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
 });
 
 // Me-learning routes
-Route::get('/me-learning', function () { return Inertia::render('Me-learning/MeLearning'); });
-Route::post('/me-learning', [CheckScoreController::class, 'store'])->name('checkscore.store');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/me-learning', function () { return Inertia::render('Me-learning/MeLearning'); });
+    Route::post('/me-learning', [CheckScoreController::class, 'store'])->name('checkscore.store');
+});
 
 Route::middleware(['auth', 'verified', EnsureUserIsSubscribed::class])->group(function () {
     Route::get('/me-learning/les', function () { return Inertia::render('Me-learning/Les'); });

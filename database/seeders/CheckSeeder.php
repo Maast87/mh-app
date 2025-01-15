@@ -2,16 +2,21 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Check;
 use Illuminate\Database\Seeder;
 
 class CheckSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
-        //
+        Check::firstOrCreate(
+            ['id' => 1],
+            ['name' => 'Belastbaarheid']
+        );
+
+        Check::firstOrCreate(
+            ['id' => 2],
+            ['name' => 'Test']
+        );
     }
 }
